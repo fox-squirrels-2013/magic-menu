@@ -5,14 +5,19 @@ end
 
 post '/' do
   @menu = Menu.create(name: params[:name])
-  p params
+  if request.xhr?
+    menu_name = {id: @menu.id, name: @menu.name}
+    content_type :json
+    menu_name.to_json
+  else
   redirect '/'
+  end
 end
 
-# get '/menus/update/:id' do 
-#   @menu = Menu.find(params[:id])
-#   erb :update
-# end
+get '/menus/update/:id' do 
+  @menu = Menu.find(params[:id])
+  erb :update
+end
 
 put '/menus/update/:id' do 
   @menu = Menu.find(params[:id])

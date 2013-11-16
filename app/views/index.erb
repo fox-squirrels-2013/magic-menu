@@ -1,13 +1,16 @@
 <div class="container">
   <h1>the menus you created...</h1>
 
-  <% @menus.each do |menu| %>
-  <p><%= menu.name %></p>
-  <% end %>
 
   <table>
     <tr>
-      <th></th>
+      <th id="menu_list">
+
+      <% @menus.each do |menu| %>
+      <p><a href="/menus/update/<%= menu.id %>"><%= menu.name %></a></p>
+      <% end %>
+
+      </th>
     </tr>
     
   </table>
