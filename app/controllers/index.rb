@@ -1,4 +1,69 @@
 get '/' do
-  # Look in app/views/index.erb
+  @menus = Menu.all
   erb :index
+end
+
+post '/' do
+  @menu = Menu.create(params)
+  p params
+  erb :index
+end
+
+# get '/menus/update/:id' do 
+#   @menu = Menu.find(params[:id])
+#   erb :update
+# end
+
+put '/menus/update/:id' do 
+  @menu = Menu.find(params[:id])
+  @menu.update_attributes(name: params[:name])
+  redirect '/'
+end
+
+delete '/menus/delete/:id' do
+  Menu.find(params[:id]).destroy
+  redirect '/menus'
+end
+
+# ///////////////////////////////////////////
+# <input type="hidden" name="_method" value="delete">
+# get '/' do
+#   # Look in app/views/index.erb
+#   @note
+#   erb :all
+# end
+
+# post '/' do
+#   p params
+#   # user = User.create(username: params[:username], email: params[:emal])
+#   @note = Note.create(notetext: params[:notetext])
+#   redirect '/notes'
+# end
+
+get '/notes' do
+  p Note.all
+  @notes = Note.all.sort
+  erb :all
+end
+
+get '/update/:id' do
+  @note = Note.find(params[:id])
+  erb :update
+end
+
+post '/update/:id' do
+  p params
+  @note = Note.find(params[:id])
+  @note.update_attributes(notetext: params[:notetext])
+  redirect '/notes'
+end
+
+post '/delete/sure/:id' do
+  @note = Note.find(params[:id])
+  erb :delete
+end
+
+post '/delete/:id' do
+  Note.find(params[:id]).destroy
+  redirect '/notes'
 end
