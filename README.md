@@ -6,7 +6,7 @@ by ty
 
 ### Release 0
 
-* App [live](http://magical-menu-tour.herokuapp.com/) on Heroku
+* App [live](http://magical-menu-tour.herokuapp.com/) on Heroku (updated through project)
 
 ### Release 1
 
@@ -16,4 +16,3 @@ by ty
 * Create the first view you see in the [Mockup](menu.png) the Menu. (Don't worry about styling yet).
 * Implement _create_ and _read_ actions for your Menus
 * Use Rspec, Shoulda, and Capybara to test your Menu model and integration.
-
