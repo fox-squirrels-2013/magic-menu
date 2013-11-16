@@ -13,3 +13,5 @@ by ty
 * Create a migration and model for Menus.
 * Add validations.
 * Test your model in IRB.  Verify that you can create Menus with correct information and get errors when you try to create a Menu with invalid input.
+* Create the first view you see in the [Mockup](menu.png) the Menu. (Don't worry about styling yet).
+
