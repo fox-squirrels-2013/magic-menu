@@ -1,13 +1,6 @@
 Status:
 
-Running on Heroku: http://dry-crag-1246.herokuapp.com/
-Migrations, items and menus
-Models, items and menus
-
-
-
-
-
+Running on Heroku: http://dkmenu.herokuapp.com/
 
 
 # Menu Magic
