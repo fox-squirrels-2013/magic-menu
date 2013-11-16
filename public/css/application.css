@@ -1,12 +1,36 @@
+header {
+
+}
+
+nav {
+  position:relative;
+  float:right;
+  top:-50px;
+}
+
+
 .container {
   margin: 20px auto;
-  width: 600px;
+  width: 700px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
 
+table {
+  width:62%;
+}
+
+table, th, td {
+  border: 1px solid gray
+}
 th {
+  background-color: lightgray;
   text-align: left;
+}
+
+th, td{
+  min-width: 100px;
+  padding: 5px;
 }
 
 .menu-item {

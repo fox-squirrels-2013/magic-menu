@@ -1,0 +1,21 @@
+<div class="new-item">
+  <%= erb :_new_item %>
+</div>
+<h3>Your Items:</h3>
+<div class="list-items">
+  <table>
+    <tr>
+      <th>name</th>
+      <th>price</th>
+    </tr>
+
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.price_as_money %></td>
+    </tr>
+
+  <% end %>
+
+  </table>
+</div>
