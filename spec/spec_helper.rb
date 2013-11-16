@@ -18,3 +18,5 @@ end
 def app
   Sinatra::Application
 end
+
+Capybara.app = app

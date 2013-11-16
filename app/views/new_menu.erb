@@ -9,7 +9,13 @@
 
         <label>Your Menu name</label>
         <input type="text" name="name" placeholder="Here comes your menu">
+        <input type="submit" value="Create Menu">
       </div>
+    <% if @error_messages %>
+      <% @error_messages.each do |message| %>
+      <p class="error_message"><%= message %></p>
+      <% end %>
+    <% end %>  
       
      
   </fieldset>

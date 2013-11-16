@@ -13,7 +13,12 @@ end
 
 post '/menus' do
   @menu = Menu.create(params)
-  redirect '/'
+  if @menu.valid?
+    redirect '/'
+  else
+    @error_messages = @menu.errors.full_messages
+    erb :new_menu
+  end
 end
 
 get '/menus/:id' do
