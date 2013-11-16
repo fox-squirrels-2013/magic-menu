@@ -1,6 +1,4 @@
-Status:
-
-Running on Heroku: http://dkmenu.herokuapp.com/
+Heroku site: http://dkmenu.herokuapp.com/
 
 
 # Menu Magic
