@@ -1,26 +1,15 @@
-# Menu Magic
+# Magical Menu Tour
 
-1. [Learning Objectives](#learning-objectives)
-1. [Summary](#summary)
-1. [Releases](#releases)
-1. [Helpful Resources](#helpful-resources)
+### Dive into the psychedelic grove and emotional bliss that is a menu.
 
-## Learning Objectives
-This challenge should meet 'most' of the :+1: [learning objectives](https://github.com/fox-squirrels-2013/phase-2-guide/blob/master/week-3/learning-objectives.md) for Phase 2.  Read through these before you start and after completing each release to guide your learning.
+by ty
 
-## Summary
-You will create a menu application based on [THIS MOCKUP](menu.png) and the releases below. Start from the skeleton code provided and submit a pull request with all releases completed.
+### Release 0
 
-  **DO NOT MERGE YOUR PULL REQUEST TO MASTER**
+App [live](http://magical-menu-tour.herokuapp.com/) on Heroku
 
-## Releases
 
-### Release Guidelines
-
-* Your app should be hosted on Heroku. Start by pushing up the basic skeleton. If you are unable to push to Heroku, move forward with the other releases until you can get help doing so.
-* Once on Heroku, push every time you finish a release and verify that application is functional on the server.
-* Update the README in your GitHub repo to reflect your app's functionality (ie - tell what it does) every time you finish a release.
-* Add a link to your Heroku app from your README.
+### --- Current progress ---
 
 ### Release 1 : Menus
 * Create a migration and model for Menus.
