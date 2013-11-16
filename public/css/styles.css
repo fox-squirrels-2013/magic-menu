@@ -28,3 +28,7 @@ h2 {
     font-weight: normal;
     margin-top: 50px;
 }
+
+#menu_list {
+  list-style: none;
+}
