@@ -4,9 +4,9 @@ get '/' do
 end
 
 post '/' do
-  @menu = Menu.create(params)
+  @menu = Menu.create(name: params[:name])
   p params
-  erb :index
+  redirect '/'
 end
 
 # get '/menus/update/:id' do 
