@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Menu do
 
-		it "can create a new menu" do
-			lindeman = Menu.create!(name: "Test")
-			expect(Menu.last.name).to eq('Test')
-		end
+	it "can create a new menu" do
+		lindeman = Menu.create!(name: "Test")
+		expect(Menu.last.name).to eq('Test')
+	end
 
 	describe "validations" do
 		it { should validate_presence_of :name }
