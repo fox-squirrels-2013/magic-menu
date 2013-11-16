@@ -30,7 +30,7 @@ DB_NAME = db.path[1..-1]
 
 
 ### for local development
-if ENV['RACK_ENV'] == "development" || ENV['RACK_ENV'].nil?
+if ENV['RACK_ENV'] == "development" || ENV['RACK_ENV'] == "test" || ENV['RACK_ENV'].nil?
   db.user, db.password = 'postgres', 'postgres'
 end
 
