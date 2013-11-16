@@ -1,0 +1,2 @@
+/usr/share/postgresql/9.1/pg_hba.conf
+/usr/lib/postgresql/9.1/bin/pg_ctl restart -D /var/lib/postgresql/9.1/main/
