@@ -20,6 +20,20 @@ header li {
 	display: inline;
 }
 
+header li a {
+	color: white;
+	text-decoration: none;
+	margin-right: 10px;
+}
+
+header li a:hover {
+	text-decoration: underline;
+}
+
+header li a:hover {
+	background-color: red;
+}
+
 .container {
   margin: 20px auto;
   width: 600px;
