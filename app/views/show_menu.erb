@@ -2,12 +2,27 @@
 <div class="menu-items"> Items </div>
  <% @menu.items.each do |item| %>
  <div class="menu-item">
- 	<span class="btn-delete"><a href="#" onclick="alert('deleting...');">[x]</a></span>
+ 	<span class="btn-delete"><a href="#" onclick=<% @delete %>>[x]</a></span>
  	<span class="item"><%= item.name %></span>
  </div>
  <% end %>
 
 <!-- ###Menu items -->
+</br>
+</br>
+</br>
+</br>
+</br>
 
-<div class="all-items">
+<div class="all-items">Menu Items</div>
+<span class="items-on-menu">
+<select id="Menu-Items" >
+  <% @items.each do |item| %>
+    <option value="items">
+    <%= item.name + ' - $' %><%= item.price/100 %></br>
+  </option>
+
+    <% end %>
+</select>
+
 <!-- ### Whole list of items -->

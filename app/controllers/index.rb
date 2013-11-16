@@ -67,6 +67,6 @@ end
 
 delete '/menus/:id' do
 	@menu = Menu.find(params[:id])
-	@menu.items.delete(Item.find(params[:item_id]))
+	@delete = @menu.items.delete(Item.find(params[:item_id]))
 	redirect "/menus/#{params[:id]}"
 end
