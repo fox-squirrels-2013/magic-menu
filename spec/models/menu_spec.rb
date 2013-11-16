@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Menu do
 
 	it "can create a new menu" do
-		lindeman = Menu.create!(name: "Test")
+		Menu.create!(name: "Test")
 		expect(Menu.last.name).to eq('Test')
 	end
 

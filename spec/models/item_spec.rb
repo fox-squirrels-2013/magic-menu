@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Item do
 
-	it "can create a new menu" do
-		lindeman = Item.create!(name: "Test")
+	it "can create a new item" do
+		Item.create!(name: "Test")
 		expect(Item.last.name).to eq('Test')
 	end
 
