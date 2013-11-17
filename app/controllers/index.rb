@@ -5,8 +5,8 @@ get '/' do
 end
 
 get '/menu/:menu_id' do
-  p @menu = Menu.find_by_id(params[:menu_id])
-  redirect '/'
+  @menu = Menu.find_by_id(params[:menu_id])
+  erb :menu
 end
   
 
