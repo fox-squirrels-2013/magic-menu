@@ -1,35 +1,52 @@
 get '/' do
+  @menu = Menu.all
+  erb :index
+end
+
+get '/menu' do
   # Look in app/views/index.erb
   @menu = Menu.all
   erb :index
 end
 
-get '/:id' do
+get '/menu/:id' do
   # Look in app/views/index.erb
   erb :index
 end
 
-post '/' do
+post '/menu' do
   p params
   p Menu.create(params)
   @menu = Menu.all
   erb :index
 end
 
-put '/:id' do
+put '/menu' do
 end
 
-delete '/:id' do
+delete '/menu' do
 end
 
 get '/item' do
+  p "This hit the item view, woo!"
+  @item = Item.all
+  erb :item
 end
 
 post '/item' do
+  p params
+  p Item.create(params)
+  @item = Item.all
+  erb :item
 end
 
-put '/item/:id' do
+put '/item' do
 end
 
-delete '/item/:id' do
+delete '/item' do
 end
+
+# get '/:anything' do
+#   @menu = Menu.all
+#   erb :index
+# end

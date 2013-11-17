@@ -9,8 +9,10 @@
     <h3>Your Menus:
     </h3>
     <ul class="menu_list">
-      <% @menu.each do |m|%>
-      <%= "<li><a href='/#{m.id}'>#{m.title}</a>"%>
+      <% if @menu%>
+        <% @menu.each do |m|%>
+        <%= "<li><a href='/#{m.id}'>#{m.title}</a>"%>
+        <%end %>
       <%end %>
     </ul>
   </div>
