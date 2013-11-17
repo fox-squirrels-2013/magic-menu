@@ -31,9 +31,10 @@ post '/menus/:id' do
   menu_id = params["menu_id"]
   ItemMenu.create(:item_id => item_id, :menu_id => menu_id)
   @menu = Menu.find_by_id(params[:id])
+  @all_items = Item.all
   item_menus = ItemMenu.find_all_by_menu_id(@menu.id)
   @items_on_menu = item_menus.map {|item_menu| Item.find_by_id(item_menu.item_id)}
-  erb :items_on_menu
+  erb :menu
 end
 
 delete '/menus/:id' do

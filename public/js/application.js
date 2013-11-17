@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   $("#item_selector").on("change", function(e){
     var selectedData = JSON.parse($("#item_selector").val())
     $.ajax({
@@ -6,7 +7,7 @@ $(document).ready(function() {
       type: "POST",
       data: {'item_id': selectedData["item"], 'menu_id': selectedData["menu"]}
     }).done(function(server_data){
-      $("#menu_items").html(server_data)
+      $("#whole_menu").html(server_data)
     })
   })
 
