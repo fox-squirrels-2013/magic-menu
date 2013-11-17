@@ -13,7 +13,8 @@ get '/menu/:id' do
   # Look in app/views/index.erb
   p params
   @menu = Menu.find_by_id(params[:id])
-  p @items = @menu.items
+  p @items_from_menu = @menu.items
+  @items = Item.all
   erb :item_menu
 end
 
@@ -25,6 +26,14 @@ post '/menu' do
 end
 
 put '/menu/:id' do
+  p params
+  add_item = 2
+  id = 2
+  @menu = Menu.find_by_id(params[:id])
+  @menu.items << Item.find_by_id(params[:add_item])
+  @items_from_menu = @menu.items
+  @items = Item.all
+  erb :item_menu
 end
 
 delete '/menu' do

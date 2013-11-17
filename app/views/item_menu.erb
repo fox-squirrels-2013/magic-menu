@@ -7,11 +7,22 @@
   <div>
     <h3>Items</h3>
     <ul>
-    <% if @items%>
-        <%  @items.each do |i|%></h2>
-          <%= "<li>#{i.title} - #{i.cost}" %>
+    <% if @items_from_menu%>
+        <%  @items_from_menu.each do |i|%></h2>
+          <li><a href="#">x</a> <%= "#{i.title} - $#{i.cost}" %>
         <%end %>
       <%end %>
     </ul>
+
+      <form method="post" action="/menu/<%= @menu.id %>">
+        <input type="hidden" name="_method" value="put">
+        <select name="add_item">
+          <option>Menu Items</option>
+          <% @items.each do |item| %>
+            <option value="<%= item.id %>"><%= item.title %> - $<%= item.cost %></option>
+          <% end %>
+        </select>
+        <input type="submit" value="Add to menu!">
+      </form>
   </div>
 </div>
