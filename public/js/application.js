@@ -2,7 +2,7 @@ $(document).ready(function(){
 ////////////////////////////////////////////////
 
   var newMenuHTML = function(id, name){
-    return '<p id="menu-to-delete"><form action="/menus/delete/' + name + '" method="post"><input type="submit" class="button-d" value="X"><a href="/menus/update/' + id + '" class="menu-link">' + name + '</a></form></p>'
+    return '<form action="/menus/delete/' + id + '" method="post"><input type="hidden" name="_method" value="delete"><input type="submit" class="button-d" value="X"><a href="/menus/update/' + id + '" class="menu-link">' + name + '</a></form>'
   }
 
   $('#add_menu_button').on('click', function(e){
@@ -32,7 +32,7 @@ $(document).ready(function(){
     console.log(formData)
     var route = $(this).attr('action')
     $.ajax({
-      type: "post",
+      type: "delete",
       url: route,
       data: formData,
       success: function(data) {
@@ -44,18 +44,20 @@ $(document).ready(function(){
     })
   })
 
-  var menuList = $.trim($('#menu_list').html());
-
-  function deleteStuff(){
-
-    $('.menu_list').on('click', '.button-d', function(e){
-      console.log('wtfff')
-      e.preventDefault()
-      $(this).closest('.menu-to-delete').remove()
+  $('#menu_list').on('click', '.button-d', function(e){
+    console.log($(this).parent())
+    e.preventDefault()
+    $(this).parent().remove()
+    var route = $(this).parent().attr('action')
+    $.ajax({
+      type: "delete",
+      url: route,
+      success: function(data) {
+        console.log("data:", data)
+      }
     })
+  })
 
-  }
 
-  deleteStuff();
 ////////////////////////////////////////////////
 })

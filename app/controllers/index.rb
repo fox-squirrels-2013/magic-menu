@@ -42,15 +42,17 @@ get '/menus/delete/:id' do
   erb :index
 end
 
-post '/menus/delete/:id' do
+delete '/menus/delete/:id' do
   @menus = Menu.all
   @menu = Menu.find(params[:id])
-  # @menu.destroy
-  # if request.xhr?
-    
-  # else
+  @menu.destroy
+  if request.xhr?
+    menu_to_delete = {id: @menu.id, name: @menu.name}
+    content_type :json
+    menu_to_delete.to_json
+  else
     redirect '/'
-  # end
+  end
 end
 
 # ///////////////////////////////////
