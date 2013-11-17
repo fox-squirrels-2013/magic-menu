@@ -1,0 +1,25 @@
+<form action="/items" method="post">
+  <input type="text" name="name" placeholder="Item name">
+  <input type="text" name="price" placeholder="price">
+  <input type="submit" value="Create Item">
+  <% if @error_messages %>
+    <% @error_messages.each do |message| %>
+    <p class="error_message"><%= message %></p>
+    <% end %>
+  <% end %>  
+</form>
+
+<% if @error_messages %>
+<% end %>
+
+<table border="1">
+<tr>
+  <th>Name</th>
+  <th>Price</th>
+</tr>
+<% if @items %>
+  <% @items.each do |item| %>
+    <tr><td><%= item.name %></td><td><%= item.price %></td></tr>
+  <% end %>
+<% end %>
+</table>

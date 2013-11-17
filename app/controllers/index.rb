@@ -25,3 +25,17 @@ get '/menus/:id' do
   @menu = Menu.find_by_id(params[:id])
   erb :menu
 end
+
+get '/items' do
+  @items = Item.all
+  erb :items
+end
+
+post '/items' do
+  @item = Item.create(params)
+  unless @item.valid?
+    @error_messages = @item.errors.full_messages
+  end
+  @items = Item.all
+  erb :items
+end
