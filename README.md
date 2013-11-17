@@ -9,10 +9,6 @@ by ty
 
 ### Still To Do
 
-### Release 3 : Items on Menus
-
-* Create the Items on Menus View (don't worry about styling yet).  In the Items on Menus View, the drop down should be filled with all possible items.
-* Use Rspec, Shoulda, and Capybara to test your models and integration.
 
 ### Release 4: AJAXify it.
 * Use AJAX to Implement Adding and Deleting items from menus on the Items on Menus View

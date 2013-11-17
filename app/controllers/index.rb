@@ -15,7 +15,7 @@ get '/menus/:id' do
 	erb :menus
 end
 
-get '/menus/:id/additem/:item_id' do
+post '/menus/:id/additem/:item_id' do
 	@menu = Menu.find(params[:id])
 	@menu.items << Item.find(params[:item_id])
 	redirect "/menus/#{params[:id]}"
