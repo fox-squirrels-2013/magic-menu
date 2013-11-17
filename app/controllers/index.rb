@@ -1,11 +1,11 @@
 get '/' do
-  # Look in app/views/index.erb
   @menus = Menu.all
   erb :index
 end
 
 get '/menu/:menu_id' do
   @menu = Menu.find_by_id(params[:menu_id])
+  @items = @menu.items
   erb :menu
 end
 
@@ -15,13 +15,11 @@ get '/item' do
 end
 
 post '/menu/new' do
-  params[:menu]
   Menu.create(params[:menu])
   redirect '/'
 end
 
 post '/item/new' do
-  params[:item]
   Item.create(params[:item])
   redirect '/item'
 end
