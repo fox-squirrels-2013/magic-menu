@@ -22,7 +22,7 @@ post '/menu' do
   p params
   m = Menu.create(params)
   @menu = Menu.all
-  erb :index
+  # erb :index
   m = {title: m.title, id: m.id}
   content_type :json
   m.to_json
@@ -50,9 +50,11 @@ end
 
 post '/item' do
   p params
-  p Item.create(params)
+  m = Item.create(params)
   @item = Item.all
-  erb :item
+  m = {title: m.title, cost: m.cost}
+  content_type :json
+  m.to_json
 end
 
 put '/item' do

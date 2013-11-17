@@ -26,7 +26,6 @@ $(document).ready(function() {
       type: 'get',
       url: '/item'
     }).done(function(response){
-      console.log(response)
       $('.container').replaceWith(response)
     })
   })
@@ -37,8 +36,24 @@ $(document).ready(function() {
       type: 'get',
       url: '/menu'
     }).done(function(response){
-      console.log(response)
       $('.container').replaceWith(response)
+    })
+  })
+
+  $('body').on('submit', '#item_add', function(e){
+    e.preventDefault()
+    // console.log("I'm Rick James, ")
+    var formData = $('form').serialize()
+    console.log(formData)
+    $.ajax({
+      type: 'post',
+      url: '/item',
+      data: formData
+    }).done(function(response){
+      // var deliciousTreat = menuLink(response.id, response.title)
+      console.log(response)
+      var niceDelight = "<li>" + response.title + ": $" + response.cost + "</li>"
+      $('.item_list').append(niceDelight)
     })
   })
 });
