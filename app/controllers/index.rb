@@ -63,7 +63,7 @@ end
 put '/item' do
 end
 
-get '/item/:item_id/delete' do
+delete '/item/relationship' do
   p "YOU MADE IT"
   p params
 end

@@ -68,13 +68,25 @@ $(document).ready(function() {
       data: formData
     }).done(function(response){
       console.log(response)
-      var specialSurprise = '<li><a href="/item/' + response.item.id + '/delete" data-menu-id="' + menuId + '">x</a> ' + response.item.title +' - $' + response.item.cost
+      var specialSurprise = '<li><a href="/item/relationship" data-menu-id="' + menuId + ' data-item-id="' + response.item.id + '">x</a> ' + response.item.title +' - $' + response.item.cost
       $('#items_from_menu').append(specialSurprise)
     })
   })
 
-  // Need to build an event listener to stop get '/item/:item_id/delete' do
-  // And wrap a piece of data into it about the relationship that needs to be nuked
+  $('body').on('click', '#relationship-killer', function(e){
+    e.preventDefault()
+    var relationshipData = {'menu_id': $(this).attr('data-menu-id')};
+    relationshipData['item_id'] = $(this).attr('data-item-id')
+    console.log(relationshipData)
+    // var forRealz = $(relationshipData).serialize()
+    // console.log(forRealz)
+    $.ajax({
+      type: 'delete',
+      url: '/item/relationship',
+      data: relationshipData
+    })
+  })
+
 });
 
 
