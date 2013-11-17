@@ -14,6 +14,7 @@ post '/' do
   end
 end
 
+# ///////////////////////////////////
 get '/menus/update/:id' do 
   @menu = Menu.find(params[:id])
   @items = Menu.find(params[:id]).items
@@ -34,9 +35,30 @@ post '/menus/update/:id' do
   end
 end
 
-delete '/menus/delete/:id' do
-  Menu.find(params[:id]).destroy
-  redirect '/menus'
+# ///////////////////////////////////
+get '/menus/delete/:id' do
+  @menus = Menu.all
+  @menu = Menu.find(params[:id])
+  erb :index
+end
+
+post '/menus/delete/:id' do
+  @menus = Menu.all
+  @menu = Menu.find(params[:id])
+  # @menu.destroy
+  # if request.xhr?
+    
+  # else
+    redirect '/'
+  # end
+end
+
+# ///////////////////////////////////
+post '/menusitems/delete/:id' do
+  @menu = Menu.find(params[:id])
+  @item = Item.find(params[:id])
+  @item.destroy
+  redirect '/'
 end
 
 # ///////////////////////////////////////////

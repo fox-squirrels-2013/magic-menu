@@ -1,6 +1,6 @@
 html {
   color: #909;
-  font-family: 'Sintony', Arial, sans-serif;
+  font-family: 'Marvel', Arial, sans-serif;
   font-weight: 400; 
 }
 
@@ -41,8 +41,9 @@ body {
   top: 5em;
 }
 
-h1, h2, h3 {
+h1, h2, h3, p {
   color: #90c;
+  line-height: 40%;
 }
 
 a {
@@ -56,8 +57,28 @@ a:hover {
 
 .button {
   color: #909;
+  background-color: #ccf;
+  border: double;
+  border-radius: 1em;
+}
+
+.button-d {
+  color: #909;
+  background-color: #ccf;
+  border-radius: 1em;
+  font-size: .3em;
 }
 
 input {
   color: #909;
+  border-radius: .3em;
+  border: thin;
 }
+
+input:focus {
+  outline-style: none;
+}
+/*
+input[type="submit"] {
+  background-color: #ccf;
+}*/

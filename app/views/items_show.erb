@@ -5,9 +5,12 @@
   <div id="items_list">
     
       <% @items.each do |item| %>
-      <p><%= item.name %> - <%= item.price %></p>
+      <p><input class="button-d" type="submit" action="/menus/update/<%= item.id %>" method="post" value="X">   <%= item.name %> - <%= item.price %></p>
       <% end %>
 
   </div>
+
+
+  <input class="button-d" type="submit" action="/menus/update/<%= @item.id %>" method="post" value="XXXXX">
 </div>
 
