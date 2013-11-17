@@ -12,7 +12,17 @@ body {
   position: relative;
 }
 
+.container {
+  position: absolute;
+  top: 1em;
+  left: 3em;
+  background-color: red;
+}
 
+.partial-container {
+  padding: .7em;
+  background-color: pink;
+}
 
 h1, h2, h3 {
   color: #90c;
