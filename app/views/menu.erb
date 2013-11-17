@@ -2,3 +2,19 @@
 <%menu_items.each do |item|%>
   <p><%=item.name%><%=item.price%></p>
 <%end%>
+
+<select id ="item-select"> 
+    <option value="" disabled="disabled" selected="selected">Please select a name</option>
+    <option class = "dropdown-item" value="Value">One</option>
+    <option class = "dropdown-item" value="2">Two</option>
+</select>
+
+<span id = "item-dropdown-button">Items</span><br>
+<span id = "item-dropdown" class = "dropdown-closed">
+<A HREF="/tutors/frame1.html">Frames</A><BR>
+<A HREF="/tutors/tbl.html">Tables</A><BR>
+<A HREF="/beyond/dhtml.html">DHTML</A><BR>
+<A HREF="/tutors/forms.html">Forms</A>
+</span>
+
+
