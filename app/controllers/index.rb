@@ -1,6 +1,3 @@
-enable :sessions
-use Rack::Flash
-
 get '/menus' do
 	@menus = Menu.all
 	erb :index
