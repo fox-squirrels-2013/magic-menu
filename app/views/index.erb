@@ -1,14 +1,14 @@
 <div class="container">
 
 
-<form action='/menus' method='post'>
+<form id="create_menu" action='/menus' method='post'>
   <input id="new_menu_name" type='text' name='menu[name]' placeholder='menu name'>
   <input type='submit' value='enlighten the food'>
 </form>
 
   <h2>Menus:</h2>
 
-  <ul>
+  <ul id="menu_list">
    <% @menus.each do |menu| %>
    <li><a href="/menus/<%= menu.id %>"><%= menu.name %></a></li>
    <% end %>

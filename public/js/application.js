@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+	$('#create_menu').on('submit', function(e){
+		e.preventDefault()
+		var data = $(this).serialize()
+		ajaxReq('/menus', 'POST', data)
+		var name = $('#new_menu_name')[0].value
+		console.log(name)		
+		appendToList(name)
+	})
+
 	$('#create_item').on('submit', function(e){
 		e.preventDefault()
 		var data = $(this).serialize()
@@ -29,11 +38,8 @@ $(document).ready(function() {
 
 function targetUrl(itemId){
 	loc = location.href.split('/').pop()
-	if(loc === 'items'){ 
-		return '/' + loc + '/' + itemId 
-	} else {
-		return currentMenuItem(itemId) 
-	}
+	if(loc === 'items'){ return '/' + loc + '/' + itemId 
+	} else { return currentMenuItem(itemId) }
 }
 
 function currentMenuItem(itemId){
@@ -50,6 +56,11 @@ function ajaxReq(url, type, data){
     }).fail(function(jqXHR, textStatus, errorThrown){
     	console.log("fail" + errorThrown)
     })
+}
+
+function appendToList(name){
+	var new_menu = '<li><a href="#">' + name + '</a></li>'
+	$('#menu_list').append(new_menu)
 }
 
 function appendToTable(name, price, itemId) {

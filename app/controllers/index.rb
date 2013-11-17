@@ -18,7 +18,7 @@ end
 post '/menuitems/:menu_id/:item_id' do
 	menu = Menu.find(params[:menu_id])
 	menu.items << Item.find(params[:item_id])
-	redirect "/menus/#{params[:menu_id]}", layout: false
+	redirect "/menus/#{params[:menu_id]}"
 end
 
 delete '/menuitems/:menu_id/:item_id' do
