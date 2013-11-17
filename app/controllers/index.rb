@@ -4,6 +4,12 @@ get '/' do
   erb :index
 end
 
+get '/:menu_id'
+  p params
+  redirect '/'
+end
+  
+
 post '/menu/new' do
   p params[:menu]
   p Menu.create(params[:menu])
