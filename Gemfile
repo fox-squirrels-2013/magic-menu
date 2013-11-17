@@ -13,6 +13,7 @@ gem 'thin'
 gem 'activesupport'
 gem 'activerecord'
 
+
 gem 'rake'
 
 gem 'shotgun'
@@ -26,4 +27,5 @@ group :test, :development do
   gem 'rspec'
   gem 'factory_girl'
   gem 'faker'
+  gem 'capybara'
 end
