@@ -25,6 +25,11 @@ end
 
 get '/menus/:id' do
   @menu = Menu.find(params[:id])
+  @menu_items = @menu.items
+  @items = Item.all 
+  
+
+
   erb :"menus/show"
 end  
 
@@ -61,6 +66,14 @@ post '/items/new' do
   @item = Item.create(params[:item])
   
   @item.to_json
+end
+
+post '/menus/:id/items' do
+    menu = Menu.find(params[:id])
+    item = Item.find(params[:itemID])
+    menu.items << item
+    item.to_json
+
 end
 
 

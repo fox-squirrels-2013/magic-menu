@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
 
 
-   $('.delete-item').on('click', function(e){
+   $('body').on('click', '.delete-item', function(e){
 
     e.preventDefault();
 
@@ -92,7 +92,24 @@ $( document ).ready(function() {
 
    // delete
 
+   $( "#selectionField" ).on('change',function() {
+      console.log('selected something')
+         
+         menuId = $('#menu-name').data('id')
+   $.ajax({
+          type: 'POST',              
+          url: '/menus/' + menuId + '/items',
+          data: { itemID: $(this).val() }              
+        }).done(function(itemsData) {
+          itemsJson  = JSON.parse(itemsData);
 
+          list = "<tr data-id=" + itemsJson.item.id + "><td ><a href='#' class='delete-item'>[X]   </a></td><td>" + itemsJson.item.name + "</td><td>" + itemsJson.item.price + "</td>/tr>"
+
+          $('#all_items_list').append(list)
+      });
+    });
+
+   // {"item":{"id":15,"name":"Red stuff","price":"7"}} 
 
 
 
