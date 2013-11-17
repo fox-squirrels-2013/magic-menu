@@ -3,7 +3,7 @@ $(document).ready(function() {
     item_id = $(this).find(':selected').val();
     menu_id = $('#menu-id').data('menu');
     $.ajax({
-            url: "/menus/" + menu_id,
+            url: "/menu/" + menu_id,
             type: "post",
             data: {item_id: item_id}
     }).done(function(server_data){
@@ -12,3 +12,18 @@ $(document).ready(function() {
   });
 
  });
+
+
+$('.delete-button a').on("click", function(event) { 
+      item_id = $(this).attr("data-id")
+      menu_id = $('#menu-id').data('menu');
+      $ajax({
+        url: "/menu" + menu_id
+        type: "delete", 
+        data: {item_id: item_id}
+      }).done(function(server_data){ 
+        $('.Listitems').remove 
+      }) 
+
+
+})
