@@ -4,7 +4,7 @@
 
 by ty
 
-* [App live on Heroku](http://magical-menu-tour.herokuapp.com/) (updated throughout project)
+* [App live on Heroku](http://magical-menu-tour.herokuapp.com/menus) (updated throughout project)
 
 ## Releases
 

@@ -50,7 +50,7 @@ function appendToSomething(id, name, price){
 
 
 function appendToList(id, name){
-	var new_menu = '<li><a href="#">' + name + '</a></li>'
+	var new_menu = '<li><a href="/menus/' + id + '">' + name + '</a></li>'
 	$('#menu_list').append(new_menu)
 }
 
