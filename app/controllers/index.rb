@@ -63,9 +63,11 @@ end
 post '/menus/:id' do
 	@menu = Menu.find(params[:id])
 	@item = Item.find(params[:food_id])
+	# We add
 	@menu.items << @item
 	p @menu.items.length
 	content_type :json
+	# send back the data we want.  key can be anything we want
 	{item_name: @item.name}.to_json
 
 	# @item = Item.create(params[:item])
