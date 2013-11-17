@@ -16,11 +16,16 @@ get '/menus/:id' do
 end
 
 post '/menus/:id/additem/:item_id' do
+	
 	menu = Menu.find(params[:id])
 	item = Item.find(params[:item_id])
+	# p '*' * 50
+	# p menu.items
 	menu.items << item
-	# redirect "/menus/#{params[:id]}"
-	[item.name, int_to_dollars(item.price)]
+	# p '*' * 50
+	# p menu.items
+	redirect "/menus/#{params[:id]}"
+	# "#{item.name} #{int_to_dollars(item.price)}"
 end
 
 delete '/menus/:id/additem/:item_id' do
