@@ -8,7 +8,15 @@ post '/menus' do
 	redirect '/'
 end
 
+get '/items' do
+	@items = Item.all
+	erb :items
+end
 
+post '/items' do
+	Item.create! params[:item] # use bang for testing to catch errors
+	redirect '/items'
+end
 
 
 ### GENERAL REDIRECT -- DON'T PUT ANYTHING BELOW THIS LINE

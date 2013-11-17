@@ -23,3 +23,4 @@ by ty
 * Create the migrations and models necessary for Items.
 * Add validations.
 * Test your Items data model using IRB.
+* Create the Items View

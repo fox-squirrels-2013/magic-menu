@@ -5,7 +5,6 @@ describe Item do
 	it "can create a new item" do
 		i = Item.create!(name: "Test", price: 123)
 		expect([i.name, i.price]).to eq(['Test', 123])
-		# expect(Item.last.price).to eq(123)
 	end
 
 	describe "validations" do
