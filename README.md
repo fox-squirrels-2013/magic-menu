@@ -9,12 +9,6 @@ by ty
 
 ### Still To Do
 
-Look at techniques:
-
-https://github.com/fox-squirrels-2013/magic-menu/blob/benedikt/public/js/application.js
-https://github.com/fox-squirrels-2013/magic-menu/blob/benedikt/app/controllers/index.rb
-https://github.com/fox-squirrels-2013/magic-menu/tree/benedikt/public
-
 
 ### Release 5: Errors
 * Use the Active Record `errors` to display errors to the form after submission.

@@ -30,7 +30,7 @@ $(document).ready(function() {
 		var elementClass = $(e.target).closest('tr')[0].className
 		var itemId = elementClass.split('-').pop()
 		ajaxReq(targetUrl(itemId), 'DELETE')
-		$('.' + elementClass).remove()
+		$('.' + elementClass).fadeOut()
 	})
 
 });
@@ -65,6 +65,6 @@ function appendToList(id, name){
 }
 
 function appendToTable(id, name, price) {
-	var new_row = '<tr value="' + id + '"><td>' + name +  '</td><td>' + price + '</td></tr>'
+	var new_row = '<tr class="table-item-' + id + '"><td>' + name +  '</td><td>' + price + '</td></tr>'
 	$('#item_table').append(new_row)	
 }
