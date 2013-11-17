@@ -8,3 +8,10 @@
 th {
   text-align: left;
 }
+
+.login {
+  margin: 20px auto;
+  width: 600px;
+  padding: 10px 20px 20px 20px;
+  border: 1px dotted black  ;
+}

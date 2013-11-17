@@ -6,6 +6,7 @@ gem 'pg'
 # Sinatra driver
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem 'sinatra-flash'
 
 # Use Thin for our web server
 gem 'thin'
@@ -27,3 +28,5 @@ group :test, :development do
   gem 'factory_girl'
   gem 'faker'
 end
+
+gem 'bcrypt-ruby'
