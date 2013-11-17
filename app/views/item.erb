@@ -1,8 +1,10 @@
 <div class="container">
   <h1>Welcome to Awesome Menus</h1>
-  <a href="/item">Add Items</a>
-  <a href="/menu">Add Menus</a>
+  <a class="add" href="/item">Add Items</a>
+  <a class="add" href="/menu">Add Menus</a>
   <br>
+
+  <div class="center">
 
   <form method="POST" action="/item/create">
     <input type="text" name="item[name]" id="item_name" placeholder=
@@ -11,7 +13,7 @@
     <input type="submit" id="create_item">
   </form>
 
-  <div>Your Items:
+  <div id='table'>Your Items:
 
       
       <table border="1" id="items_table">
@@ -28,5 +30,7 @@
       </table>    
 
   </div>
+
+</div>
 
 </div>

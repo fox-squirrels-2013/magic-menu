@@ -1,10 +1,50 @@
+html{
+	background: url("1280x720.jpg");
+	background-size: 100%;
+}
+
 .container {
   margin: 20px auto;
-  width: 600px;
+  width: 1000px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
 
 th {
   text-align: left;
+}
+
+.container .add {
+	display: inline;
+	float: right;
+	padding-left: 20px;
+}
+
+.center {
+	text-align: center;
+	padding-top: 50px;
+}
+
+h1{
+	display: inline;
+	padding-left: 30%;
+
+}
+
+#menu_items_display li {
+	list-style-type: none;
+}
+
+h2 {
+	text-align: center;
+}
+
+#items_table {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#table {
+	padding-top: 30px;
 }
