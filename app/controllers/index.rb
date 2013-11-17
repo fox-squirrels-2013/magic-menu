@@ -3,3 +3,9 @@ get '/' do
   @menus = Menu.all
   erb :index
 end
+
+post '/menu/new' do
+  p params[:menu]
+  p Menu.create(params[:menu])
+  redirect '/'
+end
