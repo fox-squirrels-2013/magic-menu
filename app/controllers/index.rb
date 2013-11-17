@@ -4,7 +4,7 @@ get '/' do
   erb :index
 end
 
-get '/:menu_id'
+get '/menu/:menu_id' do
   p params
   redirect '/'
 end
