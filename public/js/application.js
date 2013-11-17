@@ -53,7 +53,7 @@ function currentMenuItem(itemId){
 function ajaxReq(url, type, data){    
     $.ajax({ url: url, type: type, data: data // data can be undefined
     }).done(function(server_data){
-
+    	console.log(server_data)
     }).fail(function(jqXHR, textStatus, errorThrown){
     	console.log("fail" + errorThrown)
     })
