@@ -1,15 +1,13 @@
-
-
-	<table name="item_table" id="item_table">
-		<tr>
-			<th id="name_header">Name</th>
-			<th id="price_header">Price</th>
-		</tr>
-		<% @items.each do |item| %>
-		<tr class="table-item-<%= item.id %>">
-			<td><%= item.name %></td>
-			<td><%= item.price %></td>
-		</tr>
-		<% end %>
-	</table>	
-	<p id='delete_notice'><small>(click an item to delete from table)</small></p>
+<table name="item_table" id="item_table">
+	<tr>
+		<th id="name_header">Name</th>
+		<th id="price_header">Price</th>
+	</tr>
+	<% @items.each do |item| %>
+	<tr class="table-item-<%= item.id %>">
+		<td><%= item.name %></td>
+		<td><%= item.price %></td>
+	</tr>
+	<% end %>
+</table>	
+<p id='delete_notice'><small>(click an item to delete from table)</small></p>

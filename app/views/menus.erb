@@ -1,19 +1,19 @@
 <div class="container">
 
-
 	<h1><%= @menu.name %> Menu</h1>
 	<h2>Items</h2>
-
-	<!-- need to wrap in div because template is being used, and this page needs to have a delete action, where other use of the table template does not -->	
+	
 	<%= erb :item_table %>
 
 	<div id="select_form">
+		
 		<select id="item_select" name="item_select">
 			<option selected disabled>Add new item to menu</option>
 			<% @all_items.each do |item| %>
-			<option value='<%= item.id %>'><%= item.name %> <%= item.price %></option>
+				<option value='<%= item.id %>'><%= item.name %> <%= item.price %></option>
 			<% end %>
 		</select>
+	
 	</div>
 
 </div>
