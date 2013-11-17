@@ -3,7 +3,7 @@
 <div id="menu-id" data-menu="<%= @menu.id %>"></div>
 <div class="menu-items"> Items </div>
  <% @menu.items.each do |item| %>
- <div class="menu-item">
+ <div class="menu-item" id="<%=@menu.id%>_<%=item.id%>">
  	<span class="btn-delete"><a href="#" onclick=<% @delete %>>[x]</a></span>
  	<span class="item"><%= item.name %></span>
  </div>
@@ -20,8 +20,9 @@
 </br>
 </br>
 
-<div class="all-items">Menu Items</div>
+<div class="all-items"></div>
 <select id="Menu-Items" >
+  <option value="display">Menu-Items</option>
   <% @items.each do |item| %>
     <option value="<%=item.id%>">
       <%= item.name%><%= item.price.to_f/100 %>

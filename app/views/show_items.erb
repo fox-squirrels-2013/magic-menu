@@ -5,6 +5,6 @@
 <div class="list-menus">
   <% @items.each do |item| %>
     <div class="item"></div>
-    <%= item.name %>  -  $<%= item.price/100 %>
+    <div class="display">"<%= item.name %>" + "   <%= item.price %>"</div>
   <% end %>
 </div>

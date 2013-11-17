@@ -23,6 +23,27 @@ $(document).ready(function() {
       $('.new-item').append("<div class='trial' ><span class='btn-delete'><a href='#'>[x]</a>" + server_data.item_name + "</span></div>");
       // console.log(server_data.item_name);
     });
-
   });
+
+  $('.menu-item').on('click', function(e) {
+    e.preventDefault();
+    //This grabs my <span> tag that includes everything I need to delete
+    var wicked = $(this)
+    //Separating the item retruned from the event listener into the Item_id i need
+    var item_id = e.target.id.split("_")[1]
+    //Borrowed this to get the menu id from example above
+    // could not implement 'data' again for item_id though
+    var menu_id = $('#menu-id').data('menu')
+
+    $.ajax({
+      type: "DELETE",
+      url: "/menus/" + menu_id,
+      data: {item_id: item_id}
+    }).done(function(server_data){
+      wicked.find('span').remove()
+    })
+    // ($(this).find('span').remove())
+    });
+
+
 });
