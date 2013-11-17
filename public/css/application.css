@@ -8,3 +8,34 @@
 th {
   text-align: left;
 }
+
+.item_title {
+	margin: 20px auto;
+}
+
+.menu_title {
+	margin: 20px auto;
+}
+
+.delete-button {
+	position: static;
+	float: left;
+}
+
+.menu_item {
+	position: static;
+}
+
+.delete-button {
+        font-size: 0.8em;
+}
+
+.delete-button a {
+        text-decoration: none;
+        color: red;
+        vertical-align: middle;
+}
+
+.links {
+	text-align: right;
+}

@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Welcome to Sage's!</h1>
+  <p>Home of gruel, porridge, and hash</p>
+
+  Create a menu 
+  <form action="/menus" method="post">
+  	<input type="text" class="add_menu" name="menu[name]">
+  	<input type="submit" class="add">
+  </form>
+
+  <div class="new-menu">
+  	<h3>Menus</h3>
+  </div>
+
+  	
+  <div class="list_menus">
+  	<% @menus.each do |menu| %>
+  		<div class="menu">
+  			<a href=/menus/<%= menu.id %>><%= menu.name %></a>
+  		</div>
+  	<% end %>
+  </div>
+
+</div>
+

@@ -1,7 +1,21 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  console.log('your about to use jquery to select')
+$('select').on('click',function(e) { 
+	e.prevent.default()
+	console.log("you've jqueery selected");
+		$.ajax({
+			url: '/menus/#{params[:id]}',
+			type: post
+			//data: $(this).serialize()
+		}).done(function(server_data){
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-});
+			console.log(server_data)
+			$(".items").append(server_data)
+		})
+})
+}
+
+);
+
+
+//$('select option:selected')

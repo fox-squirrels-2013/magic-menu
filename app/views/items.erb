@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Welcome to Sage's!</h1>
+  <p>Home of gruel, porridge, and hash</p>
+
+  <div class="new_item"></div>
+
+  Create an item 
+
+  <form action="/items" method="post">
+		<input type="text" class="add_item" name="item[name]">
+		<input type="submit" class="add">
+	</form>
+
+ 
+	<div class="new-item">
+  	<h3>Items</h3>
+ 	</div>
+  	
+	<div class="list_items">
+  	<% @items.each do |item| %>
+  		<div class="item">
+  			<a href="/items/<%= item.id %>"><%= item.name %></a>
+  		</div>
+  	<% end %>
+  </div>
+
+</div>
