@@ -1,0 +1,13 @@
+<div id="errors_message">
+  <ul>
+    <% if session[:errors] != nil %>
+    <% session[:errors].each_value.each do |errors|  %>
+    <% errors.each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+    <% end %>
+    <% end %>
+  <% session[:errors] = nil %>
+  </ul>  
+
+</div>  

@@ -17,10 +17,14 @@ get '/menus/new' do
 end
 
 post '/menus/new' do
+
   
   @menu = Menu.create(params[:menu])
+
   
   @menu.to_json
+
+  raise_errors(@menu)
 end
 
 get '/menus/:id' do
