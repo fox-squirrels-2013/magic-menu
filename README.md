@@ -10,7 +10,6 @@ by ty
 ### Still To Do
 
 
-* Use AJAX to implement the "Add Item" button on the Items View.
 * Use AJAX to implement the "Add Menu" button on the Menus View
 * Verify existing tests still pass (hint: turn on JavaScript for your Capybara tests)
 

@@ -1,12 +1,15 @@
+
+
 	<table name="item_table" id="item_table">
 		<tr>
 			<th id="name_header">Name</th>
 			<th id="price_header">Price</th>
 		</tr>
 		<% @items.each do |item| %>
-		<tr id="table-item-<%= item.id %>">
+		<tr class="table-item-<%= item.id %>">
 			<td><%= item.name %></td>
 			<td><%= int_to_dollars(item.price) %></td>
 		</tr>
 		<% end %>
-	</table>
+	</table>	
+	<p id='delete_notice'><small>(click an item to delete from table)</small></p>

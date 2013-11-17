@@ -72,3 +72,11 @@ table td {
 #name_header {
 	width: 250px;
 }
+
+tr:hover {
+	background-color: #eee;
+}
+
+#delete_notice {
+	text-align: center;
+}
