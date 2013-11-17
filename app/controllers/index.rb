@@ -56,22 +56,18 @@ end
 
 post '/items/new' do
   
-  @menu = Menu.create(params[:menu])
+  @item = Item.create(params)
   
-  @menu.to_json
+  @item.to_json
 end
 
-get '/items/:id' do
-  @menu = Menu.find(params[:id])
-  erb :"items/show"
-end  
 
-delete '/menu' do
+delete '/item' do
   # params ={'id'=>6}
-    @menu = Menu.find(params[:id])
+    @item_del = Item.find(params[:id])
 
     if @menu.delete
-      @message = "We deleted #{@menu.name}"
+      @message = "We deleted #{@item_del.name}"
     else
       @message = 'something went wrong'
     end

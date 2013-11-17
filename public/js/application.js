@@ -1,5 +1,8 @@
 $( document ).ready(function() {
 
+   // menu 
+
+
    $('#form_menu').on("submit", function(event){
     event.preventDefault();
     $.ajax({
@@ -40,11 +43,8 @@ $( document ).ready(function() {
     })    
     }) 
 
-  
+    // item
 
-
-    // list = $('#menu_input').val()
-
-    // 
+    
 
 });
