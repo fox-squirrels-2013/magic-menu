@@ -39,4 +39,3 @@ delete '/menuitems/:menu_id/:item_id' do
 	m = Menu.find(params[:menu_id])
 	m.items.delete( Item.find(params[:item_id]) ).to_json
 end
-
