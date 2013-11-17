@@ -27,5 +27,5 @@
 
 <h2>List of Menus!</h2>
 <% Menu.all.each do |menu| %>
-  <p><a href='/menus/<%= "#{menu.id}" %>'><%= menu.name %></a></p>
+  <p><a href="/menus/<%= menu.id %>"><%= menu.name %></a></p>
 <% end %>

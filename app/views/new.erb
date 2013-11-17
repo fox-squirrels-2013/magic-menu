@@ -14,4 +14,7 @@
 </form>
 
 <h2>Your Menus:</h2>
+  <% Menu.all.each do |menu| %>
+    <p><%= menu.name %></p>
+  <% end %>
 <!-- some erb here that iterates over the menus collection and lists them with links! -->

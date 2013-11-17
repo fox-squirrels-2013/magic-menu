@@ -9,12 +9,19 @@
 <form action="/menus/<%= params[:id] %>" method="post">
   <select name="menu_items">
     <!-- Include a list of menu items via erb. I'm not sure if params in action is correct. -->
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="fiat">Fiat</option>
-    <option value="audi">Audi</option>
+    <% Item.all.each do |item| %>
+    <option value="<%= item.name %>"> <%= item.name %> </option>
+    <% end %>
   </select>
+  <label>Price: </label>
+  <input type="text" name="price">
   <input type="submit" value="Add Menu Item!">
-  <!-- Make is so that we don't need a submit button...so that it will automatically add it when one of the dropdowns is selected -->
+  <!-- How could you make it such that it would automatically submit the form (or no form, just dropdown), when something was selected? -->
 </form>
+
+
+<% ItemsMenu.all.each do |items_menu| %>
+<% p "Item.find_by_id(items_menu.item_id) #{Item.find_by_id(items_menu.item_id)}." %>
+
+<% end %>
 

@@ -10,10 +10,12 @@
 
 <form name="add_item" action="/items" method="post">
   <input type="text" name="item_name" value="item name">
-  <input type="text" name="price" value="price">
+  <!-- <input type="text" name="price" value="price"> -->
   <input type="submit" value="Add Item">
 </form>
 
 <h2>Your Items:</h2>
-
+  <% Item.all.each do |item| %>
+    <p><%= item.name %></p>
+  <% end %>
 <!-- Make table? or something with list of items and their prices. This will iterate through available items via erb. -->
