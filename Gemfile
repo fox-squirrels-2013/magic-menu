@@ -7,6 +7,7 @@ gem 'pg'
 # Sinatra driver
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem 'sinatra-activerecord'
 
 # Use Thin for our web server
 gem 'thin'
@@ -21,6 +22,7 @@ gem 'shotgun'
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
+  gem 'capybara'
 end
 
 group :test, :development do
