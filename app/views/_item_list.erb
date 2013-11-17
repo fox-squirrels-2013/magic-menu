@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>Item Name</th>
+    <th>Price in Cents</th>
+  </tr>
+  <% @items.each do |item| %>
+  <tr>
+    <th><%= item.name %></th>
+    <th><%= item.price %></th>
+  </tr>      
+  <% end %>
+</table>
