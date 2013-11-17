@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "Menu Page" do
+feature "Index Page" do
 
   scenario "Guest may create a menu" do
     visit '/menus'
