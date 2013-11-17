@@ -4,33 +4,23 @@ $(document).ready(function() {
 		e.preventDefault()
 		var params = $(this).serialize()
 		$.post(currentLocation(), params, function(data) {
-			var itemData = JSON.parse(data)
-			if (itemData.id === undefined) {
-				$('#alerts')[0].innerHTML = '<span>' + itemData + '</span>'
-			} else {
-				setAlert(itemData.name, 'created')
-				// $('#alerts')[0].innerHTML = "'" + itemData.name + "' created"
-				appendToSomething(itemData.id, itemData.name, itemData.price)
-			}
+			appendOrAlert( JSON.parse(data) )
 		});
 	})
 
+	$('#item_select').on('change', function(){
+		var itemId = this.value
+		$.post( targetUrl(itemId), function(data) {
+			appendOrAlert( JSON.parse(data) )
+		});
+	})
 
-$('#item_select').on('change', function(){
-	var itemId = this.value
-	$.post( targetUrl(itemId), function(data) {
-		var itemData = JSON.parse(data)
-		setAlert(itemData.name, 'added to menu')
-		appendToTable(itemData.id, itemData.name, itemData.price)
-	});
-})
-
-$('#item_table').on('click', function(e){
-	var elementClass = $(e.target).closest('tr')[0].className
-	var itemId = elementClass.split('-').pop()
-	ajaxReq(targetUrl(itemId), 'DELETE')
-	$('.' + elementClass).fadeOut()
-})
+	$('#item_table').on('click', function(e){
+		var elementClass = $(e.target).closest('tr')[0].className
+		var itemId = elementClass.split('-').pop()
+		ajaxReq(targetUrl(itemId), 'DELETE')
+		$('.' + elementClass).fadeOut()
+	})
 
 });
 
@@ -38,11 +28,21 @@ function currentLocation(){
 	return location.href.split('/').pop()
 }
 
-function setAlert(item, message, span){
-		// $('#alerts')[0].innerHTML = '<span>' + itemData + '</span>'
-		$('#alerts')[0].innerHTML = "'" + item + "' " + message
-		// $('#alerts')[0].innerHTML = "'" + itemData.name + "' added to menu"
+function appendOrAlert(data) {
+	if (data.id === undefined) {
+		setAlert(data, 'Error: ', '<span>')
+	} else {
+		setAlert(data.name, 'added')
+		appendToSomething(data.id, data.name, data.price)
+	}	
+}
 
+function setAlert(item, message, extra){
+	if(extra === undefined) { 
+		$('#alerts')[0].innerHTML = "'" + item + "' " + message
+	} else { 
+		$('#alerts')[0].innerHTML = "<span>" + message + item + "</span>"
+	}
 }
 
 function appendToSomething(id, name, price){
@@ -50,30 +50,6 @@ function appendToSomething(id, name, price){
 	} else { appendToTable(id, name, price) }
 }
 
-
-function targetUrl(itemId){
-	var loc = location.href.split('/').pop()
-	if(loc === 'items'){ 
-		return '/' + loc + '/' + itemId
-	} else { 
-		return currentMenuItem(itemId) 
-	}
-}
-
-function currentMenuItem(itemId){
-	var baseUrl = '/menuitems'
-	var menuId = location.href.split('/').pop()
-	return baseUrl + '/' + menuId + '/' + itemId
-}
-
-function ajaxReq(url, type, data){    
-    $.ajax({ url: url, type: type, data: data // data can be undefined
-    }).done(function(server_data){
-    	console.log(server_data)
-    }).fail(function(jqXHR, textStatus, errorThrown){
-    	console.log("fail" + errorThrown)
-    })
-}
 
 function appendToList(id, name){
 	var new_menu = '<li><a href="#">' + name + '</a></li>'
@@ -83,4 +59,19 @@ function appendToList(id, name){
 function appendToTable(id, name, price) {
 	var new_row = '<tr class="table-item-' + id + '"><td>' + name +  '</td><td>' + price + '</td></tr>'
 	$('#item_table').append(new_row)	
+}
+
+function targetUrl(itemId){
+	var loc = currentLocation()
+	if(loc === 'items'){ return '/' + loc + '/' + itemId
+} else { return '/menuitems/' + loc + '/' + itemId }
+}
+
+function ajaxReq(url, type, data){    
+	$.ajax({ url: url, type: type, data: data
+	})
+    // .done(function(server_data){
+    // }).fail(function(jqXHR, textStatus, errorThrown){
+    // 	console.log("fail" + errorThrown)
+    // })
 }
