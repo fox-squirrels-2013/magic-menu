@@ -33,7 +33,7 @@ feature "Menu Page" do
   	i = Item.create({name: 'test item', price: 123})
     visit '/menus/' + "#{m.id}"
 	select("#{i.name}", from: "item_select")
-    expect(page).to have_content("test item")
+    expect('table').to have_content("test item")
   end
 
 end
