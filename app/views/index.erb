@@ -21,3 +21,11 @@
     </tr>
   </table>
 </div>
+
+<a href="/items">Add Items</a>
+<a href="/menus/new">Add Menus</a>
+
+<h2>List of Menus!</h2>
+<% Menu.all.each do |menu| %>
+  <p><a href='/menus/<%= "#{menu.id}" %>'><%= menu.name %></a></p>
+<% end %>

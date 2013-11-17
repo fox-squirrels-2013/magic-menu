@@ -1,0 +1,20 @@
+<h1>Put embedded ruby here to show menu.name + "Menu"</h1>
+
+<a href="/items">Add Items</a>
+<a href="/menus/new">Add Menus</a>
+
+<h2>Items</h2>
+<p>Put embedded ruby here to show the list of items and their prices separated by a dash. Also give each one an x that submits a a delete route (not totally sure how to do this).</p>
+
+<form action="/menus/<%= params[:id] %>" method="post">
+  <select name="menu_items">
+    <!-- Include a list of menu items via erb. I'm not sure if params in action is correct. -->
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="fiat">Fiat</option>
+    <option value="audi">Audi</option>
+  </select>
+  <input type="submit" value="Add Menu Item!">
+  <!-- Make is so that we don't need a submit button...so that it will automatically add it when one of the dropdowns is selected -->
+</form>
+

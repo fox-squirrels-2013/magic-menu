@@ -1,0 +1,19 @@
+<h1>Welcome to Awesome Menus</h1>
+
+<a href="/items">Add Items</a>
+<a href="/menus/new">Add Menus</a>
+
+<ul>
+  <li>Enter an item name and price and click "Add Item".</li>
+  <li>Item name and price gets appended to the table as a new row.</li>
+</ul>
+
+<form name="add_item" action="/items" method="post">
+  <input type="text" name="item_name" value="item name">
+  <input type="text" name="price" value="price">
+  <input type="submit" value="Add Item">
+</form>
+
+<h2>Your Items:</h2>
+
+<!-- Make table? or something with list of items and their prices. This will iterate through available items via erb. -->

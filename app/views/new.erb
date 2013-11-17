@@ -1,0 +1,17 @@
+<h1>Welcome to Awesome Menus</h1>
+
+<a href="/items">Add Items</a>
+<a href="/menus/new">Add Menus</a>
+
+<ul>
+  <li>Enter a menu name and click "Add Menu"!</li>
+  <li>Menu name should be appended to the bottom of the list!</li>
+</ul>
+
+<form name="add_menu" action="/menus/new" method="post">
+  <input type="text" name="menu_name">
+  <input type="submit" value="Add Menu">
+</form>
+
+<h2>Your Menus:</h2>
+<!-- some erb here that iterates over the menus collection and lists them with links! -->
