@@ -8,7 +8,8 @@ $(document).ready(function() {
 			if (itemData.id === undefined) {
 				$('#alerts')[0].innerHTML = '<span>' + itemData + '</span>'
 			} else {
-				$('#alerts')[0].innerHTML = "'" + itemData.name + "' created"
+				setAlert(itemData.name, 'created')
+				// $('#alerts')[0].innerHTML = "'" + itemData.name + "' created"
 				appendToSomething(itemData.id, itemData.name, itemData.price)
 			}
 		});
@@ -19,6 +20,7 @@ $('#item_select').on('change', function(){
 	var itemId = this.value
 	$.post( targetUrl(itemId), function(data) {
 		var itemData = JSON.parse(data)
+		setAlert(itemData.name, 'added to menu')
 		appendToTable(itemData.id, itemData.name, itemData.price)
 	});
 })
@@ -34,6 +36,13 @@ $('#item_table').on('click', function(e){
 
 function currentLocation(){
 	return location.href.split('/').pop()
+}
+
+function setAlert(item, message, span){
+		// $('#alerts')[0].innerHTML = '<span>' + itemData + '</span>'
+		$('#alerts')[0].innerHTML = "'" + item + "' " + message
+		// $('#alerts')[0].innerHTML = "'" + itemData.name + "' added to menu"
+
 }
 
 function appendToSomething(id, name, price){
