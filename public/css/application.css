@@ -80,3 +80,22 @@ tr:hover {
 #delete_notice {
 	text-align: center;
 }
+
+#alert_div {
+	margin: 0px;
+	padding: 0px;
+	height: 50px;
+}
+
+#alerts {
+	margin: 0px;
+	padding-top: 30px;
+	text-align: center;
+	color: green;
+}
+
+#alerts span{
+	color: red;
+}
+
+

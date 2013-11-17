@@ -5,7 +5,12 @@ $(document).ready(function() {
 		var params = $(this).serialize()
 		$.post('/menus', params, function(data) {
 			var itemData = JSON.parse(data)
-			appendToList(itemData.id, itemData.name)
+			if (itemData.id === undefined) {
+				$('#alerts')[0].innerHTML = '<span>' + itemData + '</span>'
+			} else {
+				$('#alerts')[0].innerHTML = "Menu '" + itemData.name + "' created"
+				appendToList(itemData.id, itemData.name)
+			}
 		});
 	})
 
@@ -14,7 +19,12 @@ $(document).ready(function() {
 		var params = $(this).serialize()
 		$.post('/items', params, function(data) {
 			var itemData = JSON.parse(data)
-			appendToTable(itemData.id, itemData.name, itemData.price)
+			if (itemData.id === undefined) {
+				$('#alerts')[0].innerHTML = '<span>' + itemData + '</span>'
+			} else {
+				$('#alerts')[0].innerHTML = "Item '" + itemData.name + "' created"
+				appendToTable(itemData.id, itemData.name, itemData.price)
+			}
 		});
 	})
 

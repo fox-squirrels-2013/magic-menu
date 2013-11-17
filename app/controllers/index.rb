@@ -1,3 +1,6 @@
+enable :sessions
+use Rack::Flash
+
 get '/menus' do
 	@menus = Menu.all
 	erb :index
@@ -21,7 +24,7 @@ end
 
 post '/items' do
 	i = Item.new params[:item]
-	p i.errors[:price].last unless i.save
+	return i.errors[:price].last.to_json unless i.save
 	i.to_json			
 end
 
