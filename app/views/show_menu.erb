@@ -1,13 +1,29 @@
 <h3><%= @menu.name %> Menu </h3>
-<div class="menu-items"> Items </div>
+<div class="menu-items"> items<br><br>
  <% @menu.items.each do |item| %>
- <div class="menu-item">
- 	<span class="btn-delete"><a href="#" onclick="alert('deleting...');">[x]</a></span>
- 	<span class="item"><%= item.name %></span>
- </div>
+   <div class="menu-item">
+    <%= erb :_delete_btn, locals:
+                          { data_id: item.id ,
+                            data_model: :item } %>
+   	<span class="item"><%= item.name %> - $<%= cents_to_dollars(item.price) %></span>
+   </div>
  <% end %>
-
+</div>
+<div class="menu-item-template" style="display:none">
+   <div class="menu-item">
+      <%= erb :_delete_btn, locals:
+                          { data_id: nil ,
+                            data_model: :item } %>
+    <span class="item"></span>
+ </div>
+</div>
 <!-- ###Menu items -->
 
 <div class="all-items">
-<!-- ### Whole list of items -->
+<select class="item_id" name="item_id">
+  <option value="">select an item</option>
+  <% @items.each do |item| %>
+    <option value="<%= item.id %>"><%= item.name %> - $<%= cents_to_dollars(item.price) %></option>
+  <% end %>
+</select>
+</div>

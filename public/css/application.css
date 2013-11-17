@@ -8,6 +8,9 @@ nav {
   top:-50px;
 }
 
+.flash {
+  color: red;
+}
 
 .container {
   margin: 20px auto;
@@ -33,18 +36,29 @@ th, td{
   padding: 5px;
 }
 
-.menu-item {
-
+.menu, .menu-item {
+  height:30px;
 }
 
+.menu-items {
+  margin: 20px;
+}
+
+.list-menus a{
+  text-decoration: none;
+}
 .btn-delete {
-	font-size: 0.8em;
+  position: relative;
+  top:2px;
+  margin: 0 10px 0 0;
+  cursor: hand;
+  cursor: pointer;
 }
 
-.btn-delete a {
-	text-decoration: none;
-	color: red;
-	vertical-align: middle;
+.btn-delete:hover {
+  background: #FFF8DC;
 }
 
-
+.all-items {
+  margin:20px 0 0 0;
+}

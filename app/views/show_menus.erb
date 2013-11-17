@@ -1,10 +1,14 @@
 <div class="new-menu">
 	<%= erb :_new_menu %>
 </div>
-<h3>Your Menus:</h3>
+<h3>your menus:</h3>
 <div class="list-menus">
 	<% @menus.each do |menu| %>
-		<div class="menu"></div>
+		<div class="menu">
+    <%= erb :_delete_btn, locals:
+                          { data_id: menu.id ,
+                            data_model: :menu } %>
 		<a href="/menus/<%= menu.id %>"><%= menu.name %></a>
+    </div>
 	<% end %>
 </div>

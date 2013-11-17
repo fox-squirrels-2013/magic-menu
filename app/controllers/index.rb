@@ -18,14 +18,19 @@ end
 # add a new menu
 post '/menus' do
 	# expecting params[:menu] as new menu fields
-	Menu.create(params[:menu])
+	begin
+		@menu = Menu.create!(params[:menu])
+	rescue ActiveRecord::RecordInvalid => e
+		session[:flash] = "menu name has already been taken."
+		p session[:flash]
+	end
 	redirect '/menus'
 end
 
 # added this route to delete menus
 delete '/menus' do
-	@menu = Menu.find(params[:id]).delete
-	redirect '/menus'
+	@menu = Menu.find(params[:menu_id]).delete
+	@menu.to_json
 end
 
 #######################################
@@ -39,14 +44,18 @@ end
 # add a new menu
 post '/items' do
 	# expecting params[:menu] as new menu fields
-	Item.create(params[:item])
+	new_item = Item.create(convert_price_to_cents(params[:item]))
+	unless new_item.valid?
+		session[:flash] = new_item.errors.messages
+	end
 	redirect '/items'
 end
 
 # added this route to delete items
 delete '/items' do
-	@item = Item.find(params[:id]).delete
-	redirect '/items'
+	@item = Menu.find(params[:menu_id])
+							.items.delete(Item.find(params[:item_id]))
+	@item.first.to_json
 end
 
 #######################################
@@ -60,9 +69,14 @@ end
 
 post '/menus/:id' do
 	@menu = Menu.find(params[:id])
-	@item = Item.create(params[:item])
-	@menu.items.add(@item)
-	redirect "/menus/#{params[:id]}"
+	@item = Item.find(params[:item_id])
+	begin
+		@menu.items << @item
+	rescue ActiveRecord::RecordInvalid => e
+		session[:flash] = "this menu already has #{@item.name}"
+		return 500
+	end
+	@item.to_json
 end
 
 delete '/menus/:id' do
