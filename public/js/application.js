@@ -1,26 +1,24 @@
 $(document).ready(function() {
 
 	$('#item_select').on('change', function(){
-		var vals = this.value.split(' ')
-		url = '/menus/' + vals[0] + '/additem/' + vals[1]
+		url = '/menus/' + currentMenu() + '/item/' + this.value
 		ajaxReq(url, 'POST')
-
-		var text = $("option[value='" + vals.join(' ') + "']")[0].innerText.split(' ')
-		var price = text.pop()
-		var name = text.join(' ')
-		var new_row = '<tr value="' + vals[1] + '"><td>' + name +  '</td><td>' + price + '</td></tr>'
-		$('#item_table').append(new_row)			
+		appendToTable(this.value)
 	})
 
-	// $('#menu_items').on('click', function(e){
-
-	// 	// ajaxReq(url, 'DELETE')
-	// 	console.log($(e.target).closest('tr'))
-	// 	$(e.target).closest('tr').remove()
-	// })
+	$('#menu_items').on('click', function(e){
+		var elementId = $(e.target).closest('tr')[0].id
+		var itemId = elementId.split('-').pop()
+		url = '/menus/' + currentMenu() + '/item/' + itemId
+		ajaxReq(url, 'DELETE')
+		$('#' + elementId).remove()
+	})
 
 });
 
+function currentMenu(){
+	return location.href.split('/').pop()
+}
 
 function ajaxReq(url, type, data){    
     $.ajax({ url: url, type: type, data: data // data can be undefined
@@ -29,4 +27,12 @@ function ajaxReq(url, type, data){
     }).fail(function(jqXHR, textStatus, errorThrown){
     	console.log("fail" + errorThrown)
     })
+}
+
+function appendToTable(value) {
+	var text = $("option[value='" + value + "']")[0].innerText.split(' ')
+	var price = text.pop()
+	var name = text.join(' ')
+	var new_row = '<tr value="' + value + '"><td>' + name +  '</td><td>' + price + '</td></tr>'
+	$('#item_table').append(new_row)	
 }

@@ -15,23 +15,17 @@ get '/menus/:id' do
 	erb :menus
 end
 
-post '/menus/:id/additem/:item_id' do
-	
+post '/menus/:id/item/:item_id' do
 	menu = Menu.find(params[:id])
 	item = Item.find(params[:item_id])
-	# p '*' * 50
-	# p menu.items
 	menu.items << item
-	# p '*' * 50
-	# p menu.items
 	redirect "/menus/#{params[:id]}"
-	# "#{item.name} #{int_to_dollars(item.price)}"
 end
 
-delete '/menus/:id/additem/:item_id' do
+delete '/menus/:id/item/:item_id' do
 	@menu = Menu.find(params[:id])
 	@menu.items.delete(Item.find(params[:item_id]))
-	# redirect "/menus/#{params[:id]}"
+	redirect "/menus/#{params[:id]}"
 end
 
 get '/items' do
@@ -42,8 +36,8 @@ end
 post '/items' do
 	Item.create! name:  params[:item][:name],
 				 price: dollars_to_int(params[:item][:price]) # not in standard params format due to conversion
-	redirect '/items'
-end
+				 redirect '/items'
+				end
 
 
 ### GENERAL REDIRECT -- DON'T PUT ANYTHING BELOW THIS LINE

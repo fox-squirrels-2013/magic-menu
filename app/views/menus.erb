@@ -15,7 +15,7 @@
 		<select id="item_select" name="item_select">
 			<option selected disabled>Add new item to menu</option>
 			<% @all_items.each do |item| %>
-			<option value='<%= "#{@menu.id} #{item.id}" %>'><%= item.name %> <%= int_to_dollars(item.price) %></option>
+			<option value='<%= item.id %>'><%= item.name %> <%= int_to_dollars(item.price) %></option>
 			<% end %>
 		</select>
 	</div>

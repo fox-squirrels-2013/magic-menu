@@ -10,8 +10,6 @@ by ty
 ### Still To Do
 
 
-### Release 4: AJAXify it.
-* Use AJAX to Implement Adding and Deleting items from menus on the Items on Menus View
 * Use AJAX to implement the "Add Item" button on the Items View.
 * Use AJAX to implement the "Add Menu" button on the Menus View
 * Verify existing tests still pass (hint: turn on JavaScript for your Capybara tests)
