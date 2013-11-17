@@ -4,8 +4,9 @@ get '/menus' do
 end
 
 post '/menus' do
-	m = Menu.create! params[:menu] # use bang for testing to catch errors
-	m.to_json #redirect '/'
+	p params[:menu]
+	m = Menu.create params[:menu]
+	m.to_json
 end
 
 get '/menus/:id' do
@@ -16,9 +17,10 @@ get '/menus/:id' do
 end
 
 post '/menuitems/:menu_id/:item_id' do
-	menu = Menu.find(params[:menu_id])
-	menu.items << Item.find(params[:item_id])
-	redirect "/menus/#{params[:menu_id]}"
+	m = Menu.find(params[:menu_id])
+	i = Item.find(params[:item_id])
+	m.items << i
+	i.to_json
 end
 
 delete '/menuitems/:menu_id/:item_id' do
@@ -36,7 +38,7 @@ post '/items' do
 	i = Item.new name:  params[:item][:name],
 				 price: dollars_to_int(params[:item][:price]) # not in standard params format due to conversion
 	p i.errors[:price].last unless i.save
-	redirect '/items'			
+	i.to_json			
 end
 
 delete '/items/:id' do

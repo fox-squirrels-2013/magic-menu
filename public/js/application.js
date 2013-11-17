@@ -1,18 +1,29 @@
 $(document).ready(function() {
 
-	$('form').on('submit', function(e){
+	$('#create_menu').on('submit', function(e){
 		e.preventDefault()
-		var data = $(this).serialize()
-		ajaxReq(currentLocaction(), 'POST', data)
+		var params = $(this).serialize()
+		$.post('/menus', params, function(data) {
+			var itemData = JSON.parse(data)
+			appendToList(itemData.id, itemData.name)
+		});
+	})
+
+	$('#create_item').on('submit', function(e){
+		e.preventDefault()
+		var params = $(this).serialize()
+		$.post('/items', params, function(data) {
+			var itemData = JSON.parse(data)
+			appendToTable(itemData.id, itemData.name, itemData.price)
+		});
 	})
 
 	$('#item_select').on('change', function(){
 		var itemId = this.value
-		ajaxReq(targetUrl(itemId), 'POST')
-		var text = $("option[value='" + itemId + "']")[0].innerText.split(' ')
-		var price = text.pop()
-		var name = text.join(' ')
-		appendToTable(name, price, itemId)
+		$.post( targetUrl(itemId), function(data) {
+			var itemData = JSON.parse(data)
+			appendToTable(itemData.id, itemData.name, itemData.price)
+		});
 	})
 
 	$('#item_table').on('click', function(e){
@@ -24,15 +35,13 @@ $(document).ready(function() {
 
 });
 
-function currentLocaction(){
-	var loc = location.href.split('/')
-	return '/' + loc.slice(3, loc.length)
-}
-
 function targetUrl(itemId){
-	loc = location.href.split('/').pop()
-	if(loc === 'items'){ return '/' + loc + '/' + itemId
-	} else { return currentMenuItem(itemId) }
+	var loc = location.href.split('/').pop()
+	if(loc === 'items'){ 
+		return '/' + loc + '/' + itemId
+	} else { 
+		return currentMenuItem(itemId) 
+	}
 }
 
 function currentMenuItem(itemId){
@@ -44,21 +53,18 @@ function currentMenuItem(itemId){
 function ajaxReq(url, type, data){    
     $.ajax({ url: url, type: type, data: data // data can be undefined
     }).done(function(server_data){
-      $('body').html(server_data)
-      	// appendToList(server_data.name)
-        console.log(server_data)
-    	console.log('success')
+
     }).fail(function(jqXHR, textStatus, errorThrown){
     	console.log("fail" + errorThrown)
     })
 }
 
-function appendToList(name){
+function appendToList(id, name){
 	var new_menu = '<li><a href="#">' + name + '</a></li>'
 	$('#menu_list').append(new_menu)
 }
 
-function appendToTable(name, price, itemId) {
-	var new_row = '<tr value="' + itemId + '"><td>' + name +  '</td><td>' + price + '</td></tr>'
+function appendToTable(id, name, price) {
+	var new_row = '<tr value="' + id + '"><td>' + name +  '</td><td>' + price + '</td></tr>'
 	$('#item_table').append(new_row)	
 }
