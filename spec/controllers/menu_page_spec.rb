@@ -31,10 +31,9 @@ feature "Menu Page" do
 	scenario "Selecting an item adds that item to the current menu" do
 		m = Menu.create name: 'Tester'
 		i = Item.create({name: 'test item', price: 123})
-		m.items << i
+		m.items << i		
 		visit '/menus/' + "#{m.id}"
 		select("#{i.name}", from: "item_select")
-		visit '/menus/' + "#{m.id}"
 		within_table('item_table') do
 			expect(page).to have_content("#{i.name}")	
 		end
