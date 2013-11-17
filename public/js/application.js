@@ -40,15 +40,15 @@ $(document).ready(function() {
     })
   });
 
-  // $(document).on('click', '.item_row .delete_item', function(e) {
-  //   e.preventDefault();
-  //   item_id = e.target.id;
-  //   $.ajax({
-  //     url: '/item/delete/'+item_id,
-  //     type: "GET"
-  //   }).complete(
-  //   $(this).closest('tr').remove()
-  //   )
-  // })
+  $(document).on('click', '#menu_list .delete_menu', function(e) {
+    e.preventDefault();
+    menu_id = e.target.id;
+    $.ajax({
+      url: '/menu/delete/'+menu_id,
+      type: "GET"
+    }).complete(
+    $(this).closest('p').remove()
+    )
+  })
 
 });

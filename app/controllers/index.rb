@@ -19,9 +19,6 @@ post '/menu/new' do
     @menu = Menu.create(params[:menu])
     content_type :json
     @menu.to_json
-  # else
-  #   Menu.create(params[:menu])
-  #   redirect '/'
   end
 end
 
@@ -31,6 +28,10 @@ post '/item/new' do
     content_type :json
     @item.to_json
   end
+end
+
+get '/menu/delete/:menu_id' do
+  Menu.destroy(params[:menu_id])
 end
 
 get '/item/delete/:item_id' do

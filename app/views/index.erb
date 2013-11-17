@@ -5,7 +5,7 @@
   </form>
   <div id="menu_list">
     <% @menus.each do |menu| %>
-      <p><a href="menu/<%= menu.id %>"><%= menu.name %></a></p>
+      <p><a href="menu/<%= menu.id %>"><%= menu.name %></a><a class="delete_menu" id="<%= menu.id %>" href="#"> Delete </a></p>
     <% end %>
   </div>
 </div>
