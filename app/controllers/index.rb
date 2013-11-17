@@ -31,12 +31,24 @@ get '/menus/:id' do
 end
 
 post "/menu/:menu_id/item" do 
-  p params
   @menu = Menu.find(params[:menu_id])
   @item = Item.find(params[:item_id])
+
   @menu.items << @item
-  @item.to_json
+  content_type :json
+  {name: @item.name}.to_json
+  # @item.to_json
 end
+
+post "/menu/:menu_id/item/:item_id/delete" do 
+
+end
+
+
+
+
+
+
 
 
 # alternative way
