@@ -9,8 +9,24 @@ get '/menus' do
 end
 
 post '/menus' do
-  Menu.create(params[:menu])
-  redirect '/menus'
+  @menu = Menu.new(params[:menu])
+  @menu_id = @menu.id
+  if @menu.save
+    if request.xhr?
+      menu_info = {name: @menu.name, id: @menu.id}
+      content_type :json
+      menu_info.to_json
+    else
+      redirect '/menus'
+    end
+  else
+    if request.xhr?
+      content_type :json
+      {}.to_json
+    else
+      redirect '/menus'
+    end
+  end
 end
 
 #### EACH MENU ######
@@ -19,8 +35,6 @@ get '/menus/:id' do
   @items = Item.all
   erb :each_menu
 end
-
-
 
 #### ITEMS #########
 get '/items' do

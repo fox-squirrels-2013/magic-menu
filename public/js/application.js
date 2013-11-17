@@ -17,4 +17,20 @@ $(document).ready(function() {
     })
   })
 
+   $('#menus').on('submit', function(e) {
+    e.preventDefault()
+    var menuDetails = $(this).serialize()
+    $.ajax({
+      type: 'post',
+      url: '/menus',
+      data: menuDetails
+    }).done (function(returnData) {
+      if (returnData.name === undefined) {
+        return false
+      } else {
+        $('#all_menus').append('<a href="/menus/'+returnData.id+'"><li>'+returnData.name+'</li></a>')
+      }
+    })
+  })
+
 });

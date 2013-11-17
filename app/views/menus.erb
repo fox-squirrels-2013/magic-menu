@@ -1,10 +1,10 @@
-<form action='/menus' method='post'>
-  <input type='text' name='menu[name]'>
+<form id='menus' action='/menus' method='post'>
+  <input id='menu_name' type='text' name='menu[name]'>
   <input type='submit' value='Add Menu'>
 </form>
 
-<ul>
+<ul id="all_menus">
   <% @menus.each do |menu| %>
-  <a href=/menus/<%= menu.id %> ><li><%= menu.name %></li></a>
+  <a href='/menus/<%= menu.id %>' ><li><%= menu.name %></li></a>
   <%end%>
 </ul>
