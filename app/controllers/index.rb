@@ -55,18 +55,20 @@ get '/items/new' do
 end
 
 post '/items/new' do
+
   
-  @item = Item.create(params)
+  
+  @item = Item.create(params[:item])
   
   @item.to_json
 end
 
 
 delete '/item' do
-  # params ={'id'=>6}
+    
     @item_del = Item.find(params[:id])
 
-    if @menu.delete
+    if @item_del.delete
       @message = "We deleted #{@item_del.name}"
     else
       @message = 'something went wrong'

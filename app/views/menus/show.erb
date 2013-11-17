@@ -1,36 +1,9 @@
-<h1><%= @menu.name %></h1>
-<h2>Items</h2>
-
-<br />
+<h1><%= @menu.name %> Menu</h1>
+<h2>Items in that menu</h2>
 <div class="row">
-  <br />
-  <form id="form_items" action="/items/new" method ="post">
-  <fieldset>
-    <legend> Your items: </legend>
-     <div class="large-4 columns">
-        <label>Your item name</label>
-        <input id="item_input" type="text" name="item[name]" placeholder="Here comes your item" >
-        <input id="item_input" type="text" name="item[price]" placeholder="How much is the damage" >
-        <input type="submit" value="Submit your item already"> 
-     </div>
-  </fieldset>
-</form>
 
-</div>
 
-<div class="row">
-  <h2> All items</h2>
-    <div hidden class="messages"></div>
-  <ul id="items_items_list" >
 
-  
-<% @items.each do |item|%>
-    <%= erb :'_list_item', :layout => false,  :locals => { :item =>item } %>
-
-<% end %>    
-  
-  
-  </ul>
 </div> 
 
 
