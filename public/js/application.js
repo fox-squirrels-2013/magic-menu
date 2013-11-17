@@ -1,49 +1,46 @@
 $(document).ready(function() {
 
-	$('#create_menu').on('submit', function(e){
+	$('form').on('submit', function(e){
 		e.preventDefault()
 		var params = $(this).serialize()
-		$.post('/menus', params, function(data) {
+		$.post(currentLocation(), params, function(data) {
 			var itemData = JSON.parse(data)
 			if (itemData.id === undefined) {
 				$('#alerts')[0].innerHTML = '<span>' + itemData + '</span>'
 			} else {
-				$('#alerts')[0].innerHTML = "Menu '" + itemData.name + "' created"
-				appendToList(itemData.id, itemData.name)
+				$('#alerts')[0].innerHTML = "'" + itemData.name + "' created"
+				appendToSomething(itemData.id, itemData.name, itemData.price)
 			}
 		});
 	})
 
-	$('#create_item').on('submit', function(e){
-		e.preventDefault()
-		var params = $(this).serialize()
-		$.post('/items', params, function(data) {
-			var itemData = JSON.parse(data)
-			if (itemData.id === undefined) {
-				$('#alerts')[0].innerHTML = '<span>' + itemData + '</span>'
-			} else {
-				$('#alerts')[0].innerHTML = "Item '" + itemData.name + "' created"
-				appendToTable(itemData.id, itemData.name, itemData.price)
-			}
-		});
-	})
 
-	$('#item_select').on('change', function(){
-		var itemId = this.value
-		$.post( targetUrl(itemId), function(data) {
-			var itemData = JSON.parse(data)
-			appendToTable(itemData.id, itemData.name, itemData.price)
-		});
-	})
+$('#item_select').on('change', function(){
+	var itemId = this.value
+	$.post( targetUrl(itemId), function(data) {
+		var itemData = JSON.parse(data)
+		appendToTable(itemData.id, itemData.name, itemData.price)
+	});
+})
 
-	$('#item_table').on('click', function(e){
-		var elementClass = $(e.target).closest('tr')[0].className
-		var itemId = elementClass.split('-').pop()
-		ajaxReq(targetUrl(itemId), 'DELETE')
-		$('.' + elementClass).fadeOut()
-	})
+$('#item_table').on('click', function(e){
+	var elementClass = $(e.target).closest('tr')[0].className
+	var itemId = elementClass.split('-').pop()
+	ajaxReq(targetUrl(itemId), 'DELETE')
+	$('.' + elementClass).fadeOut()
+})
 
 });
+
+function currentLocation(){
+	return location.href.split('/').pop()
+}
+
+function appendToSomething(id, name, price){
+	if(price === undefined){ appendToList(id, name, price)
+	} else { appendToTable(id, name, price) }
+}
+
 
 function targetUrl(itemId){
 	var loc = location.href.split('/').pop()

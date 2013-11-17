@@ -10,9 +10,6 @@ by ty
 ### Still To Do
 
 
-### Release 5: Errors
-* Use the Active Record `errors` to display errors to the form after submission.
-
 ### Release 7: Refactor to beautiful code
 * Go through your entire app and make certain that each line is as clear, concise, and readable as you can make it.
 
