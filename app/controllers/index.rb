@@ -14,7 +14,8 @@ get '/items' do
 end
 
 post '/items' do
-	Item.create! params[:item] # use bang for testing to catch errors
+	Item.create! name:  params[:item][:name],
+				 price: dollars_to_int(params[:item][:price]) # not in standard params format due to conversion
 	redirect '/items'
 end
 

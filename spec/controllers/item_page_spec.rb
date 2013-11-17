@@ -10,7 +10,7 @@ feature "Items page" do
   scenario "Guest may create a item" do
     visit '/items'
     fill_in "new_item_name", with: "Test item"
-    fill_in "new_item_price", with: 123
+    fill_in "new_item_price", with: '$4.58'
     click_on "add item"
 
     expect(page).to have_content("Test item")
@@ -19,10 +19,10 @@ feature "Items page" do
   scenario "Item price is formatted correctly" do
     visit '/items'
     fill_in "new_item_name", with: "Test item"
-    fill_in "new_item_price", with: 123
+    fill_in "new_item_price", with: '$4.58'
     click_on "add item"
 
-    expect(page).to have_content("$1.23")
+    expect(page).to have_content('$4.58')
   end
 
 end
