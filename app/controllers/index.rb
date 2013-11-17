@@ -18,8 +18,7 @@ post '/' do
     @error_messages = new_menu.errors.full_messages
   end
   @menus = Menu.all
-  erb :index
-  # erb :menu_listing
+  erb :index, layout: false
 end
 
 get '/menus/:id' do
@@ -38,7 +37,7 @@ post '/menus/:id' do
   @all_items = Item.all
   item_menus = ItemMenu.find_all_by_menu_id(@menu.id)
   @items_on_menu = item_menus.map {|item_menu| Item.find_by_id(item_menu.item_id)}
-  erb :menu
+  erb :menu, layout: false
 end
 
 delete '/menus/:id' do
@@ -55,7 +54,7 @@ delete '/menus/:id' do
   @menu = Menu.find_by_id(params[:id])
   item_menus = ItemMenu.find_all_by_menu_id(@menu.id)
   @items_on_menu = item_menus.map {|item_menu| Item.find_by_id(item_menu.item_id)}
-  erb :items_on_menu
+  erb :items_on_menu, layout: false
 end
 
 get '/items' do
@@ -69,5 +68,5 @@ post '/items' do
     @error_messages = new_item.errors.full_messages
   end
   @items = Item.all
-  erb :items
+  erb :items, layout: false
 end

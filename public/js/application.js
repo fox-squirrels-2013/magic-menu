@@ -11,18 +11,21 @@ $(document).ready(function() {
     })
   })
 
-  $(".delete_item").on("click", function(e){
-    var buttonsData = e.target.id
-    var splitData = buttonsData.split('_')
-    var itemID = parseInt(splitData[0], 10)
-    var menuID = parseInt(splitData[1], 10)
-    $.ajax({
-      url: "/menus/" + menuID,
-      type: "DELETE",
-      data: {'item_id': itemID, 'menu_id': menuID}
-    }).done(function(server_data){
-      $("#menu_items").html(server_data)
-    })
+  $("#menu_item_table tr").on("click", function(e){
+    if (e.target.nodeName == 'BUTTON') {
+      var clickedTR = this
+      var buttonsData = clickedTR.id
+      var splitData = buttonsData.split('_')
+      var itemID = parseInt(splitData[0], 10)
+      var menuID = parseInt(splitData[1], 10)
+      $.ajax({
+        url: "/menus/" + menuID,
+        type: "DELETE",
+        data: {'item_id': itemID, 'menu_id': menuID}
+      }).done(function(){
+        $(clickedTR).remove()
+      })
+    }
   })
 
   $("#item_creator").on("submit", function(e){

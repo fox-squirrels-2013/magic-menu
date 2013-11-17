@@ -15,9 +15,17 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>DKMenu</title>
 </head>
 <body>
-  <%= yield %>
+  <h3 id="company_name"><a href="/">DKMenu</a></h3>
+  <h5 id="tagline"><em>The DK-ier menu site</em></h5>
+  <nav>
+    <a href="/items">Add Items</a>
+    <a href="/">Add Menus</a>
+  </nav>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>

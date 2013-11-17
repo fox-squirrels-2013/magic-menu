@@ -1,7 +1,11 @@
 <div id="whole_menu">
-<h3><%= @menu.name %></h3>
-<h5>Items</h5>
-<div id="menu_items"><%= erb :items_on_menu %></div>
 
-<%= erb :items_dropdown %>
+  <h3><%= @menu.name %></h3>
+
+  <div class="on_screen_header">Items</div>
+
+  <div id="menu_items"><%= erb :items_on_menu %></div>
+
+  <%= erb :items_dropdown %>
+
 </div>

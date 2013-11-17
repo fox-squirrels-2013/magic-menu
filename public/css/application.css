@@ -1,16 +1,11 @@
 .container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  position: absolute;
+  margin: 10px 5%;
+  width: 90%;
 }
 
 th {
   text-align: left;
-}
-
-#menu_list {
-  list-style: none;
 }
 
 .error_message_list {
@@ -19,4 +14,125 @@ th {
 
 .error_message {
   color: red;
+}
+
+#company_name {
+  background-color: #B2FFCC;
+  padding: 10px;
+}
+
+#company_name a {
+  text-decoration: none;
+  color: black;
+}
+
+#company_name a:hover {
+  color: #0033CC;
+}
+
+#tagline {
+  position: absolute;
+  top: 10px;
+  left: 200px;
+}
+
+#item_creator {
+  margin-bottom: 20px;
+}
+
+#new_menu {
+  margin-bottom: 20px;
+}
+
+.on_screen_header {
+  margin-bottom: 5px;
+}
+
+#items_table {
+  margin-top: 6px;
+}
+
+#items_table th {
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #B2FFCC;
+}
+
+#items_table td {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#items_table tr:nth-child(even) {
+  background-color: #E0FFEB;
+}
+
+.button {
+  border: 0;
+  border-radius: 20px;
+  color: white;
+  background-color: #339933;
+}
+
+.button:hover {
+  background-color: #0033CC;
+}
+
+#menu_list {
+  list-style: none;
+  padding-left: 10px;
+  position: relative;
+  bottom: 10px;
+}
+
+#menu_list a {
+  text-decoration: none;
+  color: #339933;
+}
+
+#menu_list a:hover {
+  color: #0033CC;
+}
+
+#whole_menu {
+
+}
+
+.delete_item_button {
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  background-color: red;
+  width: 20px;
+  padding: 0px;
+  padding-bottom: 2px;
+}
+
+.delete_item_button:hover {
+  background-color: #FF9999;
+}
+
+#item_selector {
+  margin-top: 8px;
+}
+
+#menu_item_table td {
+  padding-right: 10px;
+}
+
+nav {
+  position: relative;
+  bottom: 50px;
+  float: right;
+}
+
+nav a {
+  text-decoration: none;
+  color: #339933;
+  font-size: 14px;
+  padding-right: 10px;
+}
+
+nav a:hover {
+  color: #0033CC;
 }

@@ -1,6 +1,6 @@
 <form id="menu_creator" action="/" method="post" onsubmit="validateForm('menu_creator', 'menu_creator_1')">
   <input id="menu_creator_1" type="text" name="name" placeholder="Menu Name">
-  <input type="submit" value="Add Menu">
+  <input class="button" type="submit" value="Add Menu">
   <% if @error_messages %>
     <ul class="error_message_list">
     <% @error_messages.each do |message| %>
