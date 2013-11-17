@@ -13,6 +13,7 @@ get '/menu/:id' do
   # Look in app/views/index.erb
   p params
   @menu = Menu.find_by_id(params[:id])
+  p @items = @menu.items
   erb :item_menu
 end
 

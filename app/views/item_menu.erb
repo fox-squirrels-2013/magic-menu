@@ -1,7 +1,17 @@
 <div class="container">
   <div>
     <% if @menu%>
-        <%= @menu.title%>
+        <h2><%=  "#{@menu.title.capitalize} Menu"%></h2>
       <%end %>
+  </div>
+  <div>
+    <h3>Items</h3>
+    <ul>
+    <% if @items%>
+        <%  @items.each do |i|%></h2>
+          <%= "<li>#{i.title} - #{i.cost}" %>
+        <%end %>
+      <%end %>
+    </ul>
   </div>
 </div>

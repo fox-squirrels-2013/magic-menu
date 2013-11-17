@@ -13,9 +13,7 @@ class Menus < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :items_menus, id: false do |t|
-      t.belongs_to :item
-      t.belongs_to :menu
+    create_table :item_menus, id: false do |t|
       t.integer :item_id
       t.integer :menu_id
     end

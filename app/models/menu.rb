@@ -1,5 +1,5 @@
 class Menu < ActiveRecord::Base
-  has_many :items_menus
-  has_many :items, through: :items_menus
+  has_many :item_menus
+  has_many :items, through: :item_menus
   validates :title, presence: true
 end
