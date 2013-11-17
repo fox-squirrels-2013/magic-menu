@@ -20,7 +20,7 @@ $(document).ready(function() {
       // some action after returning from server
       // {item_info: @item}.to_json
       // This following line; we had to pass HTML into the append surrounded by " ".  We had to add concatentation ( + ) between it and the server data
-      $('.new-item').append("<span class='btn-delete'><a href='#'>[x]</a>" + server_data.item_name + "</span>");
+      $('.new-item').append("<div class='trial' ><span class='btn-delete'><a href='#'>[x]</a>" + server_data.item_name + "</span></div>");
       // console.log(server_data.item_name);
     });
 
