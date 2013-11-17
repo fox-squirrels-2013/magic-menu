@@ -4,8 +4,11 @@
 <ul id="menu_items_display">
 
 	<% if @items.any? %>
-		<%	@items.each do |item| %>
-		<li>  <%= item.name %> - $<%= item.price %> </li>
+		<%	@items.each_with_index do |item, index| %>
+		<li>
+		  <%= item.name %> - $<%= item.price %> 
+		  	<a href="" data-selection-id="<%= @selections[index].id %>">Delete</a>
+		</li>
 		<% end %>
 	<% end %>	
 

@@ -15,8 +15,8 @@ end
 get '/menu/:id' do
 	#@items contains all of the item_id's which belong to the selected menu
 	@items = []
-	selections = Selection.where(menu_id: params[:id])
-	selections.each do |selection|
+	@selections = Selection.where(menu_id: params[:id])
+	@selections.each do |selection|
 		@items << Item.find(selection.item_id)
 	end
 	erb :assign_item
@@ -30,7 +30,6 @@ post '/menu/create' do
 end
 
 post '/item/create' do
-	puts "I am a god"
 	Item.create(:name => params["name"], :price => params["price"])
 end
 
@@ -41,12 +40,9 @@ post '/menu/item/assign' do
 	return_obj.to_json
 end
 
-
-
-# <!-- 	<% Selection.where(id: params[:id]).each do |selection| %>
-# 	<li>  <%= Item.find(selection.item_id).name %> - $<%= Item.find(selection.item_id).price %> </li>
-# 	<% end %> -->
-
+post '/menu/item/delete' do
+	Selection.destroy(params['selectionId'])
+end
 
 
 ###DB name = maginmenu_development

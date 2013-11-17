@@ -12,7 +12,6 @@ $(document).ready(function() {
 			data: menu_name
 		}).done(function(menuData){
 			var menu_html = "<a href=\"/menu/"+menuData['id']+"\">  "+menuData['name']+" </a>"
-			console.log(menu_html)
 			$('#menu_list').append(menu_html)
 		})
 	});
@@ -51,5 +50,21 @@ $(document).ready(function() {
 			$("#items_table").append("<tr><td>"+itemName+"</td><td>$"+itemPrice+"</td></tr>")
 		})
 	})
+
+	//AJAX call below for deleting an item from a menu
+		$("#menu_items_display a").on("click", function(e){
+			e.preventDefault()
+			selectionId = e.target.getAttribute("data-selection-id")
+			selectionData = {"selectionId": selectionId}
+			$.ajax({
+				url: "/menu/item/delete",
+				type: "post",
+				data: selectionData
+			}).done(function(){
+				$("[data-selection-id="+selectionId+"]").parent().remove()
+			})
+		})
+
+
 
 });
