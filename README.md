@@ -11,8 +11,6 @@ by ty
 
 ### Release 3 : Items on Menus
 
-* Create a many-to-many relationship between items and menus.
-* Using IRB, test your data model.  Verify that you can assign Items to a Menu; and then, see all the Items that belong to a given Menu; and given an Item, see all the Menus that Item is on.
 * Create the Items on Menus View (don't worry about styling yet).  In the Items on Menus View, the drop down should be filled with all possible items.
 * Use Rspec, Shoulda, and Capybara to test your models and integration.
 

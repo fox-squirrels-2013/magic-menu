@@ -12,8 +12,7 @@ describe Menu do
 	end
 
 	describe "relations" do
-		# it { should have_many(:items) }
-		# it { should belong_to(:items) }
+		it { should have_and_belong_to_many(:items) }
 	end
 
 end

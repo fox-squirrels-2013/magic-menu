@@ -16,8 +16,7 @@ describe Item do
 	end
 
 	describe "relations" do
-		# it { should have_and_belongs_to(:menu) }
-		it { should have_many(:menus).through(:items_menus) }
+		it { should have_and_belong_to_many(:menus) }
 	end
 
 
