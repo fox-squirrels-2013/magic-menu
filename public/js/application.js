@@ -6,6 +6,7 @@ $(document).ready(function(){
   }
 
   $('#add_menu_button').on('click', function(e){
+    console.log('wtf')
     e.preventDefault()
     var menuName = $('#menuname').val()
     $.ajax({

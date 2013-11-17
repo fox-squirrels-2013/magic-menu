@@ -15,12 +15,15 @@ post '/' do
 end
 
 get '/menus/update/:id' do 
+  # @items = Item.create(name: params[:name], price: params[:price])
+  # @item = Item.find(params[:id])
   @menu = Menu.find(params[:id])
   erb :update
 end
 
-put '/menus/update/:id' do 
+post '/menus/update/:id' do 
   @menu = Menu.find(params[:id])
+  @item = Item.create(name: params[:name], price: params[:price], menu_id: @menu.id)
   @menu.update_attributes(name: params[:name])
   redirect '/'
 end
