@@ -19,3 +19,9 @@ post '/menu/new' do
   Menu.create(params[:menu])
   redirect '/'
 end
+
+post '/item/new' do
+  params[:item]
+  Item.create(params[:item])
+  redirect '/item'
+end
