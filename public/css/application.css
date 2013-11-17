@@ -4,24 +4,41 @@ html {
   font-weight: 400; 
 }
 
+div {
+  border-radius: .5em;
+}
+
 body {
   background-color: #fcf;
 }
 
 #page-container {
   position: relative;
+  width: 90%;
+  height: 95px;
 }
 
 .container {
   position: absolute;
   top: 1em;
   left: 3em;
-  background-color: red;
+  background-color: #E0A3C2;
 }
 
 .partial-container {
   padding: .7em;
   background-color: pink;
+}
+
+#bullshit {
+  padding: .7em;
+  background-color: pink;
+}
+
+#push-to-bottom {
+  position: relative;
+  float: right;
+  top: 5em;
 }
 
 h1, h2, h3 {

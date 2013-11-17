@@ -17,7 +17,7 @@ end
 get '/menus/update/:id' do 
   @menu = Menu.find(params[:id])
   @items = Menu.find(params[:id]).items
-  erb :update_menu
+  erb :update
 end
 
 post '/menus/update/:id' do 
