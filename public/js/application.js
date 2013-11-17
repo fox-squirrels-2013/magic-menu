@@ -1,23 +1,15 @@
 $(document).ready(function() {
 
 	$('#item_select').on('change', function(){
-		// var plain_vals = this.value
 		var vals = this.value.split(' ')
 		url = '/menus/' + vals[0] + '/additem/' + vals[1]
-
-
-		var text = $("option[value='" + this.value + "']")[0].innerText.split(' ')
-		console.log(text)
-		var price = text.pop()
-		text.pop() // remove '-' from array
-		var name = text.join(' ')
-
-		var new_row = '<tr value="' + vals[1] + '"><td>' + name +  '</td><td>' + price + '</td></tr>'
-
-		$('#item_table').append(new_row)
-
 		ajaxReq(url, 'POST')
 
+		var text = $("option[value='" + vals.join(' ') + "']")[0].innerText.split(' ')
+		var price = text.pop()
+		var name = text.join(' ')
+		var new_row = '<tr value="' + vals[1] + '"><td>' + name +  '</td><td>' + price + '</td></tr>'
+		$('#item_table').append(new_row)			
 	})
 
 	// $('#menu_items').on('click', function(e){
@@ -29,16 +21,12 @@ $(document).ready(function() {
 
 });
 
-  function ajaxReq(url, type, data){
-    // data can be undefined
-    $.ajax({
-      url: url,
-      type: type,
-      data: data
+
+function ajaxReq(url, type, data){    
+    $.ajax({ url: url, type: type, data: data // data can be undefined
     }).done(function(server_data){
-      console.log('success')
-      // $('body').html(server_data)
+    	console.log('success')
     }).fail(function(jqXHR, textStatus, errorThrown){
-      console.log("fail" + errorThrown)
+    	console.log("fail" + errorThrown)
     })
-  }
+}
