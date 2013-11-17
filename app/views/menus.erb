@@ -1,0 +1,10 @@
+<form action='/menus' method='post'>
+  <input type='text' name='menu[name]'>
+  <input type='submit' value='Add Menu'>
+</form>
+
+<ul>
+  <% @menus.each do |menu| %>
+  <li><%= menu.name %></li>
+  <%end%>
+</ul>
