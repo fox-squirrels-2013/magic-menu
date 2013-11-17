@@ -3,20 +3,21 @@ $(document).ready(function() {
 		e.preventDefault()
 		var params = $(this).serialize()
 		$.post(currentLocation(), params, function(data) {
-			appendOrAlert( JSON.parse(data) )
+			appendOrAlert(JSON.parse(data), 'created')
 		});
 	})
 
 	$('#item_select').on('change', function(){
 		var id = this.value
 		$.post( targetUrl(id), function(data) {
-			appendOrAlert( JSON.parse(data) )
+			appendOrAlert(JSON.parse(data), 'added to menu')
 		});
 	})
 
 	$('#item_table').on('click', function(e){
 		var id = $(e.target).closest('tr')[0].className.split('-').pop()
 		ajaxReq(targetUrl(id), 'DELETE')
+		setAlert('item', 'deleted')
 		$('.table-item-' + id).fadeOut()
 	})
 });
@@ -25,18 +26,18 @@ function currentLocation(){
 	return location.href.split('/').pop()
 }
 
-function appendOrAlert(data) {
+function appendOrAlert(data, message) {
 	if (data.id === undefined) {
 		setAlert(data, 'Error: ', '<span>')
 	} else {
-		setAlert(data.name, 'added')
+		setAlert(data.name, message)
 		appendToSomething(data.id, data.name, data.price)
 	}	
 }
 
 function setAlert(item, message, extra){
 	if(extra === undefined) { 
-		$('#alerts')[0].innerHTML = "'" + item + "' " + message
+		$('#alerts')[0].innerHTML = item + " " + message
 	} else { 
 		$('#alerts')[0].innerHTML = "<span>" + message + item + "</span>"
 	}
