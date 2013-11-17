@@ -20,3 +20,4 @@ by ty
 ### Release 2: Items
 
 * TDDing this release
+* Create the migrations and models necessary for Items.
