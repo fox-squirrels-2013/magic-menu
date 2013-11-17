@@ -20,9 +20,12 @@ end
 
 post '/menu' do
   p params
-  p Menu.create(params)
+  m = Menu.create(params)
   @menu = Menu.all
   erb :index
+  m = {title: m.title, id: m.id}
+  content_type :json
+  m.to_json
 end
 
 put '/menu/:id' do

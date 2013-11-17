@@ -1,7 +1,7 @@
 <div class="container">
   <div class="add_form">
-    <form accept-charset="UTF-8" action="/" method="post">
-      <input id="menu_add" name="title" placeholder="Menu title" type='text'>
+    <form id="menu_add" accept-charset="UTF-8" action="/" method="post">
+      <input name="title" placeholder="Menu title" type='text'>
       <input class="btn" type="submit" value="Add Menu">
     </form>
   </div>
@@ -11,7 +11,7 @@
     <ul class="menu_list">
       <% if @menu%>
         <% @menu.each do |m|%>
-        <%= "<li><a href='/menu/#{m.id}'>#{m.title}</a>"%>
+        <%= "<li><a href='/menu/#{m.id}'>#{m.title}</a></li>"%>
         <%end %>
       <%end %>
     </ul>
