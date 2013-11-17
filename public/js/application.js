@@ -1,20 +1,9 @@
 $(document).ready(function() {
 
-	$('#create_menu').on('submit', function(e){
+	$('form').on('submit', function(e){
 		e.preventDefault()
 		var data = $(this).serialize()
-		ajaxReq('/menus', 'POST', data)
-		var name = $('#new_menu_name')[0].value
-		appendToList(name)
-	})
-
-	$('#create_item').on('submit', function(e){
-		e.preventDefault()
-		var data = $(this).serialize()
-		ajaxReq('/items', 'POST', data)
-		var name = $('#new_item_name')[0].value
-		var price = $('#new_item_price')[0].value
-		appendToTable(name, price)
+		ajaxReq(currentLocaction(), 'POST', data)
 	})
 
 	$('#item_select').on('change', function(){
@@ -35,9 +24,14 @@ $(document).ready(function() {
 
 });
 
+function currentLocaction(){
+	var loc = location.href.split('/')
+	return '/' + loc.slice(3, loc.length)
+}
+
 function targetUrl(itemId){
 	loc = location.href.split('/').pop()
-	if(loc === 'items'){ return '/' + loc + '/' + itemId 
+	if(loc === 'items'){ return '/' + loc + '/' + itemId
 	} else { return currentMenuItem(itemId) }
 }
 
