@@ -9,11 +9,11 @@ $(document).ready(function() {
     }).done(function(serverData){
       returnedData = JSON.parse(serverData)
       $("#menu_item_table").append("<tr id='" + returnedData.item_id + "item_" + returnedData.menu_id + "menu'><td><button class='delete_item_button'>x</button></td><td>" + returnedData.item_name + "</td><td>-</td><td>" + returnedData.item_price + "</td></tr>")
-      deleteItemListener()
+      deletedItemListener()
     })
   })
 
-  var deleteItemListener = function(){ $("#menu_item_table tr").on("click", function(e){
+  var deletedItemListener = function(){ $("#menu_item_table tr").on("click", function(e){
       if (e.target.nodeName == 'BUTTON') {
         var clickedTR = this
         var buttonsData = clickedTR.id
@@ -31,7 +31,7 @@ $(document).ready(function() {
     })
   }
 
-  deleteItemListener()
+  deletedItemListener()
 
   $("#item_creator").on("submit", function(e){
     e.preventDefault()
@@ -47,24 +47,31 @@ $(document).ready(function() {
       type: "POST",
       data: {'item_name': itemName, 'item_price': itemPrice}
     }).done(function(serverData){
-      $("#whole_items").html(serverData)
+      console.log(serverData)
+      if (serverData != "no_error") {
+        $("#items_form_errors").html(serverData)
+      }
+      $("#items_view_list").append("<tr><td>" + itemName + "</td><td>" + "$" + itemPrice + "</td></tr>")
     })
   })
 
-  $("#menu_creator").on("submit", function(e){
-    e.preventDefault()
-    var formData = $("#menu_creator").serialize()
-    $("#menu_creator_1").val("")
-    var menuName = formData.slice(5).split("+").join(" ")
-    $.ajax({
-      url: "/",
-      type: "POST",
-      data: {'menu_name': menuName}
-    }).done(function(serverData){
-      // $("#menu_listing").html(serverData)
-      $("#whole_index").html(serverData)
+  var createdMenuListener = function(){ $("#menu_creator").on("submit", function(e){
+      e.preventDefault()
+      var formData = $("#menu_creator").serialize()
+      $("#menu_creator_1").val("")
+      var menuName = formData.slice(5).split("+").join(" ")
+      $.ajax({
+        url: "/",
+        type: "POST",
+        data: {'menu_name': menuName}
+      }).done(function(serverData){
+        $("#whole_index").html(serverData)
+        createdMenuListener() // same self-referential matter as previous listener -- will clean up if can
+      })
     })
-  })
+  }
+
+  createdMenuListener()
 })
 
 // after formName, add each input's name (value of id attribute) 

@@ -75,10 +75,13 @@ get '/items' do
 end
 
 post '/items' do
-  new_item = Item.create(:name => params["item_name"], :price => '$' + params["item_price"])
+  if params["item_price"]
+    new_item = Item.create(:name => params["item_name"], :price => '$' + params["item_price"])
+  else
+    new_item = Item.create(:name => params["item_name"], :price => '$')
+  end
   unless new_item.valid?
     @error_messages = new_item.errors.full_messages
   end
-  @items = Item.all
-  erb :items, layout: false
+  @error_messages ? (erb :items_form_errors, layout: false) : "no_error"
 end
