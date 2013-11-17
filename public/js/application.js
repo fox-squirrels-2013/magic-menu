@@ -58,4 +58,17 @@ $(document).ready(function() {
   })
 })
 
+// after formName, add each input's name (value of id attribute) 
+// as an argument
+function validateForm(formName) {
+  numInputFieldArgs = arguments.length - 1
+  for (var i=1; i<=numInputFieldArgs; i++) {
+    var userInput = document.forms[formName][arguments[i]].value;
+    if (userInput == null || userInput == "") {
+      alert("Input fields cannot be empty");
+      return false;
+    }
+  }
+}
+
 

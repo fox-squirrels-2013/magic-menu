@@ -46,6 +46,8 @@ delete '/menus/:id' do
       break
     end
   end
+  # try using jQuery .remove() to take the one item out of DOM instead of
+  # overwriting whole partial
   @menu = Menu.find_by_id(params[:id])
   item_menus = ItemMenu.find_all_by_menu_id(@menu.id)
   @items_on_menu = item_menus.map {|item_menu| Item.find_by_id(item_menu.item_id)}
