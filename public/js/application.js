@@ -34,7 +34,9 @@ $(document).ready(function() {
     //Borrowed this to get the menu id from example above
     // could not implement 'data' again for item_id though
     var menu_id = $('#menu-id').data('menu')
-
+    //Ajax call goes through great, my work around to remove the
+    //item from the list was to use the var wicked defined earlier
+    //to access the span
     $.ajax({
       type: "DELETE",
       url: "/menus/" + menu_id,
@@ -45,5 +47,8 @@ $(document).ready(function() {
     // ($(this).find('span').remove())
     });
 
+  $('.new-item').on('submit', function(e){
+    e.preventDefault();
 
+    console.log('here')})
 });

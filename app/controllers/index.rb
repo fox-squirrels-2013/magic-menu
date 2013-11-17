@@ -42,7 +42,7 @@ end
 post '/items' do
 	# expecting params[:menu] as new menu fields
 	Item.create(params[:item])
-	redirect '/items'
+
 end
 
 # added this route to delete items
@@ -84,13 +84,8 @@ end
 
 delete '/menus/:id' do
 	@menu = Menu.find(params[:id])
-	puts "*" * 80
-	puts params["item_id"]
 	item_id = params["item_id"].to_i
-	puts item_id
-	puts @menu.items
 	@delete = @menu.items.delete(Item.find(params[:item_id]))
-	puts @menu.items
 	content_type :json
 	{item: @item}.to_json
 end

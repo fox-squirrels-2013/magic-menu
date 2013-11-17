@@ -1,7 +1,10 @@
+<a href="/menus">Back to Menus!</a>
+</br>
+</br>
 <h3><%= @menu.name %> Menu </h3>
 <!-- We use the data attribute to hold on to information we want to access later ... data-menu -->
 <div id="menu-id" data-menu="<%= @menu.id %>"></div>
-<div class="menu-items"> Items </div>
+<div class="menu-items"> Items click to the RIGHT of the item name, in the whitespace, to delete. Feature- not a bug.  Avoid temptation to hit the red x.  Thank you. </div>
  <% @menu.items.each do |item| %>
  <div class="menu-item" id="<%=@menu.id%>_<%=item.id%>">
  	<span class="btn-delete"><a href="#" onclick=<% @delete %>>[x]</a></span>

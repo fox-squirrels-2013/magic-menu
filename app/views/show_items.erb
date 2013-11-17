@@ -1,3 +1,6 @@
+<a href="/menus">Add Menus</a>
+</br>
+</br>
 <div class="new-item">
   <%= erb :_new_item %>
 </div>
@@ -5,6 +8,9 @@
 <div class="list-menus">
   <% @items.each do |item| %>
     <div class="item"></div>
-    <div class="display">"<%= item.name %>" + "   <%= item.price %>"</div>
+    <!-- Got multiple errors trying to keep name and price on the same line -->
+    <!-- Wanted to get price/100, but it would stop working -->
+    <div class="display"><%= item.name %></div>
+    <div class="display2">price (in cents):  <%= item.price %></div>
   <% end %>
 </div>
