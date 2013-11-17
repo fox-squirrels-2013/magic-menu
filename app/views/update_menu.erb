@@ -1,22 +1,12 @@
 <div class="container">
   
-  <div id="forms">
-    <%= @note.notetext %>
-    <form class="buttons" action="/menus/update/<%= @menu.id %>" method="post">
-      <input type="text" name="name">
-      <input type="submit" value="now update it!">
-    </form>
-    <form class="buttons" action="/delete/sure/<%= @menu.id %>" method="post">
-      <input type="submit" value="actually, delete it!">
-    </form>
-  </div>
+<h3><%= @menu.name %></h3>
+
+<%= erb :add_menu %>
 
 </div
 
- <!-- <form class="buttons" action="/menus/update/<%= @menu.id %>" method="post">
-      <input type="text" name="name">
-      <input type="submit" value="now update it!">
-    </form>
-    <form class="buttons" action="/delete/sure/<%= @menu.id %>" method="post">
-      <input type="submit" value="actually, delete it!">
-    </form> -->
+
+
+
+ 

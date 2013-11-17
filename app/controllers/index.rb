@@ -15,10 +15,8 @@ post '/' do
 end
 
 get '/menus/update/:id' do 
-  # @items = Item.create(name: params[:name], price: params[:price])
-  # @item = Item.find(params[:id])
   @menu = Menu.find(params[:id])
-  erb :update
+  erb :update_menu
 end
 
 post '/menus/update/:id' do 
