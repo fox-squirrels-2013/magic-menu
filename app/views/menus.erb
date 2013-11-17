@@ -1,34 +1,11 @@
-<div class="container">
-<form action="/menus/update/<%= @menu.id %>" method ="post">
-  <fieldset>
-  
-  <div class="large-4 columns">
+<div class="partial-container">
 
-        <label>menu items</label>
-        <input type="text" id="menuitem" name="name" placeholder="add a menu item" >
-        <input type="text" id="menuitem" name="price" placeholder="price" >
-        <input type="submit" id="add_item_button" value="add item">
-      </div>
+  <form action="/menus/update/<%= @menu.id %>" method ="post">
+    <label>add a menu item</label><br>
+    <input type="text" id="menuitem" name="name" placeholder="item" ><br>
+    <input type="text" id="menuitem" name="price" placeholder="price" ><br>
+    <input type="submit" class="button" value="add item">
 
+  </form>
 
-  </fieldset>
-</form>
-
-
- <!--  <table>
-    <tr>
-      <%= @menu.name %>
-    </tr>
-    <tr>
-    #  <% if @items %>
-    #  <% @items.each do |item| %>
-    #  <th><%= item.name %></th>
-    #  <th><%= item.price %></th>
-    #  <% end %>
-    #  <% end %>
-    </tr>
- -->
-  </table>
-
-
-  </div
+</div

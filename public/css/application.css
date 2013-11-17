@@ -1,0 +1,28 @@
+html {
+  color: #909;
+}
+
+body {
+  background-color: #fcf;
+}
+
+#page-container {
+  position: relative;
+}
+
+h1, h2, h3 {
+  color: #90c;
+}
+
+a {
+  text-decoration: none;
+  color: #96c;
+}
+
+a:hover {
+  color: #99f;
+}
+
+.button {
+  color: #909;
+}

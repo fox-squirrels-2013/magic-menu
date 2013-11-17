@@ -1,0 +1,12 @@
+<div class="partial-container">
+
+<h2>the menus you created...</h2>
+
+  <table id="menu_list">
+    
+      <% @menus.each do |menu| %>
+      <p><a href="/menus/update/<%= menu.id %>"><%= menu.name %></a></p>
+      <% end %>
+
+  </table>
+</div>
