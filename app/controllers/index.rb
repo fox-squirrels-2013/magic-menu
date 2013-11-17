@@ -35,14 +35,8 @@ end
 post '/items' do
 	i = Item.new name:  params[:item][:name],
 				 price: dollars_to_int(params[:item][:price]) # not in standard params format due to conversion
-	if i.save
-		puts 'easy save, bro'
-	else
-	  p '*' * 50
-	  p i
-	  p i[:messages]
-	end				
-	redirect '/items'
+	p i.errors[:price].last unless i.save
+	redirect '/items'			
 end
 
 delete '/items/:id' do
