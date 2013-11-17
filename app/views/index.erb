@@ -1,11 +1,11 @@
 <div class="container">
-  <form action="/menu/new" method="post">
+  <form id="menu_form" action="/menu/new" method="post">
     <input id="menu_name" type="text" name="menu[name]" placeholder="Menu Name">
     <input id="menu_submit" type="submit" value="submit">
   </form>
-
-  <% @menus.each do |menu| %>
-    <p><a href="menu/<%= menu.id %>"><%= menu.name %></a></p>
-  <% end %>
-
+  <div id="menu_list">
+    <% @menus.each do |menu| %>
+      <p><a href="menu/<%= menu.id %>"><%= menu.name %></a></p>
+    <% end %>
+  </div>
 </div>

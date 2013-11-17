@@ -15,8 +15,14 @@ get '/item' do
 end
 
 post '/menu/new' do
-  Menu.create(params[:menu])
-  redirect '/'
+  if request.xhr?
+    @menu = Menu.create(params[:menu])
+    content_type :json
+    @menu.to_json
+  # else
+  #   Menu.create(params[:menu])
+  #   redirect '/'
+  end
 end
 
 post '/item/new' do
