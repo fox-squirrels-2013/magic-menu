@@ -1,15 +1,19 @@
-<form id="item_creator" action="/items" method="post" onsubmit="validateForm('item_creator', 'item_creator_1', 'item_creator_2')">
-  <input id="item_creator_1" type="text" name="name" placeholder="Item name">
-  <input id="item_creator_2" type="text" name="price" placeholder="price">
-  <input type="submit" value="Create Item">
+<div id="whole_items">
+  <form id="item_creator" action="/items" method="post" onsubmit="validateForm('item_creator', 'item_creator_1', 'item_creator_2')">
+    <input id="item_creator_1" type="text" name="name" placeholder="Item name">
+    <input id="item_creator_2" type="text" name="price" placeholder="price">
+    <input type="submit" value="Create Item">
+    <% if @error_messages %>
+      <ul class="error_message_list">
+      <% @error_messages.each do |message| %>
+        <li class="error_message"><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>  
+  </form>
+
   <% if @error_messages %>
-    <% @error_messages.each do |message| %>
-    <p class="error_message"><%= message %></p>
-    <% end %>
-  <% end %>  
-</form>
+  <% end %>
 
-<% if @error_messages %>
-<% end %>
-
-<div id="items_table"><%= erb :items_table %></div>
+  <div id="items_table"><%= erb :items_table %></div>
+</div>

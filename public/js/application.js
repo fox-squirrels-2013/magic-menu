@@ -39,7 +39,7 @@ $(document).ready(function() {
       type: "POST",
       data: {'item_name': itemName, 'item_price': itemPrice}
     }).done(function(server_data){
-      $("#items_table").html(server_data)
+      $("#whole_items").html(server_data)
     })
   })
 
@@ -53,7 +53,8 @@ $(document).ready(function() {
       type: "POST",
       data: {'menu_name': menuName}
     }).done(function(server_data){
-      $("#menu_listing").html(server_data)
+      // $("#menu_listing").html(server_data)
+      $("#whole_index").html(server_data)
     })
   })
 })

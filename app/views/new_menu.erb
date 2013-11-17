@@ -2,8 +2,10 @@
   <input id="menu_creator_1" type="text" name="name" placeholder="Menu Name">
   <input type="submit" value="Add Menu">
   <% if @error_messages %>
+    <ul class="error_message_list">
     <% @error_messages.each do |message| %>
-    <p class="error_message"><%= message %></p>
-    <% end %>
-  <% end %>  
+      <li class="error_message"><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>   
 </form>

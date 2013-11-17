@@ -12,3 +12,11 @@ th {
 #menu_list {
   list-style: none;
 }
+
+.error_message_list {
+  list-style: none;
+}
+
+.error_message {
+  color: red;
+}

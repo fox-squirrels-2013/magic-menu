@@ -13,9 +13,13 @@ end
 
 post '/' do
   puts params
-  Menu.create(:name => params["menu_name"])
+  new_menu = Menu.create(:name => params["menu_name"])
+  unless new_menu.valid?
+    @error_messages = new_menu.errors.full_messages
+  end
   @menus = Menu.all
-  erb :menu_listing
+  erb :index
+  # erb :menu_listing
 end
 
 get '/menus/:id' do
@@ -60,7 +64,10 @@ get '/items' do
 end
 
 post '/items' do
-  Item.create(:name => params["item_name"], :price => '$' + params["item_price"])
+  new_item = Item.create(:name => params["item_name"], :price => '$' + params["item_price"])
+  unless new_item.valid?
+    @error_messages = new_item.errors.full_messages
+  end
   @items = Item.all
-  erb :items_table
+  erb :items
 end
