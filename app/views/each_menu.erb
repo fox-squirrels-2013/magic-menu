@@ -1,0 +1,9 @@
+<%= @this_menu.name %>
+
+
+  <select>
+    <% @items.each do |item| %>
+      <option value='item'><%= item.name + ' '%><%= item.price %></option>
+    <%end%>
+  </select>
+

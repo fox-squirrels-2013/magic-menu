@@ -2,6 +2,7 @@ get '/' do
   erb :index
 end
 
+#### MENUS #########
 get '/menus' do
   @menus = Menu.all
   erb :menus
@@ -12,6 +13,16 @@ post '/menus' do
   redirect '/menus'
 end
 
+#### EACH MENU ######
+get '/menus/:id' do
+  @this_menu = Menu.find(params[:id])
+  @items = Item.all
+  erb :each_menu
+end
+
+
+
+#### ITEMS #########
 get '/items' do
   @items = Item.all
   erb :items

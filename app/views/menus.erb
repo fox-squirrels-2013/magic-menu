@@ -5,6 +5,6 @@
 
 <ul>
   <% @menus.each do |menu| %>
-  <li><%= menu.name %></li>
+  <a href=/menus/<%= menu.id %> ><li><%= menu.name %></li></a>
   <%end%>
 </ul>
