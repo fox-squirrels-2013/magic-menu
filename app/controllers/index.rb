@@ -6,7 +6,7 @@ end
 get '/menu' do
   # Look in app/views/index.erb
   @menu = Menu.all
-  erb :index
+  erb :index, :layout => false
 end
 
 get '/menu/:id' do
@@ -45,7 +45,7 @@ end
 get '/item' do
   p "This hit the item view, woo!"
   @item = Item.all
-  erb :item
+  erb :item, :layout => false
 end
 
 post '/item' do
