@@ -26,3 +26,5 @@ by ty
 * Create the Items View
 * Implement _create_ and _read_ actions for your Items.
 * Use Rspec, Shoulda, and Capybara to test your Item model and integration.
+
+### Release 3 : Items on Menus
