@@ -8,7 +8,7 @@ $(document).ready(function() {
       type: "POST",
       data: $(this).serialize(),
       success: function(item) {
-        new_item = '<td>' + item.name + '</td><td>' + item.price + '</td><td><a class="delete_item" id="' + item.id + '" href="#"> Delete </a></td></br>';
+        new_item = '<tr><td>' + item.name + '</td><td>' + item.price + '</td><td><a class="delete_item" id="' + item.id + '" href="#"> Delete </a></td></tr>';
         $('#item_table').append(new_item)
       }
     })
@@ -34,7 +34,7 @@ $(document).ready(function() {
       type: "POST",
       data: $(this).serialize(),
       success: function(menu) {
-        new_menu = '<p><a href="menu/' + menu.id + '">' + menu.name + '</a></p>'
+        new_menu = '<p><a href="menu/' + menu.id + '">' + menu.name + '</a></p>';
         $('#menu_list').append(new_menu)
       }
     })
