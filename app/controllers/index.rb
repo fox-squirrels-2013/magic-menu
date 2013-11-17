@@ -16,19 +16,15 @@ end
 
 get '/menus/update/:id' do 
   @menu = Menu.find(params[:id])
-  @items = Item.all
+  @items = Menu.find(params[:id]).items
   erb :update_menu
 end
 
 post '/menus/update/:id' do 
   @menu = Menu.find(params[:id])
-  p @menu
   @item = Item.create(params[:item])
-  p @item.id
-  @items = Item.all
-  @join = MenuItems.create(menu_id: @menu.id, item_id: @item.id)
+  Menuitem.create(menu_id: @menu.id, item_id: @item.id)
   @menu.update_attributes(params[:menu])
-  p params
   if request.xhr?
     item = {name: @item.name, price: @item.price}
     content_type :json

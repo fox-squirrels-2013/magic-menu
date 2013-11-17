@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
-  belongs_to :menu
+  has_many :menus, through: :menuitems
+  has_many :menuitems
   validates :name, presence: true
   validates :price, presence: true
 end

@@ -1,5 +1,7 @@
 html {
   color: #909;
+  font-family: 'Sintony', Arial, sans-serif;
+  font-weight: 400; 
 }
 
 body {
@@ -9,6 +11,8 @@ body {
 #page-container {
   position: relative;
 }
+
+
 
 h1, h2, h3 {
   color: #90c;
