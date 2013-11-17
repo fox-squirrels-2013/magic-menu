@@ -7,7 +7,7 @@ by ty
 * [App live on Heroku](http://magical-menu-tour.herokuapp.com/) (updated throughout project)
 
 
-## Current Progress
+### Still To Do
 
 ### Release 3 : Items on Menus
 
