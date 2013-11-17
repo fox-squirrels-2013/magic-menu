@@ -41,11 +41,10 @@ post "/menu/:menu_id/item" do
 end
 
 post "/menu/:menu_id/item/:item_id/delete" do 
-
+  @item = Item.find(params[:item_id])
+  @item.destroy
+  redirect "/menus/#{params[:menu_id]}"
 end
-
-
-
 
 
 
