@@ -4,13 +4,12 @@
 <a href="/menus/new">Add Menus</a>
 
 <ul>
-  <li>Enter an item name and price and click "Add Item".</li>
-  <li>Item name and price gets appended to the table as a new row.</li>
+  <li>Enter an item name and click "Add Item".</li>
+  <li>Item name gets appended to the table as a new row. Price is added when adding to a specific menu (e.g. Sweet & Sour Chicken @ lunch for $7 and $10 for dinner.</li>
 </ul>
 
 <form name="add_item" action="/items" method="post">
-  <input type="text" name="item_name" value="item name">
-  <!-- <input type="text" name="price" value="price"> -->
+  <input type="text" name="item_name">
   <input type="submit" value="Add Item">
 </form>
 

@@ -1,27 +1,27 @@
-<h1>Put embedded ruby here to show menu.name + "Menu"</h1>
+<h1><%= "Here you can add items to the #{Menu.find_by_id(params[:id]).name} menu!" %></h1>
 
 <a href="/items">Add Items</a>
 <a href="/menus/new">Add Menus</a>
 
 <h2>Items</h2>
-<p>Put embedded ruby here to show the list of items and their prices separated by a dash. Also give each one an x that submits a a delete route (not totally sure how to do this).</p>
 
 <form action="/menus/<%= params[:id] %>" method="post">
   <select name="menu_items">
-    <!-- Include a list of menu items via erb. I'm not sure if params in action is correct. -->
     <% Item.all.each do |item| %>
-    <option value="<%= item.name %>"> <%= item.name %> </option>
+      <option value="<%= item.name %>"><%= item.name %></option>
     <% end %>
   </select>
+
   <label>Price: </label>
   <input type="text" name="price">
   <input type="submit" value="Add Menu Item!">
   <!-- How could you make it such that it would automatically submit the form (or no form, just dropdown), when something was selected? -->
 </form>
 
+<% p "Hello mother fucker...#{ItemsMenu.find_by_menu_id(params[:id])}" %>
+<% p "Hello dude...#{ItemsMenu.find(:all, :conditions => { :menu_id => params[:id] })}" %>
 
-<% ItemsMenu.all.each do |items_menu| %>
-<% p "Item.find_by_id(items_menu.item_id) #{Item.find_by_id(items_menu.item_id)}." %>
-
+<% ItemsMenu.find(:all, :conditions => { :menu_id => params[:id] }).each do |items_menu| %>
+  <p><%= "For #{Menu.find_by_id(items_menu.menu_id).name}, you can have #{Item.find_by_id(items_menu.item_id).name} for just $#{items_menu.price}!!!" %></p>
 <% end %>
 
