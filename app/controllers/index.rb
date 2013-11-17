@@ -10,6 +10,7 @@ end
 
 get '/menus/:id' do
 	@menu = Menu.find(params[:id])
+	@items = @menu.items
 	erb :menus
 end
 
