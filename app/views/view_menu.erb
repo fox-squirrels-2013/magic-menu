@@ -2,11 +2,12 @@
 <h3 class="menu_title"><%= @menu.name %></h3>
 <br>
 
-<div class="items">Items</div>
+<div id="menu-id" data-menu="<%=@menu.id%>"></div>
+<div class="items">Items<br><br>
 	<% @menu.items.each do |item| %>
 		<div class="menu_items">
 			<span class="delete-button">
-				<a href="#" onclick="alert('deleting...');">[x]</a>
+				<a href="#">[x]</a>
 			</span>
   		<span class= "item <%= item.id %>">
   			<%= item.name %> - <%= item.price %>
@@ -15,14 +16,14 @@
   <% end %>
 </div>
 
-<h4>Add an item to the menu</h4>
-<ul class="menu_listings">
+<div class="stickithere">
+</div>
 
-</ul>
+<h4>Select an item to the menu</h4>
 
 <select title="Menu Items" name="Menu_Items" class="items">
 	<% @items.each do |item| %>
-  	<option value="<%= item.id %>" id="options" onclick="getOption()"> <%= item.name %></option>
+  	<option value="<%= item.id %>" id="options"> <%= item.name %></option>
   <% end %>
 </select>
 

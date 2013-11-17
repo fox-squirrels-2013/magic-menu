@@ -1,3 +1,5 @@
+require 'json'
+
 get '/' do
 	redirect '/menus'
 end
@@ -25,11 +27,13 @@ post '/menus' do
 end
 
 post '/menus/:id' do 
+	puts "*"*80
+	puts params
 	@menu = Menu.find(params[:id])
-	@item = Item.create(params[:id])
-	@menu.items.add(@items)
-	redirect '/menus/#{params[:id]}'
-
+	@item = Item.find(params[:item_id])
+	@menu.items << @item
+	content_type :json
+	{item: @item.id, name: @item.name, price: @item.price}.to_json
 end
 
 ########view items#################
