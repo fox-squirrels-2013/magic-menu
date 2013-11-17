@@ -21,3 +21,5 @@ by ty
 
 * TDDing this release
 * Create the migrations and models necessary for Items.
+* Add validations.
+* Test your Items data model using IRB.

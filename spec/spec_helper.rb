@@ -22,3 +22,10 @@ end
 def app
   Sinatra::Application
 end
+
+RSpec.configure do |config|
+  config.before do
+    Menu.destroy_all
+    Item.destroy_all
+  end
+end
