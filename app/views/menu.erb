@@ -1,0 +1,29 @@
+<div class="container">
+  <header>
+    <h1><%= @menu %> Menu</h1>
+    <ul>
+      <li><a href="/items">Add Items</a></li>
+      <li><a href="/">Add Menus</a></li>
+    </ul>
+  </header>
+
+  <h2>Items</h2>
+
+  <% if @items_at_menu %>
+    <% @items_at_menu.each do |item| %>
+      <a href="#">x</a> <span class="item_name"><%= item.name %></span> - <span class="item_price">$<%= item.price %></span>
+      <br>
+    <% end %>
+  <% end %>
+
+  <form method="post" action="/menus/<%= @id %>/add">
+    <input type="hidden" name="_method" value="put">
+    <select name="add_item">
+      <option>Menu Items</option>
+      <% @items.each do |item| %>
+        <option value="<%= item.id %>"><%= item.name %> - $<%= item.price %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+</div>
