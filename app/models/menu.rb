@@ -1,3 +1,4 @@
 class Menu < ActiveRecord::Base
-  # Remember to create a migration!
+  has_many :menu_to_menu_items
+  has_many :menu_items, through :menu_to_menu_items
 end
