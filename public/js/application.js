@@ -50,10 +50,24 @@ $(document).ready(function() {
       url: '/item',
       data: formData
     }).done(function(response){
-      // var deliciousTreat = menuLink(response.id, response.title)
       console.log(response)
       var niceDelight = "<li>" + response.title + ": $" + response.cost + "</li>"
       $('.item_list').append(niceDelight)
+    })
+  })
+
+  $('body').on('submit', '#add-relationship', function(e){
+    e.preventDefault()
+    var formData = $('form').serialize()
+    var menuId = $('#menu_id').val()
+    console.log(formData)
+    console.log(menuId)
+    $.ajax({
+      type: 'put',
+      url: '/menu/' + menuId,
+      data: formData
+    }).done(function(response){
+      console.log(response)
     })
   })
 });
