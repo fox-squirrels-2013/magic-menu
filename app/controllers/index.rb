@@ -11,14 +11,11 @@ get '/menus/new' do
   redirect '/'
 end
 
-post '/menus' do
-  @menu = Menu.create(params)
-  if @menu.valid?
-    redirect '/'
-  else
-    @error_messages = @menu.errors.full_messages
-    erb :new_menu
-  end
+post '/' do
+  puts params
+  Menu.create(:name => params["menu_name"])
+  @menus = Menu.all
+  erb :menu_listing
 end
 
 get '/menus/:id' do
@@ -30,7 +27,28 @@ get '/menus/:id' do
 end
 
 post '/menus/:id' do
+  item_id = params["item_id"]
+  menu_id = params["menu_id"]
+  ItemMenu.create(:item_id => item_id, :menu_id => menu_id)
   @menu = Menu.find_by_id(params[:id])
+  item_menus = ItemMenu.find_all_by_menu_id(@menu.id)
+  @items_on_menu = item_menus.map {|item_menu| Item.find_by_id(item_menu.item_id)}
+  erb :items_on_menu
+end
+
+delete '/menus/:id' do
+  item_id = params["item_id"].to_i
+  menu_id = params["menu_id"].to_i
+  ItemMenu.find_each do |item_menu|
+    if (item_menu.item_id == item_id) && (item_menu.menu_id == menu_id)
+      item_menu.destroy
+      break
+    end
+  end
+  @menu = Menu.find_by_id(params[:id])
+  item_menus = ItemMenu.find_all_by_menu_id(@menu.id)
+  @items_on_menu = item_menus.map {|item_menu| Item.find_by_id(item_menu.item_id)}
+  erb :items_on_menu
 end
 
 get '/items' do
@@ -39,10 +57,7 @@ get '/items' do
 end
 
 post '/items' do
-  @item = Item.create(params)
-  unless @item.valid?
-    @error_messages = @item.errors.full_messages
-  end
+  Item.create(:name => params["item_name"], :price => '$' + params["item_price"])
   @items = Item.all
-  erb :items
+  erb :items_table
 end

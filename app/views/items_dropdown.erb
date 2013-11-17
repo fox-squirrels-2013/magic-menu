@@ -1,6 +1,6 @@
 <select id="item_selector">
-  <option selected="selected">Menu Items</option>
+  <option>Menu Items</option>
   <% @all_items.each do |item| %>
-    <option value="<%= item.id %>"><%= "#{item.name} - #{item.price}" %></option>
+    <option value='{"item": <%= item.id %>, "menu": <%= @menu.id %>}'><%= "#{item.name} - #{item.price}" %></option>
   <% end %>
 </select>

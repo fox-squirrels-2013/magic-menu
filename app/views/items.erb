@@ -1,6 +1,6 @@
-<form action="/items" method="post">
-  <input type="text" name="name" placeholder="Item name">
-  <input type="text" name="price" placeholder="price">
+<form id="item_creator" action="/items" method="post">
+  <input id="item_creator_1" type="text" name="name" placeholder="Item name">
+  <input id="item_creator_2" type="text" name="price" placeholder="price">
   <input type="submit" value="Create Item">
   <% if @error_messages %>
     <% @error_messages.each do |message| %>
@@ -12,14 +12,4 @@
 <% if @error_messages %>
 <% end %>
 
-<table border="1">
-<tr>
-  <th>Name</th>
-  <th>Price</th>
-</tr>
-<% if @items %>
-  <% @items.each do |item| %>
-    <tr><td><%= item.name %></td><td><%= item.price %></td></tr>
-  <% end %>
-<% end %>
-</table>
+<div id="items_table"><%= erb :items_table %></div>

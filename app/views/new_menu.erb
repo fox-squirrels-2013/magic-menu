@@ -1,24 +1,9 @@
-<br />
-<div class="row">
-  <br />
-  <form action="/menus" method="post">
-  <fieldset>
-    <legend> Get started: </legend>
-  
-     <div class="large-4 columns">
-
-        <label>Your Menu name</label>
-        <input type="text" name="name" placeholder="Here comes your menu">
-        <input type="submit" value="Create Menu">
-      </div>
-    <% if @error_messages %>
-      <% @error_messages.each do |message| %>
-      <p class="error_message"><%= message %></p>
-      <% end %>
-    <% end %>  
-      
-     
-  </fieldset>
+<form id="menu_creator" action="/" method="post">
+  <input id="menu_creator_1" type="text" name="name" placeholder="Menu Name">
+  <input type="submit" value="Add Menu">
+  <% if @error_messages %>
+    <% @error_messages.each do |message| %>
+    <p class="error_message"><%= message %></p>
+    <% end %>
+  <% end %>  
 </form>
-  
-</div>
