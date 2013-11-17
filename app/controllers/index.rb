@@ -5,13 +5,13 @@ get '/' do
 end
 
 get '/menu/:menu_id' do
-  p params
+  p @menu = Menu.find_by_id(params[:menu_id])
   redirect '/'
 end
   
 
 post '/menu/new' do
-  p params[:menu]
-  p Menu.create(params[:menu])
+  params[:menu]
+  Menu.create(params[:menu])
   redirect '/'
 end
