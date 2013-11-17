@@ -1,19 +1,26 @@
 <div class="container">
 
 
-<form action='/items' method='post'>
-  <input id="new_item_name" type='text' name='item[name]' placeholder='name'>
-  <input id="new_item_price" type='text' name='item[price]' placeholder='price'>
-  <input type='submit' value='add item'>
-</form>
+	<form action='/items' method='post'>
+		<input id="new_item_name" type='text' name='item[name]' placeholder='name'>
+		<input id="new_item_price" type='text' name='item[price]' placeholder='price'>
+		<input type='submit' value='add item'>
+	</form>
 
-  <h2>Your Items:</h2>
+	<h2>Your Items:</h2>
 
-  <ul>
-   <% @items.each do |item| %>
-   <li><%= item.name %></li>
-   <% end %>
- </ul>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Price</th>
+		</tr>
+		<% @items.each do |item| %>
+		<tr>
+			<td><%= item.name %></td>
+			<td><%= format_dollars(item.price) %></td>
+		</tr>
+		<% end %>
+	</table>
 
 </div>
 
