@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Menu do
 
 	it "can create a new menu" do
-		Menu.create!(name: "Test")
+		Menu.create(name: "Test")
 		expect(Menu.last.name).to eq('Test')
 	end
 
@@ -11,8 +11,9 @@ describe Menu do
 		it { should validate_presence_of :name }
 	end
 
-	describe "relationships" do
-		it { should have_many(:items) }
+	describe "relations" do
+		# it { should have_many(:items) }
+		# it { should belong_to(:items) }
 	end
 
 end
