@@ -5,3 +5,4 @@ class CreateMenus < ActiveRecord::Migration
     end
   end
 end
+

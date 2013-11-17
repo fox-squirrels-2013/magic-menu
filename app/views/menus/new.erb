@@ -1,0 +1,32 @@
+<br />
+<div class="row">
+  <br />
+  <form id="form_menu" action="/menus/new" method ="post">
+  <fieldset>
+    <legend> Get started: </legend>
+     <div class="large-4 columns">
+        <label>Your Menu name</label>
+        <input id="menu_input" type="text" name="menu[name]" placeholder="Here comes your menu" >
+        <input type="submit" value="Submit your Menu already"> 
+     </div>
+  </fieldset>
+</form>
+
+</div>
+
+<div class="row">
+  <h2> All menus</h2>
+    <div hidden class="messages"></div>
+  <ul id="menu_items_list" >
+
+  
+<% @menus.each do |menu|%>
+    <%= erb :'_menu_list_item', :layout => false,  :locals => { :menu =>menu } %>
+
+<% end %>    
+  
+  
+  </ul>
+</div>  
+
+
