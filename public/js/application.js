@@ -6,8 +6,9 @@ $(document).ready(function() {
       url: "/menus/" + selectedData["menu"],
       type: "POST",
       data: {'item_id': selectedData["item"], 'menu_id': selectedData["menu"]}
-    }).done(function(server_data){
-      $("#whole_menu").html(server_data)
+    }).done(function(serverData){
+      returnedData = JSON.parse(serverData)
+      $("#menu_item_table").append("<tr id='" + returnedData.item_id + "item_" + returnedData.menu_id + "menu'><td><button class='delete_item_button'>x</button></td><td>" + returnedData.item_name + "</td><td>-</td><td>" + returnedData.item_price + "</td></tr>")
     })
   })
 
@@ -41,8 +42,8 @@ $(document).ready(function() {
       url: "/items",
       type: "POST",
       data: {'item_name': itemName, 'item_price': itemPrice}
-    }).done(function(server_data){
-      $("#whole_items").html(server_data)
+    }).done(function(serverData){
+      $("#whole_items").html(serverData)
     })
   })
 
@@ -55,9 +56,9 @@ $(document).ready(function() {
       url: "/",
       type: "POST",
       data: {'menu_name': menuName}
-    }).done(function(server_data){
-      // $("#menu_listing").html(server_data)
-      $("#whole_index").html(server_data)
+    }).done(function(serverData){
+      // $("#menu_listing").html(serverData)
+      $("#whole_index").html(serverData)
     })
   })
 })

@@ -29,15 +29,27 @@ get '/menus/:id' do
   erb :menu
 end
 
+# post '/menus/:id' do
+#   item_id = params["item_id"]
+#   menu_id = params["menu_id"]
+#   ItemMenu.create(:item_id => item_id, :menu_id => menu_id)
+#   @menu = Menu.find_by_id(params[:id])
+#   @all_items = Item.all
+#   item_menus = ItemMenu.find_all_by_menu_id(@menu.id)
+#   @items_on_menu = item_menus.map {|item_menu| Item.find_by_id(item_menu.item_id)}
+#   erb :menu, layout: false
+# end
+
 post '/menus/:id' do
   item_id = params["item_id"]
   menu_id = params["menu_id"]
   ItemMenu.create(:item_id => item_id, :menu_id => menu_id)
-  @menu = Menu.find_by_id(params[:id])
-  @all_items = Item.all
-  item_menus = ItemMenu.find_all_by_menu_id(@menu.id)
-  @items_on_menu = item_menus.map {|item_menu| Item.find_by_id(item_menu.item_id)}
-  erb :menu, layout: false
+  item_added = Item.find_by_id(item_id)
+  item_added_id = item_id
+  item_added_name = item_added.name
+  item_added_price = item_added.price
+  menu_added_to_id = params[:id]
+  {"menu_id" => menu_added_to_id, "item_id" => item_added_id, "item_name" => item_added_name, "item_price" => item_added_price}.to_json
 end
 
 delete '/menus/:id' do
