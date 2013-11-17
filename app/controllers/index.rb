@@ -33,10 +33,14 @@ get '/items' do
 end
 
 post '/items' do
-	Item.create! name:  params[:item][:name],
+	i = Item.new name:  params[:item][:name],
 				 price: dollars_to_int(params[:item][:price]) # not in standard params format due to conversion
-				 redirect '/items'
-				end
+	if i.save
+		redirect '/items'
+	else
+	  p i.message
+	end				
+end
 
 delete '/items/:id' do
 	Item.find(params[:id]).delete

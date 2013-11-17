@@ -5,7 +5,6 @@ $(document).ready(function() {
 		var data = $(this).serialize()
 		ajaxReq('/menus', 'POST', data)
 		var name = $('#new_menu_name')[0].value
-		console.log(name)		
 		appendToList(name)
 	})
 

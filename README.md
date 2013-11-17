@@ -10,11 +10,7 @@ by ty
 ### Still To Do
 
 
-* Use AJAX to implement the "Add Menu" button on the Menus View
-* Verify existing tests still pass (hint: turn on JavaScript for your Capybara tests)
-
 ### Release 5: Errors
-* Use JavaScript and HTML 5 to validate your forms before submission.
 * Use the Active Record `errors` to display errors to the form after submission.
 
 ### Release 6: CSS
