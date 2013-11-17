@@ -68,26 +68,27 @@ $(document).ready(function() {
       data: formData
     }).done(function(response){
       console.log(response)
-      var specialSurprise = '<li><a href="/item/relationship" data-menu-id="' + menuId + ' data-item-id="' + response.item.id + '">x</a> ' + response.item.title +' - $' + response.item.cost
+      var specialSurprise = '<li><a href="/item/relationship" class="relationship-killer" data-menu-id="' + menuId + '" data-item-id="' + response.item.id + '">x</a> ' + response.item.title + ' - $' + response.item.cost
       $('#items_from_menu').append(specialSurprise)
     })
   })
 
-  $('body').on('click', '#relationship-killer', function(e){
+  $('body').on('click', '.relationship-killer', function(e){
     e.preventDefault()
     var relationshipData = {'menu_id': $(this).attr('data-menu-id')};
     relationshipData['item_id'] = $(this).attr('data-item-id')
+    var that = $(this)
     console.log(relationshipData)
     // var forRealz = $(relationshipData).serialize()
     // console.log(forRealz)
     $.ajax({
-      type: 'delete',
+      type: 'get',
       url: '/item/relationship',
       data: relationshipData
+    }).done(function(response){
+      console.log(response)
+      $('.relationship-killer[data-item-id="' + response.item_id + '"]').parent().remove();
     })
   })
 
 });
-
-
-// <a href="/item/<%= item.id %>/delete" data-delete="<%= item.id %>" class="delete">x</a>

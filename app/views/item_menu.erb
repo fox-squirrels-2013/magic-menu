@@ -9,7 +9,7 @@
     <ul id="items_from_menu">
     <% if @items_from_menu%>
         <%  @items_from_menu.each do |i|%></h2>
-          <li><a href="/item/relationship" id="relationship-killer" data-menu-id="<%= @menu.id %>" data-item-id="<%= i.id %>">x</a> <%= "#{i.title} - $#{i.cost}" %>
+          <li><a href="/item/relationship" class="relationship-killer" data-menu-id="<%= @menu.id %>" data-item-id="<%= i.id %>">x</a> <%= "#{i.title} - $#{i.cost}" %>
 
         <%end %>
       <%end %>

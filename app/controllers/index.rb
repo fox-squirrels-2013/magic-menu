@@ -63,9 +63,15 @@ end
 put '/item' do
 end
 
-delete '/item/relationship' do
+get '/item/relationship' do
   p "YOU MADE IT"
+  # THIS IS WHERE YOU ARE UP TO
   p params
+  m = Menu.find_by_id(params[:menu_id])
+  i = Item.find_by_id(params[:item_id])
+  m.items.delete(i)
+  content_type :json
+  params.to_json
 end
 
 get '/:anything' do
