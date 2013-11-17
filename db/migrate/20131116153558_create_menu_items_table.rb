@@ -1,9 +1,9 @@
 class CreateMenuItemsTable < ActiveRecord::Migration
   def change
-      create_table :menu_items do |t|
-        t.string :name
+    create_table :menu_items do |t|
+      t.string :name
 
-        t.timestamps
-      end
+      t.timestamps
     end
   end
+end

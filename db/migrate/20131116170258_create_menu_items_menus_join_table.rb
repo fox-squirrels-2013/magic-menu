@@ -1,6 +1,6 @@
-class CreateMenuToMenuItemsJoinTable < ActiveRecord::Migration
+class CreateMenuItemsMenusJoinTable < ActiveRecord::Migration
   def change
-    create_table :menu_to_menu_items do |t|
+    create_table :menu_items_menus do |t|
       t.belongs_to :menu
       t.belongs_to :menu_item
       t.decimal :price
