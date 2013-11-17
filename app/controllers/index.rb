@@ -14,7 +14,7 @@ post '/' do
   end
 end
 
-# ///////////////////////////////////
+# MENU UPDATE ///////////////////////////////////
 get '/menus/update/:id' do 
   @menu = Menu.find(params[:id])
   @items = Menu.find(params[:id]).items
@@ -35,7 +35,7 @@ post '/menus/update/:id' do
   end
 end
 
-# ///////////////////////////////////
+# MENU DELETE ///////////////////////////////////
 get '/menus/delete/:id' do
   @menus = Menu.all
   @menu = Menu.find(params[:id])
@@ -55,12 +55,25 @@ delete '/menus/delete/:id' do
   end
 end
 
-# ///////////////////////////////////
-post '/menusitems/delete/:id' do
+# ITEMS DELETE ///////////////////////////////////
+get '/menuitems/delete/:id' do 
+  @menu = Menu.find(params[:id])
+  @items = Menu.find(params[:id]).items
+  erb :update
+end
+
+post '/menuitems/delete/:id' do
+  @items = Menu.find(params[:id]).items
   @menu = Menu.find(params[:id])
   @item = Item.find(params[:id])
   @item.destroy
-  redirect '/'
+  if request.xhr?
+    item_to_delete = {id: @item.id, name: @item.name, price: @item.price}
+    content_type :json
+    item_to_delete.to_json
+  else
+    redirect '/'
+  end
 end
 
 # ///////////////////////////////////////////

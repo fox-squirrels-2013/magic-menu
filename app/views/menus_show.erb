@@ -5,7 +5,7 @@
   <div id="menu_list">
 
     <% @menus.each do |menu| %>
-        <form action="/menus/delete/<%= menu.id %>" method="post">
+        <form action="/menus/delete/<%= menu.id %>"method="post">
           <input type="hidden" name="_method" value="delete">
           <input type="submit" class="button-d" value="X">
             <a href="/menus/update/<%= menu.id %>" class="menu-link"><%= menu.name %></a>
