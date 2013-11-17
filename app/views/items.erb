@@ -9,18 +9,7 @@
 
 	<h2>Your Items:</h2>
 
-	<table>
-		<tr>
-			<th>Name</th>
-			<th>Price</th>
-		</tr>
-		<% @items.each do |item| %>
-		<tr>
-			<td><%= item.name %></td>
-			<td><%= int_to_dollars(item.price) %></td>
-		</tr>
-		<% end %>
-	</table>
+	<%= erb :item_table %>
 
 </div>
 

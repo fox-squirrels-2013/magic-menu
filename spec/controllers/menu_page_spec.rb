@@ -8,12 +8,12 @@ feature "Menu Page" do
     expect(page).to have_content("Tester Menu")
   end
 
-  scenario "Guest may see items that belong to a menu" do
-  	m = Menu.create name: 'Tester'
-  	m.items << Item.create({name: 'test item', price: 123})
-    visit '/menus/' + "#{m.id}"
-    expect(page).to have_content("test item")
-  end
+  # scenario "Guest may see items that belong to a menu" do
+  # 	m = Menu.create name: 'Tester'
+  # 	m.items << Item.create({name: 'test item', price: 123})
+  #   visit '/menus/' + "#{m.id}"
+  #   expect(page).to have_content("test item")
+  # end
 
 
 end
