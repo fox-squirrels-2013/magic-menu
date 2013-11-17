@@ -1,0 +1,12 @@
+<div class="partial-container">
+
+<h2><%= @menu.name %>'s items...</h2>
+
+  <div id="items_list">
+    
+      <% @items.each do |item| %>
+      <p><%= item.name %> - <%= item.price %></p>
+      <% end %>
+
+  </div>
+</div>

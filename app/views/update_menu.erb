@@ -1,8 +1,17 @@
-<div class="container">
-  
-<h3><%= @menu.name %></h3>
+<div class="partial-container">
 
-<%= erb :add_menu %>
+  <!-- <h3><%= @menu.name %></h3> -->
+ 
+  <%= erb :add_item_to_menu %>
+  <%= erb :items_show %>
+  
+  <form action="/" method ="post">
+
+    <input type="text" id="menuname" name="menu[name]" placeholder="menu name" >
+    <input type="submit" id="update_menu_button" class="button" value="update menu name">
+
+  </form>
+  <br>
 
 </div
 

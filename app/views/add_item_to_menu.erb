@@ -1,9 +1,9 @@
 <div class="partial-container">
 
-  <form action="/menus/update/<%= @menu.id %>" method ="post">
-    <label>add a menu item</label><br>
-    <input type="text" id="menuitem" name="name" placeholder="item" ><br>
-    <input type="text" id="menuitem" name="price" placeholder="price" ><br>
+  <form id="item-form-id" action="/menus/update/<%= @menu.id %>" method ="post">
+    <label>add an item to the menu</label><br>
+    <input type="text" id="menuitem" name="item[name]" placeholder="item" ><br>
+    <input type="text" id="itemprice" name="item[price]" placeholder="price" ><br>
     <input type="submit" id="add_item_button" class="button" value="add item">
 
   </form>
