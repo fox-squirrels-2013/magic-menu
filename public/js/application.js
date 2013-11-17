@@ -45,6 +45,8 @@ function ajaxReq(url, type, data){
     $.ajax({ url: url, type: type, data: data // data can be undefined
     }).done(function(server_data){
       $('body').html(server_data)
+      	// appendToList(server_data.name)
+        console.log(server_data)
     	console.log('success')
     }).fail(function(jqXHR, textStatus, errorThrown){
     	console.log("fail" + errorThrown)

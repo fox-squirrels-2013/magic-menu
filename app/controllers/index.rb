@@ -4,8 +4,8 @@ get '/menus' do
 end
 
 post '/menus' do
-	Menu.create! params[:menu] # use bang for testing to catch errors
-	redirect '/'
+	m = Menu.create! params[:menu] # use bang for testing to catch errors
+	m.to_json #redirect '/'
 end
 
 get '/menus/:id' do
