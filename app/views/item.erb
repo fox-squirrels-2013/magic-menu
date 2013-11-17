@@ -14,13 +14,13 @@
   <div>Your Items:
 
       
-      <table border="1">
+      <table border="1" id="items_table">
         <tr>
           <th>Item</th>
           <th>Price</th>
         </tr>
+        <% Item.all.each do |item| %>
         <tr>
-          <% Item.all.each do |item| %>
           <td><%= item.name %></td>
           <td>$<%= item.price %></td>
         </tr>

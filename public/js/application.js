@@ -1,3 +1,5 @@
+//TODO: Send back partials instead of appending big long HTML
+
 $(document).ready(function() {
 
 // AJAX call below for creating a menu
@@ -36,8 +38,18 @@ $(document).ready(function() {
 //AJAX call below for creating an item
 	$("#create_item").on("click", function(event){
 		event.preventDefault()
-		var itemName = 
-
+		var itemName = $("#item_name").val()
+		var itemPrice = $("#item_price").val()
+		var itemDetails = {"name": itemName, "price": itemPrice}
+		console.log(itemDetails)
+		$.ajax({
+			url: "/item/create",
+			type: "post",
+			data: itemDetails
+		}).done(function(){
+			console.log("what it do")
+			$("#items_table").append("<tr><td>"+itemName+"</td><td>$"+itemPrice+"</td></tr>")
+		})
 	})
 
 });

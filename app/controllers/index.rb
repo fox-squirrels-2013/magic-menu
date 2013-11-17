@@ -30,8 +30,8 @@ post '/menu/create' do
 end
 
 post '/item/create' do
-	Item.create(params[:item])
-	redirect '/item'
+	puts "I am a god"
+	Item.create(:name => params["name"], :price => params["price"])
 end
 
 post '/menu/item/assign' do
