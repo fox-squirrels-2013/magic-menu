@@ -4,7 +4,7 @@
 			<th id="price_header">Price</th>
 		</tr>
 		<% @items.each do |item| %>
-		<tr>
+		<tr value="<%= item.id %>">
 			<td><%= item.name %></td>
 			<td><%= int_to_dollars(item.price) %></td>
 		</tr>
