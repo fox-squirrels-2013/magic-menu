@@ -37,6 +37,9 @@ put '/menu/:id' do
   @items_from_menu = @menu.items
   @items = Item.all
   erb :item_menu
+  p @items_from_menu.last
+  content_type :json
+  @items_from_menu.last.to_json
 end
 
 delete '/menu' do

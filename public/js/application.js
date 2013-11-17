@@ -68,6 +68,8 @@ $(document).ready(function() {
       data: formData
     }).done(function(response){
       console.log(response)
+      var specialSurprise = '<li><a href="#">x</a> ' + response.item.title +' - $' + response.item.cost
+      $('#items_from_menu').append(specialSurprise)
     })
   })
 });
