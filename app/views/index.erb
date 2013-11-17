@@ -1,23 +1,25 @@
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
+  <header>
+    <h1>Welcome to Awesome Menus</h1>
+    <ul>
+      <li><a href="#">Add Items</a></li>
+      <li><a href="#">Add Menus</a></li>
+    </ul>
+  </header>
 
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-  </table>
+  <form id="add_menu" action="/create/new" method="post">
+    <input type="text" placeholder="menu name" name="menu[name]">
+    <input type="submit" value="Add Menu">
+  </form>
+
+  <h2>Your Menus:</h2>
+  <% if @menus %>
+    <ul>
+      <% @menus.each do |menu| %>
+        <li><a href="/menu/<%= menu.id %>"><%= menu.name %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Your kitchen is gathering dust. Add something above.</p>
+  <% end %>
 </div>
