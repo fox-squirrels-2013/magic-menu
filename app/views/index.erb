@@ -11,7 +11,7 @@
     <ul class="menu_list">
       <% if @menu%>
         <% @menu.each do |m|%>
-        <%= "<li><a href='/#{m.id}'>#{m.title}</a>"%>
+        <%= "<li><a href='/menu/#{m.id}'>#{m.title}</a>"%>
         <%end %>
       <%end %>
     </ul>
