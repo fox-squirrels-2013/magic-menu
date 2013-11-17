@@ -41,6 +41,12 @@ header a:hover {
 	text-align: center;
 }
 
+#select_form {	
+	text-align: center;
+	margin-top: 30px;
+	/*margin-right: auto;*/
+	/*padding-top: 20px;*/
+}
 .container h1, h2 {
 	text-align: center;
 }

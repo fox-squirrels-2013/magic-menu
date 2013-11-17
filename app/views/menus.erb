@@ -4,7 +4,31 @@
 
 	<h1><%= @menu.name %> Menu</h1>
 	<h2>Items</h2>
-	
+
 	<%= erb :item_table %>
-	
+
+<div id="select_form">
+	<select name="item_select">
+		<option selected disabled>Add new item to menu</option>
+		<% @all_items.each do |item| %>
+		<option value="<%= item %>"><%= item.name %> - <%= int_to_dollars(item.price) %> </option>
+		<% end %>
+	</select>
 </div>
+
+</div>
+
+<!-- 
+<select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select> -->
+<!-- 
+
+<select name="mydropdown">
+<option value="Milk">Fresh Milk</option>
+<option value="Cheese">Old Cheese</option>
+<option value="Bread">Hot Bread</option>
+</select> -->

@@ -11,6 +11,7 @@ end
 get '/menus/:id' do
 	@menu = Menu.find(params[:id])
 	@items = @menu.items
+	@all_items = Item.all
 	erb :menus
 end
 
