@@ -1,5 +1,6 @@
 get '/' do
   # Look in app/views/index.erb
+  @menu = Menu.all
   erb :index
 end
 
@@ -11,10 +12,11 @@ end
 post '/' do
   p params
   p Menu.create(params)
+  @menu = Menu.all
   erb :index
 end
 
-update '/:id' do
+put '/:id' do
 end
 
 delete '/:id' do
@@ -26,7 +28,7 @@ end
 post '/item' do
 end
 
-update '/item/:id' do
+put '/item/:id' do
 end
 
 delete '/item/:id' do
