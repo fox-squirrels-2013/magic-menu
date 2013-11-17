@@ -7,7 +7,7 @@ class CreateTables < ActiveRecord::Migration
 
     create_table :items do |t|
       t.string :name
-      t.decimal :price
+      t.string :price
       t.timestamps
     end
 
