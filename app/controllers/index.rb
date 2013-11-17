@@ -8,7 +8,11 @@ get '/menu/:menu_id' do
   @menu = Menu.find_by_id(params[:menu_id])
   erb :menu
 end
-  
+
+get '/item' do
+  @items = Item.all
+  erb :item
+end
 
 post '/menu/new' do
   params[:menu]
