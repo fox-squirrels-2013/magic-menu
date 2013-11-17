@@ -11,7 +11,7 @@ end
 
 get '/menu/:id' do
   # Look in app/views/index.erb
-  erb :index
+  erb :item_menu
 end
 
 post '/menu' do
@@ -21,7 +21,7 @@ post '/menu' do
   erb :index
 end
 
-put '/menu' do
+put '/menu/:id' do
 end
 
 delete '/menu' do
@@ -46,7 +46,7 @@ end
 delete '/item' do
 end
 
-# get '/:anything' do
-#   @menu = Menu.all
-#   erb :index
-# end
+get '/:anything' do
+  @menu = Menu.all
+  erb :index
+end
