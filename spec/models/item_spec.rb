@@ -14,6 +14,7 @@ describe Item do
 		it { should_not allow_value(458).for(:price) }
     	it { should_not allow_value("4.56").for(:price) }
     	it { should_not allow_value("$.56").for(:price) }
+    	it { should_not allow_value("$4.546").for(:price) }
 	end
 
 	describe "relations" do
