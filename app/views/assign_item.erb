@@ -1,8 +1,13 @@
+<a href="/menu">Back to menus</a>
 <h1 data-menu-id="<%= params[:id] %>"> <%= Menu.find(params[:id]).name %> Menu</h1>
 <h2>Items</h2>
 <ul id="menu_items_display">
 
-<!-- In here goes the information from the many to many table -->
+	<% if @items.any? %>
+		<%	@items.each do |item| %>
+		<li>  <%= item.name %> - $<%= item.price %> </li>
+		<% end %>
+	<% end %>	
 
 </ul>
 

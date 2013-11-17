@@ -3,13 +3,15 @@ $(document).ready(function() {
 // AJAX call below for creating a menu
 	$("#create_menu").on("click", function(e){
 		e.preventDefault()
-		var menu_name = $("#menu_name").val()
+		var menu_name = {'name': $("#menu_name").val()}
 		$.ajax({
 			url: "/menu/create",
 			type: "post",
 			data: menu_name
-		}).done(function(menu_html){
+		}).done(function(menuData){
+			var menu_html = "<a href=\"/menu/"+menuData['id']+"\">  "+menuData['name']+" </a>"
 			console.log(menu_html)
+			$('#menu_list').append(menu_html)
 		})
 	});
 
@@ -27,8 +29,15 @@ $(document).ready(function() {
 			var item_name = itemDetails['item']
 			var item_price = itemDetails['price']
 			var item_details = "<li>"+item_name+" - $"+item_price+"</li>"
-			console.log(item_details)
 			$('#menu_items_display').append(item_details)
 		})
 	})
+
+//AJAX call below for creating an item
+	$("#create_item").on("click", function(event){
+		event.preventDefault()
+		var itemName = 
+
+	})
+
 });

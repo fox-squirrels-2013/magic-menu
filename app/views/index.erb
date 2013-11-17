@@ -10,11 +10,12 @@
   </form>
 
   <div>Your Menus:
-    <% Menu.all.each do |menu| %>
     <ul id="menu_list">
+      <% Menu.all.each do |menu| %>
       <a href="/menu/<%= menu.id %>">  <%= menu.name %> </a>
+      <br>
+      <% end %>
     </ul>
-    <% end %>
   </div>
 
 </div>
