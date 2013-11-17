@@ -21,9 +21,14 @@ end
 
 #########create menu#######################
 post '/menus' do
-	p params
-	Menu.create(params[:menu])
-	redirect '/menus'
+	puts params
+	@menu = Menu.create(params[:menu])		#stringify keys error happens when you only pass a value and its expecting a hash
+	content_type :json
+	{item: @menu.id, name: @menu.name}.to_json
+
+	# p params
+	# Menu.create(params[:menu])
+	# redirect '/menus'
 end
 
 post '/menus/:id' do 
