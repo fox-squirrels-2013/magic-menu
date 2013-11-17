@@ -1,4 +1,6 @@
 <h3><%= @menu.name %> Menu </h3>
+<!-- We use the data attribute to hold on to information we want to access later ... data-menu -->
+<div id="menu-id" data-menu="<%= @menu.id %>"></div>
 <div class="menu-items"> Items </div>
  <% @menu.items.each do |item| %>
  <div class="menu-item">
@@ -6,6 +8,10 @@
  	<span class="item"><%= item.name %></span>
  </div>
  <% end %>
+<!-- This is where we add the new item to the list  we had to do it this way because adding it to the each loop above would add the 'new-item' to every item.-->
+ <div class='new-item'>
+
+ </div>
 
 <!-- ###Menu items -->
 </br>
@@ -15,14 +21,11 @@
 </br>
 
 <div class="all-items">Menu Items</div>
-<span class="items-on-menu">
 <select id="Menu-Items" >
   <% @items.each do |item| %>
-    <option value="items">
-    <%= item.name + ' - $' %><%= item.price/100 %></br>
-  </option>
-
-    <% end %>
+    <option value="<%=item.id%>">
+      <%= item.name%><%= item.price.to_f/100 %>
+    </option>
+  <% end %>
 </select>
 
-<!-- ### Whole list of items -->

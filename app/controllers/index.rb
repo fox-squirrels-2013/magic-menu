@@ -1,3 +1,5 @@
+require 'json'
+
 get '/' do
   # Look in app/views/index.erb
   # erb :index
@@ -60,9 +62,22 @@ end
 
 post '/menus/:id' do
 	@menu = Menu.find(params[:id])
-	@item = Item.create(params[:item])
-	@menu.items.add(@item)
-	redirect "/menus/#{params[:id]}"
+	@item = Item.find(params[:food_id])
+	@menu.items << @item
+	p @menu.items.length
+	content_type :json
+	{item_name: @item.name}.to_json
+
+	# @item = Item.create(params[:item])
+	# @menu.items.push(params[:food_id]
+
+	# if request.xhr?
+	# 	item_info = {id: @item.id, name: @item.name, price: @item.price}
+	# 	content_type :json
+	# 	item_info.to_json
+	# else
+	# 	redirect "/menus/#{params[:id]}"
+	# end
 end
 
 delete '/menus/:id' do
