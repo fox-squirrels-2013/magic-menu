@@ -1,112 +1,27 @@
 <!DOCTYPE html>
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-
+<html lang="en">
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Menue</title>
-
-  <meta name="viewport" content="width=device-width">
-  
-  <link rel="stylesheet" href="/css/foundation.css">
-  
-  
-
-  <script src="/js/vendor/custom.modernizr.js"></script>
-   <link rel="stylesheet" href="/css/normalize.css">
-  <!--
-    application.css is where you put your styles
-  -->
+  <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/styles.css">
-
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
+  <title>v's menus</title>
 
 </head>
 <body>
 
-  <!-- HEADER AREA -->
-<header class="full-width header-area">
-    <div class="row">
-        <div class="large-12 columns">
-            <h2>welcome to Young Hoody Vanessa V Jewel a.k.a. Baddie Flavor's menus</h2>
-            <p>i totally deployed this to heroku</p>
-        </div>
-    </div>
-</header>
-<!-- NAVIGATION AREA -->
-<!-- Nav Wrap -->
-<nav class="top-bar">
-  <ul class="title-area">
-    <!-- Title Area -->
-    <li class="name">
-      <h1><a href="#">Your options: </a></h1>
-    </li>
-    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
+<h1>welcome to Young Hoody Vanessa V Jewel a.k.a. Baddie Flavor's menus</h1>
 
-  <section class="top-bar-section">
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <li class="divider"></li>
-      <li class="active"><a href="#">Add items</a></li>
-      <li class="divider"></li>
-      <li><a href="#">Add menus</a></li>
-      <li class="divider"></li>
-    </ul>
-
-</nav>
-<!-- CONTENT AREA -->
-<br />
-<div class="row">
-  <br />
-  <form action="/" method ="post">
-  <fieldset>
-    <legend> Get started: </legend>
-  
-     <div class="large-4 columns">
-
-        <label>Your Menu name</label>
-        <input type="text" id="menuname" name="name" placeholder="Here comes your menu" >
-        <input type="submit" id="add_menu_button" value="add menu">
-      </div>
-      
-     
-  </fieldset>
-</form>
-  
-</div>
-
-<div id="lists">
+<div id="page-container">
 
 <%= yield %>
 
 </div>
 
-
-<!-- FOOTER AREA -->
-<div class="full-width footer-area">
-    <div class="row">
-        <div class="large-12 columns">
-            &copy; 2013
-        </div>
-    </div>
-</div>
-
-  <script>
-  document.write('<script src=' +
-  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
-  '.js><\/script>')
-  </script>
-  
-  <script src="js/foundation.min.js"></script>
-   
-  <script>
-    $(document).foundation();
-  </script>
 </body>
 </html>
 

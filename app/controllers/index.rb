@@ -23,8 +23,10 @@ end
 
 post '/menus/update/:id' do 
   @menu = Menu.find(params[:id])
-  @item = Item.create(name: params[:name], price: params[:price], menu_id: @menu.id)
+  @item = Item.create(name: params[:name], price: params[:price])
+  @join = MenuItems.create(menu: @menu.id, item: @item.id)
   @menu.update_attributes(name: params[:name])
+  p params
   redirect '/'
 end
 
