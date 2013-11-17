@@ -1,0 +1,18 @@
+<h1 data-menu-id="<%= params[:id] %>"> <%= Menu.find(params[:id]).name %> Menu</h1>
+<h2>Items</h2>
+<ul id="menu_items_display">
+
+<!-- In here goes the information from the many to many table -->
+
+</ul>
+
+<form type="POST" action="menu/:id/assign">
+	<select id="item_select">
+		<option>Menu Items:</option>
+
+		<% Item.all.each do |item| %>
+		<option data-item-id="<%= item.id %>"><%= item.name %> - $<%= item.price %></option>
+		<% end %>
+
+	</select>
+</form>

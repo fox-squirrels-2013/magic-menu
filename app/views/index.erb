@@ -1,18 +1,18 @@
 <div class="container">
   <h1>Welcome to Awesome Menus</h1>
-  <a href="">Add Items</a>
-  <a href="">Add Menus</a>
+  <a href="/item">Add Items</a>
+  <a href="/menu">Add Menus</a>
   <br>
 
   <form method="POST" action="/menu/create">
-    <input type="text" name="menu[name]" id="menu_name">
+    <input type="text" name="menu[name]" id="menu_name" placeholder="Add A Menu...">
     <input type="submit" id="create_menu">
   </form>
 
   <div>Your Menus:
     <% Menu.all.each do |menu| %>
     <ul id="menu_list">
-      <li>  <%= menu.name %> </li>
+      <a href="/menu/<%= menu.id %>">  <%= menu.name %> </a>
     </ul>
     <% end %>
   </div>
