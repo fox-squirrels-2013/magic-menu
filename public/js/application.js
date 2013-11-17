@@ -50,8 +50,9 @@ $(document).ready(function() {
       console.log(serverData)
       if (serverData != "no_error") {
         $("#items_form_errors").html(serverData)
+      } else {
+        $("#items_view_list").append("<tr><td>" + itemName + "</td><td>" + "$" + itemPrice + "</td></tr>")
       }
-      $("#items_view_list").append("<tr><td>" + itemName + "</td><td>" + "$" + itemPrice + "</td></tr>")
     })
   })
 
