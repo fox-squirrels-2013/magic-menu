@@ -27,5 +27,5 @@ end
 
 10.times do
 	Item.create! name: ITEM_NAMES.sample,
-				price: rand(101..400)
+				 price: rand(101..400).to_s.split('').unshift('$').insert(-3, '.').join
 end

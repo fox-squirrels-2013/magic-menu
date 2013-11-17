@@ -4,7 +4,6 @@ get '/menus' do
 end
 
 post '/menus' do
-	p params[:menu]
 	Menu.create( params[:menu] ).to_json
 end
 
@@ -21,8 +20,7 @@ get '/items' do
 end
 
 post '/items' do
-	i = Item.new name:  params[:item][:name],
-	price: dollars_to_int(params[:item][:price])
+	i = Item.new params[:item]
 	p i.errors[:price].last unless i.save
 	i.to_json			
 end

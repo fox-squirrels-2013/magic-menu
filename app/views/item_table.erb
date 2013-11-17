@@ -8,7 +8,7 @@
 		<% @items.each do |item| %>
 		<tr class="table-item-<%= item.id %>">
 			<td><%= item.name %></td>
-			<td><%= int_to_dollars(item.price) %></td>
+			<td><%= item.price %></td>
 		</tr>
 		<% end %>
 	</table>	
