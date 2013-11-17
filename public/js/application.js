@@ -68,8 +68,14 @@ $(document).ready(function() {
       data: formData
     }).done(function(response){
       console.log(response)
-      var specialSurprise = '<li><a href="#">x</a> ' + response.item.title +' - $' + response.item.cost
+      var specialSurprise = '<li><a href="/item/' + response.item.id + '/delete" data-menu-id="' + menuId + '">x</a> ' + response.item.title +' - $' + response.item.cost
       $('#items_from_menu').append(specialSurprise)
     })
   })
+
+  // Need to build an event listener to stop get '/item/:item_id/delete' do
+  // And wrap a piece of data into it about the relationship that needs to be nuked
 });
+
+
+// <a href="/item/<%= item.id %>/delete" data-delete="<%= item.id %>" class="delete">x</a>
