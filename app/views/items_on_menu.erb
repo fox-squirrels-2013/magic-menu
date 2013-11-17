@@ -1,0 +1,10 @@
+<table border="0">
+<% @items_on_menu.each do |item| %>
+  <tr>
+  <td><button class="delete_item">x</button></td>
+  <td><%= item.name %></td>
+  <td>-</td>
+  <td><%= item.price %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,5 +1,6 @@
 <%= erb :new_menu %>
 
+<h3>Your menus:</h3>
 <ul id="menu_list">
 <% @menus.each do |menu| %>
   <li><a href="/menus/<%= menu.id %>"><%= menu.name %></a></li>
