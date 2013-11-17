@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
 	$('form').on('submit', function(e){
 		e.preventDefault()
 		var params = $(this).serialize()
@@ -9,19 +8,17 @@ $(document).ready(function() {
 	})
 
 	$('#item_select').on('change', function(){
-		var itemId = this.value
-		$.post( targetUrl(itemId), function(data) {
+		var id = this.value
+		$.post( targetUrl(id), function(data) {
 			appendOrAlert( JSON.parse(data) )
 		});
 	})
 
 	$('#item_table').on('click', function(e){
-		var elementClass = $(e.target).closest('tr')[0].className
-		var itemId = elementClass.split('-').pop()
-		ajaxReq(targetUrl(itemId), 'DELETE')
-		$('.' + elementClass).fadeOut()
+		var id = $(e.target).closest('tr')[0].className.split('-').pop()
+		ajaxReq(targetUrl(id), 'DELETE')
+		$('.table-item-' + id).fadeOut()
 	})
-
 });
 
 function currentLocation(){
@@ -63,15 +60,16 @@ function appendToTable(id, name, price) {
 
 function targetUrl(itemId){
 	var loc = currentLocation()
-	if(loc === 'items'){ return '/' + loc + '/' + itemId
-} else { return '/menuitems/' + loc + '/' + itemId }
+	if(loc === 'items'){ 
+		return '/' + loc + '/' + itemId
+	} else { 
+		return '/menuitems/' + loc + '/' + itemId 
+	}
 }
 
 function ajaxReq(url, type, data){    
 	$.ajax({ url: url, type: type, data: data
-	})
-    // .done(function(server_data){
-    // }).fail(function(jqXHR, textStatus, errorThrown){
-    // 	console.log("fail" + errorThrown)
-    // })
+	}).fail(function(jqXHR, textStatus, errorThrown){
+    	console.log("fail" + errorThrown)
+    })
 }
