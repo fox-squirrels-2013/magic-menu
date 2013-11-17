@@ -9,25 +9,29 @@ $(document).ready(function() {
     }).done(function(serverData){
       returnedData = JSON.parse(serverData)
       $("#menu_item_table").append("<tr id='" + returnedData.item_id + "item_" + returnedData.menu_id + "menu'><td><button class='delete_item_button'>x</button></td><td>" + returnedData.item_name + "</td><td>-</td><td>" + returnedData.item_price + "</td></tr>")
+      deleteItemListener()
     })
   })
 
-  $("#menu_item_table tr").on("click", function(e){
-    if (e.target.nodeName == 'BUTTON') {
-      var clickedTR = this
-      var buttonsData = clickedTR.id
-      var splitData = buttonsData.split('_')
-      var itemID = parseInt(splitData[0], 10)
-      var menuID = parseInt(splitData[1], 10)
-      $.ajax({
-        url: "/menus/" + menuID,
-        type: "DELETE",
-        data: {'item_id': itemID, 'menu_id': menuID}
-      }).done(function(){
-        $(clickedTR).remove()
-      })
-    }
-  })
+  var deleteItemListener = function(){ $("#menu_item_table tr").on("click", function(e){
+      if (e.target.nodeName == 'BUTTON') {
+        var clickedTR = this
+        var buttonsData = clickedTR.id
+        var splitData = buttonsData.split('_')
+        var itemID = parseInt(splitData[0], 10)
+        var menuID = parseInt(splitData[1], 10)
+        $.ajax({
+          url: "/menus/" + menuID,
+          type: "DELETE",
+          data: {'item_id': itemID, 'menu_id': menuID}
+        }).done(function(){
+          $(clickedTR).remove()
+        })
+      }
+    })
+  }
+
+  deleteItemListener()
 
   $("#item_creator").on("submit", function(e){
     e.preventDefault()
