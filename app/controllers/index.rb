@@ -20,6 +20,13 @@ post '/menu/new' do
 end
 
 post '/item/new' do
-  Item.create(params[:item])
-  redirect '/item'
+  if request.xhr?
+    @item = Item.create(params[:item])
+    content_type :json
+    @item.to_json
+  end
+end
+
+get '/item/delete/:item_id' do
+  Item.destroy(params[:item_id])
 end

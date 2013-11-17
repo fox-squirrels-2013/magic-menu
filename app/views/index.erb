@@ -1,7 +1,7 @@
 <div class="container">
   <form action="/menu/new" method="post">
-    <input type="text" name="menu[name]" placeholder="Menu Name">
-    <input type="submit" value="submit">
+    <input id="menu_name" type="text" name="menu[name]" placeholder="Menu Name">
+    <input id="menu_submit" type="submit" value="submit">
   </form>
 
   <% @menus.each do |menu| %>

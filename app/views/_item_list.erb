@@ -1,12 +1,13 @@
-<table>
+<table id="item_table">
   <tr>
     <th>Item Name</th>
     <th>Price in Cents</th>
   </tr>
   <% @items.each do |item| %>
-  <tr>
-    <th><%= item.name %></th>
-    <th><%= item.price %></th>
+  <tr class="item_row">
+    <td><%= item.name %></td>
+    <td><%= item.price %></td>
+    <td><a class="delete_item" id="<%= item.id %>" href="#"> Delete </a></td>
   </tr>      
   <% end %>
 </table>
