@@ -29,8 +29,23 @@ get '/items' do
 end
 
 post '/items' do
-  Item.create(params[:item])
-  redirect '/items'
+  @item = Item.new(params[:item])
+  if @item.save
+    if request.xhr?
+      item_info = {name: @item.name, price: @item.price}
+      content_type :json
+      item_info.to_json
+    else
+      redirect '/items'
+    end
+  else
+    if request.xhr?
+      content_type :json
+      {}.to_json
+    else
+      redirect '/items'
+    end
+  end
 end
 
                                                            

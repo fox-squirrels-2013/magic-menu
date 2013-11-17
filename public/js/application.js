@@ -1,7 +1,20 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('#items').on('submit', function(e) {
+    e.preventDefault()
+    var itemDetails = $(this).serialize()
+    // {item: {'name': itemName, 'price': itemPrice}}
+    $.ajax({
+      type: 'post',
+      url: '/items',
+      data: itemDetails
+    }).done (function(returnData) {
+      if (returnData.name === undefined) {
+        return false
+      } else {
+        $('#all_items').append('<li>'+returnData.name+' '+returnData.price+'</li>')
+      }
+    })
+  })
+
 });
