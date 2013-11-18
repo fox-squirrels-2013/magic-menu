@@ -1,17 +1,24 @@
 require 'json' 
 
 get '/' do 
-@menu_items = Menu.all 
-@item = Item.all
-erb :index
+  @menu_items = Menu.all 
+  @item = Item.all
+  erb :index
 end 
 
+
 post '/menu' do 
-  @menu_items = Menu.all 
-  menu = Menu.new 
-  menu.description = params[:menu]
-  menu.save 
-  erb :index
+  p params
+  menu = Menu.create(:description => params[:menu_description])
+  content_type :json 
+  {id: menu.id, description: menu.description}.to_json
+
+ # @menu_items = Menu.all 
+ #  menu = Menu.new 
+ #  menu.description = params[:menu]
+ #  menu.save  
+ #  content_type :json 
+ #  {id: @menu_items.last.id, description: @menu_items.last.description}
 end 
 
 get '/menu' do 
@@ -24,14 +31,18 @@ post '/menu/:id' do
   @menu = Menu.find_by_id(params[:id])
   @item = Item.find_by_id(params[:item_id])
   @menu.items << @item
-  p "test for menu.items" 
-  p @menu.items
-  p "test for item"
-  p @item
-
   content_type :json
-  {item: @item.id, name: @item.description, price: @item.price}.to_json
+  {id: @item.id, name: @item.description, price: @item.price}.to_json
 end
+
+delete '/menu/:id' do 
+  p params
+  # {"item_id"=>"2", "splat"=>[], "captures"=>["6"], "id"=>"6"}
+
+  menu = Menu.find(params[:id])
+  Singlemenu.where(:item_id => params[:item_id], :menu_id => params[:id] ).first.destroy
+  # Item.find(params[:item_id]).destroy
+end 
 
 get '/menu/:id' do 
   @menu = Menu.find_by_id(params[:id])
@@ -48,10 +59,16 @@ end
 
 
 post '/item' do 
-  item = Item.new
-  item.description = params[:description]
-  item.price = params[:price]
-  item.save 
-  @item = Item.all
-  erb :item
+  p params
+  puts "hitting this line"
+  item = Item.create(:price => params[:price], :description => params[:description])
+  content_type :json 
+  {id: item.id, price: item.price,  description: item.description}.to_json
+
+  # item = Item.new
+  # item.description = params[:description]
+  # item.price = params[:price]
+  # item.save 
+  # @item = Item.all
+  # erb :item
 end 

@@ -3,16 +3,17 @@
 
 
 <form action = "/menu" method = "post">
-  <input type="text" name="menu">
-  <input type="submit" value="Setup your menu">
+  <input id = "textbox"type="text" name="menu">
+  <input id = "button" type="submit" value="Setup your menu">
 </form>
 
 
-  <h3> Menus</h3>
+<h3> Menus</h3>
+  <div class = "list-container"> 
     <%@menu_items.each do |menu| %>
     <a href = "menu/<%=menu.id %>"> <%= menu.description %></a> <br>
   <%end%>
-
+</div>
 
 
 
