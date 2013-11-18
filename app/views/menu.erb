@@ -3,5 +3,20 @@
   <h2>Items</h2>
 
   <%= erb :_item_list %>
+
+  <p></p>
+  <select id="item_drop_down" onchange="itemChosen()">
+    <option>Menu Items</option>
+    <% @possible_items.each do |item| %>
+      <option class="<%=@menu.id%>"value="<%=item.id%>"><%=item.name%></option>
+    <%end%>
+  </select>
   
+  <form id="item_to_menu">
+    <input type="submit" value="Add Item">
+  </form>
+
+
+
 </div>
+

@@ -1,3 +1,9 @@
+function itemChosen(){
+  itemSelected = $('#item_drop_down').val()
+  line = $("[value='"+itemSelected+"']")
+  line.attr('id', 'selected')
+}
+
 $(document).ready(function() {
   // Add Items and Delete Items
 
@@ -50,5 +56,23 @@ $(document).ready(function() {
     $(this).closest('p').remove()
     )
   })
+
+  // Add Item to Menu
+
+  $(document).on('submit', '#item_to_menu', function(e) {
+    e.preventDefault();
+    debugger
+    offerings_data = {}
+    $.ajax({
+      url: '/menu/item/'+item_id,
+      type: "GET"
+
+    })
+  })
+
+  $(document).on('itemChosen()', function(){
+    console.log('hello')
+  })
+
 
 });

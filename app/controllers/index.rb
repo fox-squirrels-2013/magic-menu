@@ -6,6 +6,7 @@ end
 get '/menu/:menu_id' do
   @menu = Menu.find_by_id(params[:menu_id])
   @items = @menu.items
+  @possible_items = Item.all
   erb :menu
 end
 
@@ -36,4 +37,9 @@ end
 
 get '/item/delete/:item_id' do
   Item.destroy(params[:item_id])
+end
+
+get '/menu/item/:id' do
+  'hello'
+  # Offering.create()
 end
