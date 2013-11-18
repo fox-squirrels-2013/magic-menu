@@ -18,9 +18,6 @@ get '/menu/:id' do
 end
 
 
-############################
-
-
 # post '/menu/new' do
 #   menu = Menu.create name: params[:menu_name] unless params[:menuTitle].empty?
 #   return menu.name if menu
