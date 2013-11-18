@@ -1,23 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
 <head>
-  <!-- 
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
   <link rel="stylesheet" href="/css/normalize.css">
-  <!--
-    application.css is where you put your styles
-  -->
   <link rel="stylesheet" href="/css/application.css">
+
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
 </head>
 <body>
   <%= yield %>
+
+  <!-- HEADER AREA -->
+  <header class="full-width header-area">
+        <div class="row">
+              <div class="large-12 columns">
+<!--             <h2>Foundation-4 Custom Top Bar</h2>
+-->        </div>
+    </div>
+</header>
+<!-- NAVIGATION AREA -->
+<div class="full-width navigation-area">
+      <div class="row">
+            <div class="large-12 columns">
+                  <nav class="top-bar"></nav>
+            </div>
+      </div>
+</div>
+<!-- CONTENT AREA -->
+
+
+<div class="full-width content-area">
+      <div class="row">
+            <div class="large-12 columns">
+                  
+            </div>
+      </div>
+</div>
+<!-- FOOTER AREA -->
+<div class="full-width footer-area">
+      <div class="row">
+            <div class="large-12 columns">
+        </div>
+      </div>
+</div>
+
 </body>
 </html>
+

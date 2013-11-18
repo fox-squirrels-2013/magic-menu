@@ -1,0 +1,11 @@
+<form action = "/item" method = "post">
+  <input type="number" name="price">
+  <input type="text" name="description">
+  <input id = "button" type="submit" value="Add Items">
+</form>
+
+  <div id = "list-container" class = "container"> 
+  <%@item.each do |element|   %>
+    <%= element.price %> <%= element.description %>   <br>
+  <%end%>
+</div> 
