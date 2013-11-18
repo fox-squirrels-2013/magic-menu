@@ -1,0 +1,6 @@
+<%= erb :_errors, :layout => false %>
+<form name="input" action="/items/create" method="post">
+Name: <input type="text" name="item_name">
+Price:  $<input type="text" name="item_price">
+<button type="submit" id="add_item">Add Item</button>
+</form>

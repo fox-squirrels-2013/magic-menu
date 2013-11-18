@@ -8,3 +8,34 @@
 th {
   text-align: left;
 }
+
+#legend {
+  float: right;
+  margin-right: 10px;
+}
+
+#logo {
+  margin: 0 auto;
+  width: 211px;
+}
+
+header {
+  text-align: center;
+  background-color: black;
+  color: white;
+  height: 30px;
+}
+
+header a {
+  color: white;
+}
+
+#line {
+  height: 20px;
+  padding: 5px;
+}
+
+.center {
+  width: 400px;
+  margin: 0 auto;
+}

@@ -1,0 +1,6 @@
+<select>
+  <option>Selct Item:</option>
+  <% Item.all.each do |item| %>
+  <option value="<%= item.id %>"><%= "#{item.name} - $#{item.price}" %></option>
+  <% end %>
+</select>
