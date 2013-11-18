@@ -2,7 +2,7 @@ require 'rake'
 require 'rspec/core/rake_task'
 
 
-require ::File.expand_path('../config/environment', __FILE__)
+require File.expand_path('../config/environment', __FILE__)
 
 # Include all of ActiveSupport's core class extensions, e.g., String#camelize
 require 'active_support/core_ext'
@@ -107,6 +107,7 @@ namespace :db do
     ActiveRecord::Migration.verbose = ENV["VERBOSE"] ? ENV["VERBOSE"] == "true" : true
     ActiveRecord::Migrator.migrate(ActiveRecord::Migrator.migrations_paths, ENV["VERSION"] ? ENV["VERSION"].to_i : nil) do |migration|
       ENV["SCOPE"].blank? || (ENV["SCOPE"] == migration.scope)
+      p migration
     end
   end
 

@@ -8,3 +8,19 @@
 th {
   text-align: left;
 }
+
+.menu-item {
+
+}
+
+.btn-delete {
+	font-size: 0.8em;
+}
+
+.btn-delete a {
+	text-decoration: none;
+	color: red;
+	vertical-align: middle;
+}
+
+
