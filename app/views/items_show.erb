@@ -6,6 +6,7 @@
     
     <% @items.each do |item| %>
       <form action="/menuitem/delete/<%= item.id %>" method="post">
+        <input type="hidden" name="menu[id]" value="<%= @menu.id %>">
         <input type="hidden" name="_method" value="delete">
         <input type="submit" class="button-d" value="X">   
         <%= item.name %> - <%= item.price %>

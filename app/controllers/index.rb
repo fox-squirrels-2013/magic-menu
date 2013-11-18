@@ -56,23 +56,24 @@ delete '/menus/delete/:id' do
 end
 
 # ITEMS DELETE ///////////////////////////////////
-get '/menuitems/delete/:id' do 
-  @menu = Menu.find(params[:id])
+get '/menuitem/delete/:item_id' do 
+  @item = Item.find(params[:item_id])
   @items = Menu.find(params[:id]).items
+  @menu = Menu.find(params[:id])
   erb :update
 end
 
-post '/menuitems/delete/:id' do
-  @items = Menu.find(params[:id]).items
-  @menu = Menu.find(params[:id])
-  @item = Item.find(params[:id])
+delete '/menuitem/delete/:item_id' do
+  @menu = Menu.find(params[:menu][:id])
+  @items = @menu.items
+  @item = Item.find(params[:item_id])
   @item.destroy
   if request.xhr?
-    item_to_delete = {id: @item.id, name: @item.name, price: @item.price}
+    item_to_delete = {menu_id: @menu.id, item_id: @item.id, name: @item.name, price: @item.price}
     content_type :json
     item_to_delete.to_json
   else
-    redirect '/'
+    redirect "/menus/update/#{@menu.id}"
   end
 end
 

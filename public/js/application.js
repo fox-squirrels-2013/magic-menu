@@ -1,6 +1,9 @@
 $(document).ready(function(){
 ////////////////////////////////////////////////
 
+
+// ADD MENU ////////////////////////////////////
+
   var newMenuHTML = function(id, name){
     return '<form action="/menus/delete/' + id + '" method="post"><input type="hidden" name="_method" value="delete"><input type="submit" class="button-d" value="X"><a href="/menus/update/' + id + '" class="menu-link">' + name + '</a></form>'
   }
@@ -25,6 +28,9 @@ $(document).ready(function(){
     return '<form action="/menuitem/delete/' + item_id + '" method="post"><input type="hidden" name="_method" value="delete"><input type="submit" class="button-d" value="X">' + item_name + ' - ' + item_price + '</form>'
   }
 
+
+// ADD ITEMS ////////////////////////////////////
+
   $('#add_item_button').on('click', function(e){
     console.log('wtfitem')
     e.preventDefault()
@@ -32,7 +38,7 @@ $(document).ready(function(){
     console.log(formData)
     var route = $(this).attr('action')
     $.ajax({
-      type: "delete",
+      type: "post",
       url: route,
       data: formData,
       success: function(data) {
@@ -44,16 +50,40 @@ $(document).ready(function(){
     })
   })
 
+
+// DELETE MENUS //////////////////////////////////
+
   $('#menu_list').on('click', '.button-d', function(e){
     console.log($(this).parent())
     e.preventDefault()
     $(this).parent().remove()
     var route = $(this).parent().attr('action')
+    console.log("route: ", route)
     $.ajax({
       type: "delete",
       url: route,
       success: function(data) {
         console.log("data:", data)
+      }
+    })
+  })
+
+
+///////////////// DELETE ITEMS //////////////////////////////////
+
+  $('#items_list').on('click', '.button-d', function(e){
+    console.log($(this).parent())
+    e.preventDefault()
+    var formData = $(this).parent().serialize()
+    var route = $(this).parent().attr('action')
+    console.log("route: ", route)
+    $.ajax({
+      type: "delete",
+      url: route,
+      data: formData,
+      success: function(data) {
+        console.log("ITEM data:", data)
+        $(this).parent().remove()
       }
     })
   })
