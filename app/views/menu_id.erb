@@ -1,0 +1,27 @@
+<h1><%= "Here you can add items to the #{Menu.find_by_id(params[:id]).name} menu!" %></h1>
+
+<a href="/items">Add Items</a>
+<a href="/menus/new">Add Menus</a>
+
+<h2>Items</h2>
+
+<form id="add_item_and_price_to_menu" action="/menus/<%= params[:id] %>" method="post">
+  <select name="menu_item">
+    <% Item.all.each do |item| %>
+    <option value="<%= item.name %>"><%= item.name %></option>
+    <% end %>
+  </select>
+
+  <label>Price: </label>
+  <input type="text" name="price">
+  <input type="submit" value="Add Menu Item!">
+</form>
+
+<div id="items_on_menu">
+  <% @menu.items.each do |item| %>
+    <li class="item_name"><%= item.name %> for $
+      <button data-item-id=<%=item.id%> data-menu-id=<%=@menu.id%> class="delete_buttons">Delete!</button>
+  </li>
+  <% end %>
+</div>
+

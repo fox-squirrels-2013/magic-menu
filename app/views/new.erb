@@ -1,0 +1,21 @@
+<h1>Welcome to Awesome Menus</h1>
+
+<a href="/items">Add Items</a>
+<a href="/menus/new">Add Menus</a>
+
+<ul>
+  <li>Enter a menu name and click "Add Menu"!</li>
+  <li>Menu name should be appended to the bottom of the list!</li>
+</ul>
+
+<form id="add_menu" action="/menus/new" method="post">
+  <input type="text" name="menu_name">
+  <input type="submit" value="Add Menu">
+</form>
+
+<div class="menu_list">
+<h2>Your Menus:</h2>
+  <% Menu.all.each do |menu| %>
+    <li><a href="/menus/<%= menu.id %>"><%= menu.name %></a></li>
+  <% end %>
+</div>
