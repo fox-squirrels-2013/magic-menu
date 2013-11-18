@@ -23,7 +23,7 @@ $(document).ready(function() {
 		menuData = { menu: {name: menuName} }
 		fetchMenus(menuData).done(function(serverData) {
 			console.log(serverData)
-			$('.stickmenushere').append("<div class='menu'><a href=/menus/" + serverData.item + ">" + serverData.name + "</a></div>")
+			$('.list_menus').append("<div class='menu'><a href=/menus/" + serverData.item + ">" + serverData.name + "</a></div>")
 		});
 	});
 
@@ -35,7 +35,7 @@ $(document).ready(function() {
 		itemData = { item: {name: itemName, price: itemPrice}}
 		fetchItems(itemData).done(function(serverData){
 			console.log(serverData)
-			$('.stickitemshere').append("<p>" + serverData.name + -  $+ serverData.price + "</p>")
+			$('.list_items').append("<div class='item'><p>" + serverData.name + -  $+ serverData.price + "</p></div>")
 		});
 	});
 //////////////////////////////////////////////////////////
