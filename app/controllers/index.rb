@@ -20,14 +20,15 @@ end
 # add a new menu
 post '/menus' do
 	# expecting params[:menu] as new menu fields
-	Menu.create(params[:menu])
-	redirect '/menus'
+	@menu = Menu.create(params[:menu])
+	content_type :json
+	{name: @menu.name, id: @menu.id}.to_json
 end
 
 # added this route to delete menus
 delete '/menus' do
-	@menu = Menu.find(params[:id]).delete
-	redirect '/menus'
+	# @menu = Menu.find(params[:id]).delete
+	# redirect '/menus'
 end
 
 #######################################

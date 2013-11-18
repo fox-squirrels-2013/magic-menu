@@ -64,12 +64,30 @@ $(document).ready(function() {
 
 
       // console.log(server_data)
-      //appcelerator titanium--- check it out
+      // Having a great convo with Nathan, going over some of these
+      // technologies
+      //This will make the commit late. and put the project behind schedule,
+      // However I believe the interaction was well worth it, I was
+      // able to connect with a great programmer.
+      //
+      //appcelerator titanium--- check it out-- from sherif
+      // github.com/nathanielwroblewski  - nathan
+      // meteor -- nathan
     });
     });
 
-  $('.new-menu').on('click', function(e){
-    e.preventDefault()
-    $
+
+    $('.create-menu').on('submit', function(e){
+      e.preventDefault();
+      var form_data = $(this).serialize();
+      $.ajax({
+        url: '/menus',
+        type: 'POST',
+        data: form_data
+      }).done(function(server_data){
+        menuItem = $('<a>').attr('href', "/menus/" + server_data.id).append(server_data.name)
+        $('.added-menu').append(menuItem)
       })
+    })
+
 });
