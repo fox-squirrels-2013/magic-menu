@@ -33,7 +33,26 @@ end
 get '/menus/:id' do
   @this_menu = Menu.find(params[:id])
   @items = Item.all
+  @menu_items = @this_menu.items
   erb :each_menu
+end
+
+post '/menus/:id' do
+  @this_menu = Menu.find(params[:id])
+  p params
+  @item = Item.find_by_name(params[:name])
+  @this_menu.items << @item
+  if request.xhr?
+    menu_item = {id: @item.id, name: @item.name, price: @item.price}
+    content_type :json
+    menu_item.to_json
+  end
+end
+
+post '/menus/:id/items' do
+  menu = Menu.find(params[:id])
+  menu.items.destroy(params[:item_id])
+  200
 end
 
 #### ITEMS #########
@@ -62,4 +81,3 @@ post '/items' do
   end
 end
 
-                                                           
