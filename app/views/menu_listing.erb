@@ -1,0 +1,6 @@
+<div class="on_screen_header">Your menus:</div>
+<ul id="menu_list">
+<% @menus.each do |menu| %>
+  <li><a href="/menus/<%= menu.id %>"><%= menu.name %></a></li>
+<% end %>
+</ul>

@@ -1,3 +1,8 @@
+Heroku site: http://dkmenu.herokuapp.com/
+
+NOTE: I don't have HTML5 validations, because I didn't see any input types that would be useful to me. I'm never asking for an email address, and my item prices are actually expected to contain a dollar-sign and such (rather than to simply be numeric). I'm glad I learned that those validations exist, though!
+
+
 # Menu Magic
 
 1. [Learning Objectives](#learning-objectives)

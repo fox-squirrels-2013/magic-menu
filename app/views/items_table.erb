@@ -1,0 +1,11 @@
+<table id="items_view_list" border="1">
+<tr>
+  <th>Name</th>
+  <th>Price</th>
+</tr>
+<% if @items %>
+  <% @items.each do |item| %>
+    <tr><td><%= item.name %></td><td><%= item.price %></td></tr>
+  <% end %>
+<% end %>
+</table>

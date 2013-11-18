@@ -17,6 +17,8 @@ require 'logger'
 
 require 'sinatra'
 require "sinatra/reloader" if development?
+require "rspec" if test?
+require "capybara/rspec" if test?
 
 require 'erb'
 
