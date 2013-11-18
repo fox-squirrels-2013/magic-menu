@@ -52,6 +52,7 @@ $(document).ready(function() {
         $("#items_form_errors").html(serverData)
       } else {
         $("#items_view_list").append("<tr><td>" + itemName + "</td><td>" + "$" + itemPrice + "</td></tr>")
+        $("#items_form_errors").html("")
       }
     })
   })
@@ -67,10 +68,12 @@ $(document).ready(function() {
       data: {'menu_name': menuName}
     }).done(function(serverData){
       console.log(serverData)
+      // checks to see if serverData is a number, rather than HTML markup
       if (serverData[0] != parseInt(serverData[0], 10)) {
         $("#menus_form_errors").html(serverData)
       } else {
         $("#menu_list").append("<li><a href='/menus/" + serverData + "'>" + menuName + "</a></li>")
+        $("#menus_form_errors").html("")
       }
     })
   })
