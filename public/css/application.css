@@ -1,3 +1,15 @@
+a {
+  text-decoration: none;
+  color: #22314D
+}
+
+body {
+  background-color:#CEECF5;
+}
+
+a:visited{
+  color: #22314D;
+}
 .container {
   margin: 20px auto;
   width: 600px;
@@ -16,10 +28,15 @@ th {
   border: 1px dotted black  ;
 }
 
-.dropdown-closed{
-  display:none;
-}
 
 #item-dropdown-button{
   cursor:pointer;
+}
+
+#item-form{
+  display: none;
+}
+
+#menu-form{
+  display: none;
 }

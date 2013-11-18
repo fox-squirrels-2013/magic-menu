@@ -1,5 +1,19 @@
 <nav>
   <a id = "add-menu" href = '/menu/new'>Add Menu</a>
-  <a id = "add-item" href = '/item/add'>Add Items</a>
+  <a id = "add-item" >Add Items</a>
   <a id = "logout" href = '/logout'>Logout</a>
 </nav>
+  
+<form id = "item-form" action = "/" method = "POST" >
+  <input type = "text" name = "item[name]" placeholder = "This item is called">
+   <br>
+  <input type = "text" name = "item[price]" placeholder = "How much?">
+  <input type ="submit" value = "Create">
+</form>
+
+<form id = "menu-form" action = "/menu/new" method = "POST" >
+  <input type = "text" name = "menu[name]" placeholder = "What do you want to call your menu?">
+  <br>
+   <input type = "hidden" name = "menu[user_id]" value ="<%=current_user.id%>">
+  <input type ="submit" value = "Create">
+</form>

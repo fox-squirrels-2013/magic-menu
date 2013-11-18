@@ -7,11 +7,11 @@ def current_user?
 end 
 
 def user_menus
-  Menu.where(:user_id == session[:user_id])
+  Menu.where(user_id: session[:user_id])
 end
 
 def menu_items
-  Item.where(:menu_id == current_menu)
+  Menuitem.where(menu_id: current_menu.id)
 end
 
 

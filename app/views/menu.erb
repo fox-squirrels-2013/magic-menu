@@ -1,20 +1,14 @@
 <h1><%=current_menu.name%></h1>
-<%menu_items.each do |item|%>
-  <p><%=item.name%><%=item.price%></p>
+<table id ="menu-items">
+  <%menu_items.each do |menuitem|%>
+    <tr id = "menuitem-<%=menuitem.id%>" ><td><a class = "menudelete" data-id ="<%=menuitem.id%>" href ="/#">X - </a><%=menuitem.item.name%> - $<%=menuitem.item.price%></td></tr>
 <%end%>
+</table>
 
+<br>
 <select id ="item-select"> 
-    <option value="" disabled="disabled" selected="selected">Please select a name</option>
-    <option class = "dropdown-item" value="Value">One</option>
-    <option class = "dropdown-item" value="2">Two</option>
+    <option value="" disabled="disabled" selected="selected">Select Items for this Menu</option>
+    <%global_items.each do |item|%>
+      <option class = "dropdown-item"  value ="<%=item.id%>"><%=item.name%> - $<%=item.price%></option>
+    <%end%>
 </select>
-
-<span id = "item-dropdown-button">Items</span><br>
-<span id = "item-dropdown" class = "dropdown-closed">
-<A HREF="/tutors/frame1.html">Frames</A><BR>
-<A HREF="/tutors/tbl.html">Tables</A><BR>
-<A HREF="/beyond/dhtml.html">DHTML</A><BR>
-<A HREF="/tutors/forms.html">Forms</A>
-</span>
-
-

@@ -3,8 +3,21 @@
   <h4> Welcome to Menu Dan <h4>
 
   <%user_menus.each do |menu|%>
-    <p><a class = "menu" href = "/menu/<%=menu.id%>"><%=menu.name%></p>
+    <p><a class = "menu" href = "/menu/<%=menu.id%>"><%=menu.name%></a></p>
   <%end%>
+
+ 
+</div>
+
+
+<div class="container">
+  <h4> Your Items</h4>
+  
+  <%global_items.each do |item|%>
+    <p><%=item.name%><%=item.price%></p>
+  <%end%>
+
+  
 
  
 </div>

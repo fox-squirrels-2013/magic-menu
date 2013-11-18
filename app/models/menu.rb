@@ -1,5 +1,5 @@
 class Menu < ActiveRecord::Base
   validates :name, presence: true
   belongs_to :user
-  has_many :items
+  has_many :items, :through => :menuitems
 end
