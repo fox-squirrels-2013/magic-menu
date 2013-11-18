@@ -20,8 +20,9 @@ get '/items' do
 end
 
 post '/items' do 
-  @item = Item.create(params[:item])
-  redirect '/items'
+  item = Item.create(params)
+  content_type :json
+  {item_add: erb(:_additem, :layout => false, :locals => {:item => item})}.to_json
 end
 
 get '/menus/:id' do 
@@ -37,8 +38,7 @@ post "/menu/:menu_id/item" do
   menu.items << item
   content_type :json
 
-  {item_html: erb(:_item, :layout =>false, :locals => {:item => item, :menu => menu}) }.to_json
-  # @item.to_json
+  {item_html: erb(:_item, :layout =>false, :locals => {:item => item, :menu => menu})}.to_json
 
 end
 

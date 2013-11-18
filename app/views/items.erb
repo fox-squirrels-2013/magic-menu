@@ -1,26 +1,28 @@
 <div class="container">
 <h1>Welcome to Awesome Menus</h1>
 <form id='item_form' action='/items' method='post'>
-<input type='text' name='item[name]' placeholder="item name">
-<input type= 'text' name= 'item[price]' placeholder='price'>
-<input type='submit' value='Add Item'>
+<input id='itemname' type='text' name='item[name]' placeholder="item name">
+<input id= 'itemprice' type= 'text' name= 'item[price]' placeholder='price'>
+<input id= 'additembtn' type='submit' value='Add Item'>
 </form>
 
 <br>
 
 <h4>Your Items:</h2>
 
-<table border="1">
+<table id="table" border="1">
 <tr>
 <td>Name</td>
 <td>Price</td>
 </tr>
 
 <% @items.each do |item| %>
-<tr>
+
+<%= erb(:_additem, :layout => false, :locals => {:item => item}) %>
+<!-- <tr>
 <td><%=item.name%></td>
 <td><%=item.price%></td> 
-</tr>
+</tr> -->
 <%end%>
 
 </table>
