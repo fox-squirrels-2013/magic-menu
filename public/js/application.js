@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  var duplicationMessage = "<div id='mate'><p>Maaaaate, you can't have the same item on a menu twice</p></div>"
+
   var menuLink = function(id, title){
     // console.log(id + " and " + title)
     return "<li><a href='/menu/" + id + "'>" + title + '</a></li>'
@@ -70,14 +72,16 @@ $(document).ready(function() {
       console.log(response)
       var specialSurprise = '<li><a href="/item/relationship" class="relationship-killer" data-menu-id="' + menuId + '" data-item-id="' + response.item.id + '">x</a> ' + response.item.title + ' - $' + response.item.cost
       $('#items_from_menu').append(specialSurprise)
+    }).fail(function(response){
+      console.log(duplicationMessage)
+      $('#add-relationship').append(duplicationMessage)
     })
   })
 
   $('body').on('click', '.relationship-killer', function(e){
     e.preventDefault()
     var relationshipData = {'menu_id': $(this).attr('data-menu-id')};
-    relationshipData['item_id'] = $(this).attr('data-item-id')
-    var that = $(this)
+    relationshipData.item_id = $(this).attr('data-item-id')
     console.log(relationshipData)
     // var forRealz = $(relationshipData).serialize()
     // console.log(forRealz)
@@ -90,5 +94,10 @@ $(document).ready(function() {
       $('.relationship-killer[data-item-id="' + response.item_id + '"]').parent().remove();
     })
   })
+
+  $('body').on('submit', function(){
+    $('#mate').remove()
+  })
+
 
 });

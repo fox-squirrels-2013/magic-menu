@@ -30,10 +30,9 @@ end
 
 put '/menu/:id' do
   p params
-  add_item = 2
-  id = 2
   @menu = Menu.find_by_id(params[:id])
-  @menu.items << Item.find_by_id(params[:add_item])
+  relationship = @menu.items << Item.find_by_id(params[:add_item])
+  # p relationship.errors
   @items_from_menu = @menu.items
   @items = Item.all
   erb :item_menu
@@ -64,9 +63,6 @@ put '/item' do
 end
 
 get '/item/relationship' do
-  p "YOU MADE IT"
-  # THIS IS WHERE YOU ARE UP TO
-  p params
   m = Menu.find_by_id(params[:menu_id])
   i = Item.find_by_id(params[:item_id])
   m.items.delete(i)
