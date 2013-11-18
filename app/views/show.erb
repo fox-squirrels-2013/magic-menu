@@ -1,0 +1,17 @@
+<div class="container">
+  <h1><%=@menu.name%> Menu</h1>
+  <ul class="list">
+  <% @menu.items.each do |item| %>
+ <%= erb(:_item, :layout =>false, :locals => {:item => item, :menu => @menu}) %>
+  <% end %>
+</ul>
+
+
+  <select data-menuid=<%=@menu.id%> id="item-select" name="items">
+    <option>Menu Items</option>
+    <% @items.each do |item| %>
+    <option value="<%=item.id%>"><%=item.name%></option>
+    <% end %>
+  </select>
+</div>
+
