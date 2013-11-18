@@ -1,0 +1,23 @@
+
+<!-- NAV 
+  <div class="nav">
+    <div class="title">
+      <h1 id="welcome">BLAH Menu
+      </h1>
+    </div>
+    <div class="nav">
+      <ul class="nav_list">
+        <li id="nav_item"><a href="/items">Add Items</a></li>
+        <li id="nav_item"><a href="/">Add Menus</a></li>
+      </ul>
+    </div>
+  </div>  
+ -->
+
+
+<p id="items">
+  <%Menuitems.where(menu_id: @menu.id).reverse.each do |i| %>
+    <a href="/item/<%=i.item_id%>"><%=Item.find_by_id(i.item_id).name%></a><br />
+        <%end%>
+</p>
+<p class="fading"></p>

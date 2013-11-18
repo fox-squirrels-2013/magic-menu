@@ -1,5 +1,7 @@
 heroku url: http://ls-magic-menu.herokuapp.com/
 
+R1 - Added Menu model, created homepage, added ability to add menu items and populate the homepage
+
 # Menu Magic
 
 1. [Learning Objectives](#learning-objectives)

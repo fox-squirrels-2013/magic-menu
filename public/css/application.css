@@ -1,5 +1,5 @@
 body {
-	text-align: center;
+	/*text-align: center;*/
 	font-family: 'Signika Negative', sans-serif;
 	font-weight: bold;
 	margin: 20px;
@@ -8,38 +8,67 @@ body {
 #welcome {
 	display: inline;
 	margin-bottom: 60px;
-	font-size: 45px;
+	font-size: 47px;
 	text-align: center;
 }
 
 .nav {
+    display: inline;
+    float: right;
+    margin: 0 1.7%;
+    padding: 0 2%;
+    margin-bottom: 0;
+}
+/*.nav {
 	font-size: 18px;
   padding: 0 2%;
-}
+}*/
 
 .title {
+    display: inline;
+    float: left;
+    margin: 0 auto;
+}
+
+/*.title {
 	display: inline-block;
 	text-align: right;
 	float: left; 
 	margin: 0 auto;
-}
+}*/
 
-/****NEV LIST************************************/
+/****NAV LIST************************************/
 
 .nav_list {
+    display: inline;
+    float: right;
+    list-style: none;
+}
+/*.nav_list {
 	text-align: right;
 	float: right; 
 	display: inline-block;
 	list-style: none;
-}
+}*/
 
 #nav_item {
-	display: inline-block;
+    display: inline;
 }
 
+/*#nav_item {
+	display: inline-block;
+}*/
+
 #nav_item a {
-	padding: 5px;
+	padding: 2px;
 }
+
+/****ITEM PAGE*************************************/
+
+#menu_type {
+  margin-right: 300px;
+}
+
 
 /****POST ITS*************************************/
 
@@ -53,7 +82,7 @@ body {
 	margin: auto; width:20%;
   text-align: left;
   margin-left: 30px;
-  padding-right: 26px;
+  padding-right: 13px;
   background-color: #F8F148;
   margin-right: 40px;
   margin-top: 30px;
@@ -66,8 +95,8 @@ body {
 /****MENU INPUT*********************************/
 
 #your_menus {
-	font-size: 20px;
-	margin-bottom: 5px;
+	font-size: 22px;
+	margin-bottom: 3px;
 }
 
 .menu_stuff {
@@ -78,14 +107,13 @@ body {
 	margin-left: 18px;
 }
 
-
 #menu_input {
   width: 260px;
   height: 30px;
   padding-left: 8px;
   font-size: 17px;
   /*border glow*/
-  border: 2px solid #dadada;
+  border: 2px solid #c4c4c4;
   border-radius: 7px;
   margin-top: 30px;
   margin-bottom: 16px;
