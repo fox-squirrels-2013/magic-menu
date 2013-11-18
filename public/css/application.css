@@ -1,10 +1,92 @@
-.container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+body {
+  font-family: 'Rambla', sans-serif;
 }
 
-th {
-  text-align: left;
+.container {
+  margin: 0 auto;
+  width: 600px;
+}
+
+header {
+  background: #999;
+  padding: 5px;
+  box-shadow: 2px 2px 2px #666;
+  margin-bottom: 20px;
+}
+
+header h1 a {
+  color: white;
+  text-shadow: -1px -1px 2px #374683;
+  font-size: 50px;
+}
+
+header a {
+  color: #5ec4dc;
+  text-shadow: 2px 2px 2px #666;
+}
+
+header ul {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+}
+
+header ul li {
+  display: inline;
+  padding: 2px;
+  font-size: 25px;
+}
+
+a {
+  text-decoration: none;
+  color: #1e6d74;
+  padding: 10px;
+}
+
+a:hover {
+  color: #ff7800;
+}
+
+li {
+  list-style: none;
+}
+
+input {
+  width: 200px;
+  display: block;
+  margin: 10px;
+}
+
+.error {
+  color: red;
+}
+
+.item_name, .item_price {
+  display: inline-block;
+  width: 50px;
+}
+
+.item_price {
+  margin-left: 20px;
+}
+
+#items_in_menu {
+  padding: 5px 0;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+tr:first-child {
+  font-size: 25px;
+}
+
+td {
+  padding: 5px 0;
+  width: 100px;
+}
+
+td.item_name {
+  font-size: 20px;
 }

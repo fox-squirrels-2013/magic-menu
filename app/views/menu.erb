@@ -1,0 +1,22 @@
+<header>
+  <h1><a href="/"><%= @menu_name %> Menu</a></h1>
+  <ul>
+    <li><a href="/items">Add Items</a></li>
+    <li><a href="/">Add Menus</a></li>
+  </ul>
+</header>
+<div class="container">
+
+  <h2>Items</h2>
+
+  <div id="items_in_menu">
+    <%= erb :_items_in_menu %>
+  </div>
+
+  <select id="update_menu_item_list" data-id="<%= @id %>" name="add_item">
+    <option>Menu Items</option>
+    <% @items.each do |item| %>
+      <option value="<%= item.id %>"><%= item.name %> - $<%= item.price %></option>
+    <% end %>
+  </select>
+</div>

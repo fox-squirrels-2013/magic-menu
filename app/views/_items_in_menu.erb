@@ -1,0 +1,6 @@
+<% if @items_at_menu %>
+  <% @items_at_menu.each do |item| %>
+    <a href="/item/<%= item.id %>/delete" data-delete="<%= item.id %>" class="delete">x</a> <span class="item_name"><%= item.name %></span> - <span class="item_price">$<%= item.price %></span>
+    <br>
+  <% end %>
+<% end %>
