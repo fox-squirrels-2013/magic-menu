@@ -1,0 +1,6 @@
+<%= "For #{Menu.find_by_id(items_menu.menu_id).name}, you can have #{Item.find_by_id(items_menu.item_id).name} for just $#{items_menu.price}!!!" %>
+
+<% ItemsMenu.find(:all, :conditions => { :menu_id => params[:id] }).each do |items_menu| %>
+  <div id="item_<%= Menu.find_by_id(items_menu.menu_id) %>">
+    <li><%= Item.find_by_id(items_menu.item_id).name %> for <%= Menu.find_by_id(items_menu.menu_id) %> for $<%= items_menu.price %></li>
+    <% end %>

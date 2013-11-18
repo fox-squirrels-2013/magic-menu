@@ -8,13 +8,14 @@
   <li>Menu name should be appended to the bottom of the list!</li>
 </ul>
 
-<form name="add_menu" action="/menus/new" method="post">
+<form id="add_menu" action="/menus/new" method="post">
   <input type="text" name="menu_name">
   <input type="submit" value="Add Menu">
 </form>
 
+<div class="menu_list">
 <h2>Your Menus:</h2>
   <% Menu.all.each do |menu| %>
-    <p><a href="/menus/<%= menu.id %>"><%= menu.name %></a></p>
+    <li><a href="/menus/<%= menu.id %>"><%= menu.name %></a></li>
   <% end %>
-<!-- some erb here that iterates over the menus collection and lists them with links! -->
+</div>

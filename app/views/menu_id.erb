@@ -5,10 +5,10 @@
 
 <h2>Items</h2>
 
-<form action="/menus/<%= params[:id] %>" method="post">
-  <select name="menu_items">
+<form id="add_item_and_price_to_menu" action="/menus/<%= params[:id] %>" method="post">
+  <select name="menu_item">
     <% Item.all.each do |item| %>
-      <option value="<%= item.name %>"><%= item.name %></option>
+    <option value="<%= item.name %>"><%= item.name %></option>
     <% end %>
   </select>
 
@@ -18,10 +18,10 @@
   <!-- How could you make it such that it would automatically submit the form (or no form, just dropdown), when something was selected? -->
 </form>
 
-<% p "Hello mother fucker...#{ItemsMenu.find_by_menu_id(params[:id])}" %>
-<% p "Hello dude...#{ItemsMenu.find(:all, :conditions => { :menu_id => params[:id] })}" %>
-
-<% ItemsMenu.find(:all, :conditions => { :menu_id => params[:id] }).each do |items_menu| %>
-  <p><%= "For #{Menu.find_by_id(items_menu.menu_id).name}, you can have #{Item.find_by_id(items_menu.item_id).name} for just $#{items_menu.price}!!!" %></p>
-<% end %>
+<div id="items_on_menu">
+  <!-- display all items belonging to this menu -->
+  <% @menu.items.each do |item| %>
+    <li class="item_name"><%= item.name %></li>
+  <% end %>
+</div>
 

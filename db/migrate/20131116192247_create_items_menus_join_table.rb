@@ -3,7 +3,7 @@ class CreateItemsMenusJoinTable < ActiveRecord::Migration
     create_table :items_menus do |t|
       t.belongs_to :menu
       t.belongs_to :item
-      t.decimal :price
+      t.integer :price
 
       t.timestamps
     end

@@ -1,0 +1,8 @@
+<h2>Items on Menu!</h2>
+  <% ItemsMenu.all.each do |items_menu| %>
+    <div id="item_<%=todo.id%>"><%=todo.task%>
+      <!-- <form method="POST" action="/todos/<%=todo.id%>/complete"> -->
+        <button id="<%=todo.id%>" class="submit_completed">Complete!</button>
+      <!-- </form> -->
+    </div>
+  <% end %>

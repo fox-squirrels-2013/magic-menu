@@ -8,13 +8,15 @@
   <li>Item name gets appended to the table as a new row. Price is added when adding to a specific menu (e.g. Sweet & Sour Chicken @ lunch for $7 and $10 for dinner.</li>
 </ul>
 
-<form name="add_item" action="/items" method="post">
+<form id="add_item" action="/items" method="post">
   <input type="text" name="item_name">
   <input type="submit" value="Add Item">
 </form>
 
+<div class="item_list">
 <h2>Your Items:</h2>
   <% Item.all.each do |item| %>
-    <p><%= item.name %></p>
+    <li><%= item.name %></li>
   <% end %>
+</div>
 <!-- Make table? or something with list of items and their prices. This will iterate through available items via erb. -->
