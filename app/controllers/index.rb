@@ -6,7 +6,7 @@ end
 
 get '/menus/new' do 
   @menus = Menu.all
-  erb :new 
+  erb :new
 end
 
 post '/menus' do 
@@ -31,19 +31,20 @@ get '/menus/:id' do
 end
 
 post "/menu/:menu_id/item" do 
-  @menu = Menu.find(params[:menu_id])
-  @item = Item.find(params[:item_id])
+  menu = Menu.find(params[:menu_id])
+  item = Item.find(params[:item_id])
 
-  @menu.items << @item
+  menu.items << item
   content_type :json
-  {name: @item.name}.to_json
+
+  {item_html: erb(:_item, :layout =>false, :locals => {:item => item, :menu => menu}) }.to_json
   # @item.to_json
+
 end
 
-post "/menu/:menu_id/item/:item_id/delete" do 
-  @item = Item.find(params[:item_id])
-  @item.destroy
-  redirect "/menus/#{params[:menu_id]}"
+delete "/menuitem" do 
+  Menu.find(params[:menu_id]).items.delete(Item.find(params[:item_id]))
+  200
 end
 
 

@@ -1,13 +1,11 @@
 <div class="container">
   <h1><%=@menu.name%> Menu</h1>
-  
+  <ul class="list">
   <% @menu.items.each do |item| %>
-  <div class="item-wrapper">
-    <a class="deletebtn" href="/menu/<%=@menu.id%>/item/<%=item.id%>/delete">x</a>
-    <h3 id="<%item.id%>"><%= item.name %></h3>
-  </div>
+ <%= erb(:_item, :layout =>false, :locals => {:item => item, :menu => @menu}) %>
   <% end %>
-  <div class="newitem"></div>
+</ul>
+
 
   <select data-menuid=<%=@menu.id%> id="item-select" name="items">
     <option>Menu Items</option>
@@ -16,3 +14,4 @@
     <% end %>
   </select>
 </div>
+

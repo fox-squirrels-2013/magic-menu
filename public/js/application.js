@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('#item-select').change(function() {
-    
+
     itemId = $("select option:selected").val()
     // grab menu item from data-attribute on select element
     menuId = $("#item-select").data().menuid
@@ -12,25 +12,25 @@ $(document).ready(function() {
       url: "/menu/"+menuId+"/item",
       type: "post",
       data: {"item_id": itemId}
-    }).success(function(itemData){
-      // $('.newitem').append("<h3>"+itemData.name+"</h3>")
-      var addedItem = $('.newitem').append("<div class='item-wrapper'></div>")
-      console.log(itemData)
-      addedItem.append('<a class="deletebtn" href="/menu/'+menuId+'/item/'+itemId+'/delete">x</a>')
-      addedItem.append('<h3>'+itemData.name+'</h3>')
+    }).success(function(data){
+      $('.list').append(data.item_html)
 
+      //on completion of ajax call append item and delete button to the menu
     })
   })
 
-  $('.deletebtn').on('click', function(e){
-
+  // this is delegation
+  $('.container').on('click', '.deletebtn', function(e){
     e.preventDefault()
-    console.log($(e.target).attr('href'))
+    var itemId = $(this).data("item-id")
+    var menuId = $(this).data("menu-id")
+    var clickedItem = $(this).parent()
     $.ajax({
-      url: ($(e.target).attr('href')),
-      type: "post"
+      url: "/menuitem",
+      type: "DELETE",
+      data: {"item_id": itemId, "menu_id":menuId}
     }).success(function(){
-      $(e.target).parent().remove()
+      $(clickedItem).fadeOut()
     })
   })
 
