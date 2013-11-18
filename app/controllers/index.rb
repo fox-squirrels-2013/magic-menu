@@ -18,6 +18,11 @@ end
 get '/menus/update/:id' do 
   @menu = Menu.find(params[:id])
   @items = Menu.find(params[:id]).items
+  p "|"*50
+  @items.each do |item|
+    p item
+  end
+  p "|"*50
   erb :update
 end
 
@@ -27,7 +32,7 @@ post '/menus/update/:id' do
   Menuitem.create(menu_id: @menu.id, item_id: @item.id)
   @menu.update_attributes(params[:menu])
   if request.xhr?
-    item = {name: @item.name, price: @item.price}
+    item = {menu_id: @menu.id, id: @item.id, name: @item.name, price: @item.price}
     content_type :json
     item.to_json
   else
@@ -59,17 +64,20 @@ end
 get '/menuitem/delete/:item_id' do 
   @item = Item.find(params[:item_id])
   @items = Menu.find(params[:id]).items
-  @menu = Menu.find(params[:id])
+  @menu = Menu.find(params[:menu][:id])
   erb :update
 end
 
 delete '/menuitem/delete/:item_id' do
+  p "********************"
+  p params
+  p "********************"
   @menu = Menu.find(params[:menu][:id])
   @items = @menu.items
   @item = Item.find(params[:item_id])
   @item.destroy
   if request.xhr?
-    item_to_delete = {menu_id: @menu.id, item_id: @item.id, name: @item.name, price: @item.price}
+    item_to_delete = {id: @menu.id, item_id: @item.id, name: @item.name, price: @item.price}
     content_type :json
     item_to_delete.to_json
   else

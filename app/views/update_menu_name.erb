@@ -1,10 +1,9 @@
 <div class="partial-container" id="push-to-bottom">
 
-  <form action="/" method ="post">
+  <form action="/menus/update/<%= @menu.id %>" method ="post">
 
     <input type="text" id="menuname" name="menu[name]" placeholder="menu name" ><br>
     <input type="submit" id="update_menu_button" class="button" value="update menu name"><br>
-    <input type="submit" id="delete_menu_button" class="button" value="delete menu">
   </form>
 
 </div>

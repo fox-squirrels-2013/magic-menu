@@ -9,7 +9,7 @@ $(document).ready(function(){
   }
 
   $('#add_menu_button').on('click', function(e){
-    console.log('wtf')
+      console.log('wtf')
     e.preventDefault()
     var menuName = $('#menuname').val()
     $.ajax({
@@ -17,33 +17,34 @@ $(document).ready(function(){
       url: "/",
       data: {name: menuName},
       success: function(data) {
-        console.log(data.name)
+          console.log(data.name)
         $('#menu_list').append(newMenuHTML(data.id, data.name))
         $('#menuname').val('')
       }
     })
   })
 
-  var newItemHTML = function(item_id, item_name, item_price){
-    return '<form action="/menuitem/delete/' + item_id + '" method="post"><input type="hidden" name="_method" value="delete"><input type="submit" class="button-d" value="X">' + item_name + ' - ' + item_price + '</form>'
+  
+// ADD ITEMS ////////////////////////////////////
+  
+  var newItemHTML = function(menu_id, item_id, item_name, item_price){
+    return '<form class="new-item" action="/menuitem/delete/' + item_id + '" method="post"><input type="hidden" name="menu[id]" value="' + menu_id + '"><input type="hidden" name="_method" value="delete"><input type="submit" class="button-d" value="X">' + item_name + ' - ' + item_price + '</form>'
   }
 
-
-// ADD ITEMS ////////////////////////////////////
-
   $('#add_item_button').on('click', function(e){
-    console.log('wtfitem')
+      console.log('wtfitem')
     e.preventDefault()
     var formData = $('#item-form-id').serialize()
-    console.log(formData)
-    var route = $(this).attr('action')
+      console.log(formData)
+    var route = $('#item-form-id').attr('action')
+      console.log("add route",route)
     $.ajax({
       type: "post",
       url: route,
       data: formData,
       success: function(data) {
-        console.log(data.name, data.price)
-        $('#items_list').append(newItemHTML(data.id, data.name, data.price))
+          console.log(data.id, data.name, data.price)
+        $('#items_list').append(newItemHTML(data.menu_id, data.id, data.name, data.price))
         $('#menuitem').val('')
         $('#itemprice').val('')
       }
@@ -54,11 +55,11 @@ $(document).ready(function(){
 // DELETE MENUS //////////////////////////////////
 
   $('#menu_list').on('click', '.button-d', function(e){
-    console.log($(this).parent())
+      console.log($(this).parent())
     e.preventDefault()
-    $(this).parent().remove()
     var route = $(this).parent().attr('action')
-    console.log("route: ", route)
+      console.log("route: ", route)
+    $(this).parent().remove()
     $.ajax({
       type: "delete",
       url: route,
@@ -69,21 +70,22 @@ $(document).ready(function(){
   })
 
 
-///////////////// DELETE ITEMS //////////////////////////////////
+// DELETE ITEMS //////////////////////////////////
 
   $('#items_list').on('click', '.button-d', function(e){
-    console.log($(this).parent())
+      console.log("this parent:",$(this).parent())
     e.preventDefault()
-    var formData = $(this).parent().serialize()
+    var newItemFormData = $('.new-item').serialize()
     var route = $(this).parent().attr('action')
-    console.log("route: ", route)
+    $(this).parent().remove()
+      console.log("new item form data:",newItemFormData)
+    newDRoute = '/menuitem/delete/' + newItemFormData.id + ''
     $.ajax({
       type: "delete",
       url: route,
-      data: formData,
+      data: newItemFormData,
       success: function(data) {
         console.log("ITEM data:", data)
-        $(this).parent().remove()
       }
     })
   })
