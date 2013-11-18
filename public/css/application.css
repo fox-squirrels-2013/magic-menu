@@ -1,3 +1,26 @@
+header {
+  margin-left: auto;
+  margin-right: auto;
+  display:inline-block;
+  width: 90%;
+}
+
+body {
+  display: block;
+}
+
+h1 {
+  font-family: Verdana, Geneva, sans-serif;
+  float: left;
+  width: 50%;
+}
+
+nav {
+  text-align: right;
+  float: right;
+  width: 50%;
+}
+
 .container {
   margin: 20px auto;
   width: 600px;
