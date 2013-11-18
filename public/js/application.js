@@ -47,8 +47,29 @@ $(document).ready(function() {
     // ($(this).find('span').remove())
     });
 
-  $('.new-item').on('submit', function(e){
-    e.preventDefault();
+  $('#new-item').on('submit', function(e){
+    e.preventDefault()
+    //Want the form data serialized so that it is key:value pairs
+    var form_data = $(this).serialize();
+    $.ajax({
+      url: '/items',
+      type: 'POST',
+      data: form_data
+    }).done(function(server_data){
+      //Just get the page to refresh
+      $('.added-item').append("<div class='"+ server_data.new_item + "</p>")
 
-    console.log('here')})
+      $('.added-item').append("<p>" + server_data.new_price + "</p>")
+      // $('.added-item').append("<p>" + server_data.new_price "</p>")
+
+
+      // console.log(server_data)
+      //appcelerator titanium--- check it out
+    });
+    });
+
+  $('.new-menu').on('click', function(e){
+    e.preventDefault()
+    $
+      })
 });

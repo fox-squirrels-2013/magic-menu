@@ -41,8 +41,12 @@ end
 # add a new menu
 post '/items' do
 	# expecting params[:menu] as new menu fields
-	Item.create(params[:item])
-
+	puts params
+	@item = Item.create(params[:item])
+	p @item.name
+	p @item.price
+	content_type :json
+	{new_item: @item.name, new_price: @item.price}.to_json
 end
 
 # added this route to delete items
