@@ -18,11 +18,6 @@ end
 get '/menus/update/:id' do 
   @menu = Menu.find(params[:id])
   @items = Menu.find(params[:id]).items
-  p "|"*50
-  @items.each do |item|
-    p item
-  end
-  p "|"*50
   erb :update
 end
 
@@ -69,9 +64,6 @@ get '/menuitem/delete/:item_id' do
 end
 
 delete '/menuitem/delete/:item_id' do
-  p "********************"
-  p params
-  p "********************"
   @menu = Menu.find(params[:menu][:id])
   @items = @menu.items
   @item = Item.find(params[:item_id])
@@ -85,4 +77,4 @@ delete '/menuitem/delete/:item_id' do
   end
 end
 
-# ///////////////////////////////////////////
+# /////////////////////////////////////////////////
