@@ -6,8 +6,6 @@ by ty
 
 * [App live on Heroku](http://magical-menu-tour.herokuapp.com/menus) (updated throughout project)
 
-## Releases
-
 ### Release 1 : Menus
 * Create a migration and model for Menus.
 * Add validations.
