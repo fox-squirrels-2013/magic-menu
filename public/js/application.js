@@ -56,23 +56,25 @@ $(document).ready(function() {
     })
   })
 
-  var createdMenuListener = function(){ $("#menu_creator").on("submit", function(e){
-      e.preventDefault()
-      var formData = $("#menu_creator").serialize()
-      $("#menu_creator_1").val("")
-      var menuName = formData.slice(5).split("+").join(" ")
-      $.ajax({
-        url: "/",
-        type: "POST",
-        data: {'menu_name': menuName}
-      }).done(function(serverData){
-        $("#whole_index").html(serverData)
-        createdMenuListener() // same self-referential matter as previous listener -- will clean up if can
-      })
+  $("#menu_creator").on("submit", function(e){
+    e.preventDefault()
+    var formData = $("#menu_creator").serialize()
+    $("#menu_creator_1").val("")
+    var menuName = formData.slice(5).split("+").join(" ")
+    $.ajax({
+      url: "/",
+      type: "POST",
+      data: {'menu_name': menuName}
+    }).done(function(serverData){
+      console.log(serverData)
+      if (serverData[0] != parseInt(serverData[0], 10)) {
+        $("#menus_form_errors").html(serverData)
+      } else {
+        $("#menu_list").append("<li><a href='/menus/" + serverData + "'>" + menuName + "</a></li>")
+      }
     })
-  }
+  })
 
-  createdMenuListener()
 })
 
 // after formName, add each input's name (value of id attribute) 

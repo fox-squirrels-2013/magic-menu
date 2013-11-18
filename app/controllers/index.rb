@@ -12,13 +12,15 @@ get '/menus/new' do
 end
 
 post '/' do
-  puts params
   new_menu = Menu.create(:name => params["menu_name"])
   unless new_menu.valid?
     @error_messages = new_menu.errors.full_messages
+  else
+    id_to_send_back = new_menu.id.to_json
   end
-  @menus = Menu.all
-  erb :index, layout: false
+  # @menus = Menu.all
+  # erb :index, layout: false
+  @error_messages ? (erb :menus_form_errors, layout: false) : id_to_send_back
 end
 
 get '/menus/:id' do
