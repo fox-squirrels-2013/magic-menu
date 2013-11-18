@@ -15,13 +15,13 @@
   <label>Price: </label>
   <input type="text" name="price">
   <input type="submit" value="Add Menu Item!">
-  <!-- How could you make it such that it would automatically submit the form (or no form, just dropdown), when something was selected? -->
 </form>
 
 <div id="items_on_menu">
-  <!-- display all items belonging to this menu -->
   <% @menu.items.each do |item| %>
-    <li class="item_name"><%= item.name %></li>
+    <li class="item_name"><%= item.name %> for $
+      <button data-item-id=<%=item.id%> data-menu-id=<%=@menu.id%> class="delete_buttons">Delete!</button>
+  </li>
   <% end %>
 </div>
 

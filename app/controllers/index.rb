@@ -24,18 +24,12 @@ get '/menus/:id' do
 end
 
 post '/menus/:id' do
-  p "*"*80
-  p "Inside menus/:id post route."
-
   @item = Item.find_by_name(params[:menu_item])
   @menu = Menu.find(params[:id])
   @items_menu = ItemsMenu.create(menu_id: @menu.id, item_id: @item.id, price: params[:price])
-  p @items_menu
-  # Why does the below not work?
-  # p @ItemsMenu.all
   if request.xhr?
     content_type :json
-    {:menu_name => @menu.name, :item_name => @item.name, :menu_price => @items_menu.price, :items_menu_id => @items_menu.id}.to_json
+    {:menu_name => @menu.name, :item_name => @item.name, :menu_price => @items_menu.price, :items_menu_id => @items_menu.id, :menu_id => @menu.id, :item_id => @item.id}.to_json
   end
 end
 
@@ -51,4 +45,11 @@ post '/items' do
   else
     erb :items
   end
+end
+
+delete '/items_menus' do
+  @items_menu = ItemsMenu.find_by_menu_id_and_item_id(params[:menu_id], params[:item_id])
+  @items_menu.delete
+  p params
+  redirect "/menus/#{params[:menu_id]}"
 end

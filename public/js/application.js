@@ -7,11 +7,11 @@ $(document).ready(function() {
       type: "post",
       data: $(this).serialize()
     }).done(function(response){
-      console.log("Inside ajax done.")
-      console.log(response)
-      $('.menu_list').append('<div id="menu_'+response.menu_id+'"><li><a href="/menus/'+response.menu_id+'">'+response.menu_name+'</a></li></div>')
-    })
-  })
+      console.log("Inside ajax done.");
+      console.log(response);
+      $('.menu_list').append('<div id="menu_'+response.menu_id+'"><li><a href="/menus/'+response.menu_id+'">'+response.menu_name+'</a></li></div>');
+    });
+  });
 
   $('#add_item_and_price_to_menu').submit(function(e){
     e.preventDefault();
@@ -21,12 +21,34 @@ $(document).ready(function() {
       type: "post",
       data: $(this).serialize()
     }).done(function(response){
-      // console.log("Inside ajax done.")
-      console.log(response)
-      $('#items_on_menu').append("<li class='item_name'>"+response.item_name+"</li>")
-      // $('#items_on_menu').append('<div id="item_'+response.items_menu_id+'"><li>'+response.item_name+' for '+response.menu_name+' for $'+response.menu_price+'!</li></div>')
-    })
-  })
+      console.log(response);
+      $('#items_on_menu').append("<li class='item_name'>"+response.item_name+" for $ <button data-item-id='" + response.item_id + "'data-menu-id="+ response.menu_id +" class='delete_buttons'>Delete!</button></li>");
+    });
+  });
+
+// delegation!
+  $('body').on('click',".delete_buttons",function(e){
+    e.preventDefault();
+    var menuItemData = {"menu_id": $(this).data("menu-id"), "item_id":$(this).data("item-id")};
+    var button = this;
+    console.log("after prevent default.");
+    $.ajax({
+      url: '/items_menus',
+      type: 'delete',
+      data: menuItemData
+    }).done(function(response){
+      console.log("Deleted!!!!!");
+      $(button).closest(".item_name").remove();
+    });
+  });
+
+});
+
+
+
+
+
+
 
   // $('#add_todo').submit(function(e){
   //   e.preventDefault();
@@ -44,4 +66,4 @@ $(document).ready(function() {
   //   // return false
   // })
 
-});
+
