@@ -1,0 +1,12 @@
+<form id='items' action='/items' method='post'>
+  <input id='item_name' type='text' name='item[name]' placeholder='name'>
+  <input id='item_price' type='text' name='item[price]' placeholder='price'>
+  <input type='submit' value='Add Item'>
+</form>
+
+<ul id='all_items'>
+<% @items.each do |item| %>
+  <li><%= item.name + ' '%><%= item.price %></li>
+<%end%>
+</ul>
+
