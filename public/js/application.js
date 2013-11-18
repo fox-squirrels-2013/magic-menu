@@ -51,6 +51,22 @@ $(document).ready(function() {
       // $('#table').append()
     })
   })
-  
-  
+  //use AJAX to implement the "Add Menu" button on the Menus View
+  $('#addmenu').on('click', function(e){
+    e.preventDefault()
+    var menuName = $('#menuname').val()
+
+    $.ajax({
+      url: "/menus",
+      type: "POST",
+      data: {"name": menuName}
+    }).success(function(data){
+   $('#menulist').append(data.menu_add)
+    })
+  }) 
+
 });
+
+
+
+

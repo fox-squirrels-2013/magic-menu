@@ -9,9 +9,10 @@ get '/menus/new' do
   erb :new
 end
 
-post '/menus' do 
-  Menu.create(params[:menu])
-  redirect '/menus/new'
+post '/menus' do
+  menu = Menu.create(params)
+  content_type :json
+  {menu_add: erb(:_addmenu, :layout => false, :locals => {:menu => menu})}.to_json
 end
 
 get '/items' do 

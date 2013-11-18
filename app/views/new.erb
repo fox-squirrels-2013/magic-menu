@@ -4,17 +4,18 @@
 <a href="/items" id="add_items">Add Items</a>
 <h1> Welcome to Awesome Menus</h1> 
 <form name="menu" id='menu_form' action='/menus' method='post'>
-<input type='text' name='menu[name]' placeholder="menu name">
-<input type='submit' value='Add Menu'>
+<input id="menuname" type='text' name='menu[name]' placeholder="menu name">
+<input id="addmenu" type='submit' value='Add Menu'>
 
 </form>
 
 <h2>Your Menus:</h2>
-<ul>
+<ul id="menulist">
 <% @menus.each do |menu| %>
-<li><a href="/menus/<%=menu.id%>"> <%= menu.name %> </a></li>
+
+<%= erb(:_addmenu, :layout => false, :locals => {:menu => menu}) %>
+<!-- <li><a href="/menus/<%=menu.id%>"> <%= menu.name %> </a></li> -->
 <% end %>
 </ul>
-
 
 </div>
