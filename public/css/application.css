@@ -1,10 +1,94 @@
-.container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+header {
+	background-color: green;
+	padding: 10px 0px;
+	color: #fff;
 }
 
-th {
-  text-align: left;
+header h1 {
+	display: inline;
+	margin-left: 10px;
+}
+
+header p, header li {
+	display: inline;
+}
+
+header ul {
+	float: right;
+}
+
+header a {
+	color: white;
+	text-decoration: none;
+	margin-right: 10px;
+}
+
+header a:hover {
+	text-decoration: underline;
+}
+
+#alert_div {
+	margin: 0px;
+	padding: 0px;
+	height: 50px;
+}
+
+#alerts {
+	margin: 0px;
+	padding-top: 30px;
+	text-align: center;
+	color: green;
+}
+
+#alerts span{
+	color: red;
+}
+
+.container {
+	margin: 20px auto;
+	width: 600px;
+	padding: 0px 20px 20px 20px;
+}
+
+.container form {
+	text-align: center;
+}
+
+.container h1, h2 {
+	text-align: center;
+}
+
+#select_form {	
+	text-align: center;
+	margin-top: 30px;
+}
+
+table {
+	margin: auto;
+	border: 1px solid black;
+	text-align: left;
+}
+
+table th {
+	background-color: #ccc;
+	border-right: 1px solid black;
+	padding: 2px 8px;
+}
+
+
+#name_header {
+	width: 250px;
+}
+
+table td {
+	border-right: 1px solid black;
+	padding: 2px 8px;
+}
+
+tr:hover {
+	background-color: #eee;
+}
+
+#delete_notice {
+	text-align: center;
 }
