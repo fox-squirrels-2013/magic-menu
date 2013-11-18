@@ -19,12 +19,31 @@ end
 post '/menus/new' do
 
   
-  @menu = Menu.create(params[:menu])
+  @menu = Menu.new(params[:menu])
+  if @menu.save
+    @messages = "Awesome"
+  else
+     @error_messages = @menu.errors.full_messages
+  end   
+
+  { menu: @menu, error_messages: @error_messages, messages: @messages }.to_json 
 
   
-  @menu.to_json
+end
 
-  raise_errors(@menu)
+post '/items/new' do
+
+  
+  
+  @item = Item.new(params[:item])
+  
+  if @item.save
+    @messages = "Awesome"
+  else
+     @error_messages = @item.errors.full_messages
+  end   
+
+  { item: @item, error_messages: @error_messages, messages: @messages }.to_json
 end
 
 get '/menus/:id' do
@@ -63,14 +82,7 @@ get '/items/new' do
   erb :"items/new"
 end
 
-post '/items/new' do
 
-  
-  
-  @item = Item.create(params[:item])
-  
-  @item.to_json
-end
 
 post '/menus/:id/items' do
     menu = Menu.find(params[:id])

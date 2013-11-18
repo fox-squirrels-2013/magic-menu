@@ -23,8 +23,13 @@ body {
     min-width:100%;
     position: relative;
 }
+
 h2 {
     color: #fff;
     font-weight: normal;
     margin-top: 50px;
+}
+
+h1.error {
+  color: red;
 }

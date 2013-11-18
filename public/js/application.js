@@ -33,24 +33,68 @@ $( document ).ready(function() {
           type: this.method,              
           url: this.action,
           data:$(this).serialize()              
-        }).done(function(itemData) {
+        }).done(function(data) {
+          $('#menu_input').val('');          
+// "{"menu":{"menu":{"id":null,"name":""}},"error_messages":["Name can't be blank"],"messages":null}"            
+          dataJson  = JSON.parse(data);
 
-          itemJson  = JSON.parse(itemData);
+          if (dataJson.error_messages) {
 
-          list = "<li data-id=" + itemJson.menu.id + "><a href='/menus/"+ itemJson.menu.id +"'>" + itemJson.menu.name +"</a><br /><a href='#' class='delete-menu'>Delete</a></li>"
+            $('.messages').html("<h1 class='error'> You did not create a menu:" + dataJson.error_messages + " </h1>").show()
+          }
+
+          else {
+          list = "<li data-id=" + dataJson.menu.menu.id + "><a href='/menus/"+ dataJson.menu.menu.id +"'>" + dataJson.menu.menu.name +"</a><br /><a href='#' class='delete-menu'>Delete</a></li>"
           
           $('#menu_items_list').append(list)
 
-          $('.messages').html("<h1> You created the followin menu:" + itemJson.menu.name + " </h1>").show().delay(4000).fadeOut()
+          $('.messages').html("<h1> You created the followin menu:" + dataJson.menu.menu.name + " </h1>").show().delay(4000).fadeOut()
+
+        }
           
           }).fail(function(){
           console.log('fail');
         });
     });
 
+
+  // add item
+
+    $('#form_items').on("submit", function(event){
+        event.preventDefault();
+        $.ajax({
+          type: this.method,              
+          url: this.action,
+          data:$(this).serialize()              
+        }).done(function(data) {
+
+
+
+          dataJson  = JSON.parse(data);
+
+          if (dataJson.error_messages) {
+
+            $('.messages').html("<h1 class='error'> You did not create a item: " + dataJson.error_messages + " </h1>").show()
+          }
+
+          else {
+
+          list = "<tr data-id=" + dataJson.item.item.id + "><td ><a href='#' class='delete-item'>[X]   </a></td><td>" + dataJson.item.item.name + "</td><td>" + dataJson.item.item.price + "</td>/tr>"
+          
+          $('#all_items_list').append(list)
+
+          $('.messages').html("<h3> You created the followin item:" + dataJson.item.item.name + " </h3>").show().delay(4000).fadeOut()
+
+        }
+          
+          }).fail(function(){
+          console.log('fail');
+        });
+    }); 
+
    // delete menu
 
-   $('.delete-menu').on('click', function(e){
+   $('body').on('click', '.delete-menu', function(e){
 
     e.preventDefault();
     itemId =  $(this).closest('li').data("id")
@@ -69,30 +113,11 @@ $( document ).ready(function() {
 
     // item
 
-    $('#form_items').on("submit", function(event){
-        event.preventDefault();
-        $.ajax({
-          type: this.method,              
-          url: this.action,
-          data:$(this).serialize()              
-        }).done(function(itemsData) {
-
-          itemsJson  = JSON.parse(itemsData);
-
-          list = "<tr data-id=" + itemsJson.item.id + "><td ><a href='#' class='delete-item'>[X]   </a></td><td>" + itemsJson.item.name + "</td><td>" + itemsJson.item.price + "</td>/tr>"
-          
-          $('#all_items_list').append(list)
-
-          $('.messages').html("<h3> You created the followin item:" + itemsJson.item.name + " </h3>").show().delay(4000).fadeOut()
-          
-          }).fail(function(){
-          console.log('fail');
-        });
-    });
+    
 
    // delete
 
-   $( "#selectionField" ).on('change',function() {
+   $( "body" ).on('change', "#selectionField",function() {
       console.log('selected something')
          
          menuId = $('#menu-name').data('id')
