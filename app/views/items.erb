@@ -6,10 +6,10 @@
 
   <em>Create an item</em> 
 
-  <form action="/items" method="post">
-		<input type="text" class="add_item" name="item[name]" placeholder="Item Name">
-		<input type="text" class="add_item" name="item[price]" placeholder="Item Price">
-		<input type="submit" class="add" value="Add Item">
+  <form action="/items" method="post" id="submit-item">
+		<input type="text"  name="item[name]" placeholder="Item Name" id="item-name">
+		<input type="text"  name="item[price]" placeholder="Item Price" id="item-price">
+		<input type="submit" value="Add Item">
 	</form>
 
  
@@ -20,9 +20,12 @@
 	<div class="list_items">
   	<% @items.each do |item| %>
   		<div class="item">
-  			<a href="/items/<%= item.id %>"><%= item.name %></a>
+  			<!-- <a href="/items/<%= item.id %>"><%= item.name %></a> -->
+  			<p> <%= item.name %> - $<%= item.price %></p>
   		</div>
   	<% end %>
   </div>
-
+  <div class="stickitemshere">
+	</div>
 </div>
+

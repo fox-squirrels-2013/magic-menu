@@ -5,11 +5,11 @@
 <div id="menu-id" data-menu="<%=@menu.id%>"></div>
 <div class="items">Items<br><br>
 	<% @menu.items.each do |item| %>
-		<div class="menu_items">
+		<div class="menu_item">
 			<span class="delete-button">
-				<a href="#">[x]</a>
+				<a href="#" data-id = "<%=item.id%>">[x]</a>
 			</span>
-  		<span class= "item <%= item.id %>">
+  		<span class= "item_<%= item.id %>">
   			<%= item.name %> - <%= item.price %>
   		</span>
   	</div>

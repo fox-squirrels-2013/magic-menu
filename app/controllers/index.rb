@@ -51,21 +51,27 @@ end
 #########create items################
 post '/items' do
 	p params
-	# <input type="text" name="item[name]" value="">
-	# <input type="text" name="item[price]" value="">
-	Item.create(params[:item])
-	redirect '/items'
+	@item = Item.create(params[:item])
+	content_type :json
+	{item: @item.id, name: @item.name, price: @item.price}.to_json
+	# redirect '/items'
 end
 
 
 #########delete menus and items###############
 delete '/items' do 
-	@item = Item.find(params[:id]).delete
+	@item = Item.find(params[:id]).destroy
 end
 
-delete 'menus/:id' do 
-	@menu = Menu.find(params[:id])
-	dinner.items.delete(Item.find('#{params[:id]}'))
+delete '/menus/:id' do 
+	puts "*"*80
+	p params
+	puts "*"*80
+	@menu = Menu.find(params[:menu][:id])
+	@item = Item.find(params[:item][:id])
+	@menu.items.destroy(@item.id)
+	content_type :json
+	{item: @item.id}.to_json
 	#expecting a param [:item_id] to delete
 	# @menu.items.where()
 	# @item = Item.find(params[:id])
