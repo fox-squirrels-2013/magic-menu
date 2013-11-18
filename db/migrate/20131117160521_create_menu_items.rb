@@ -1,8 +1,8 @@
-class CreateMenuItems < ActiveRecord::Migration
+class CreateItemsMenus < ActiveRecord::Migration
   def change
-    create_table :menu_items do |t|
-      t.belongs_to :menu
+    create_table :items_menus do |t|
       t.belongs_to :item
+      t.belongs_to :menu
     end
-	end
+  end
 end
