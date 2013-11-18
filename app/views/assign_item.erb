@@ -1,0 +1,29 @@
+<a href="/menu">Back to menus</a>
+<h1 id="assign-head" data-menu-id="<%= params[:id] %>"> <%= Menu.find(params[:id]).name %> Menu</h1>
+
+<div class="center">
+	<h2>Items</h2>
+	<ul id="menu_items_display">
+
+		<% if @items.any? %>
+			<%	@items.each_with_index do |item, index| %>
+			<li>
+			  <%= item.name %> - $<%= item.price %> 
+			  	<a href="" data-selection-id="<%= @selections[index].id %>">Delete</a>
+			</li>
+			<% end %>
+		<% end %>	
+
+	</ul>
+
+	<form type="POST" action="menu/:id/assign">
+		<select id="item_select">
+			<option>Add Menu Items:</option>
+
+			<% Item.all.each do |item| %>
+			<option data-item-id="<%= item.id %>"><%= item.name %> - $<%= item.price %></option>
+			<% end %>
+
+		</select>
+	</form>
+</div>
