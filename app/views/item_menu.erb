@@ -1,0 +1,30 @@
+<div class="container">
+  <div>
+    <% if @menu%>
+        <h2><%=  "#{@menu.title.capitalize} Menu"%></h2>
+      <%end %>
+  </div>
+  <div>
+    <h3>Items</h3>
+    <ul id="items_from_menu">
+    <% if @items_from_menu%>
+        <%  @items_from_menu.each do |i|%></h2>
+          <li><a href="/item/relationship" class="relationship-killer" data-menu-id="<%= @menu.id %>" data-item-id="<%= i.id %>">x</a> <%= "#{i.title} - $#{i.cost}" %>
+
+        <%end %>
+      <%end %>
+    </ul>
+
+      <form id="add-relationship" method="post" action="/menu/<%= @menu.id %>">
+        <input type="hidden" name="_method" value="put">
+        <input id="menu_id" type="hidden" name="menu_id" value="<%= @menu.id %>">
+        <select name="add_item" required>
+          <option value=''>Menu Items</option>
+          <% @items.each do |item| %>
+            <option value="<%= item.id %>"><%= item.title %> - $<%= item.cost %></option>
+          <% end %>
+        </select>
+        <input type="submit" value="Add to menu!">
+      </form>
+  </div>
+</div>

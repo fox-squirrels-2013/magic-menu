@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="add_form">
+    <form  id="item_add" accept-charset="UTF-8" action="/item" method="post">
+      <input name="title" placeholder="item title" type='text' required>
+      <input name="cost" placeholder="item cost" type='text' required>
+      <input class="btn" type="submit" value="Add item">
+    </form>
+  </div>
+  <div class="display_table">
+    <h3>Your Items:
+    </h3>
+    <ul class="item_list">
+      <% if @item%>
+        <% @item.each do |i|%>
+        <%= "<li>#{i.title}: $#{i.cost}</a></li>"%>
+        <%end %>
+      <%end %>
+    </ul>
+  </div>
+</div>
