@@ -1,3 +1,11 @@
+#what it does
+
+You can add menus, and items, you can add items from a list into a specific menu. You can delete menu items from a specific menu, while leaving them a part of the total item list.
+
+You can link from any page to the items or menus pages.
+
+You can have so much fun!
+
 # Menu Magic
 
 1. [Learning Objectives](#learning-objectives)

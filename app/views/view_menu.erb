@@ -1,0 +1,30 @@
+
+<h3 class="menu_title"><%= @menu.name %></h3>
+<br>
+
+<div id="menu-id" data-menu="<%=@menu.id%>"></div>
+<div class="items">Items<br><br>
+	<% @menu.items.each do |item| %>
+		<div class="menu_item">
+			<span class="delete-button">
+				<a href="#" data-id = "<%=item.id%>">[x]</a>
+			</span>
+  		<span class= "item_<%= item.id %>">
+  			<%= item.name %> - <%= item.price %>
+  		</span>
+  	</div>
+  <% end %>
+</div>
+
+<div class="stickithere">
+</div>
+
+<h4>Select an item to add to the menu</h4>
+
+<select title="Menu Items" name="Menu_Items" class="items">
+	<% @items.each do |item| %>
+  	<option value="<%= item.id %>" id="options"> <%= item.name %></option>
+  <% end %>
+</select>
+
+
