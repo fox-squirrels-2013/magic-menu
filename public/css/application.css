@@ -1,10 +1,85 @@
-.container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+html {
+  color: #909;
+  font-family: 'Marvel', Arial, sans-serif;
+  font-weight: 400; 
 }
 
-th {
-  text-align: left;
+div {
+  border-radius: .5em;
 }
+
+body {
+  background-color: #fcf;
+}
+
+#page-container {
+  position: relative;
+  width: 90%;
+  height: 95px;
+}
+
+.container {
+  position: absolute;
+  top: 1em;
+  left: 3em;
+  background-color: #E0A3C2;
+}
+
+.partial-container {
+  padding: .7em;
+  background-color: pink;
+}
+
+#bullshit {
+  padding: .7em;
+  background-color: pink;
+}
+
+#push-to-bottom {
+  position: relative;
+  float: right;
+  top: 5em;
+}
+
+h1, h2, h3, p {
+  color: #90c;
+  line-height: 40%;
+}
+
+a {
+  text-decoration: none;
+  color: #96c;
+}
+
+a:hover {
+  color: #99f;
+}
+
+.button {
+  color: #909;
+  background-color: #ccf;
+  border: double;
+  border-color: #96f;
+  border-radius: 1em;
+}
+
+.button-d {
+  color: #909;
+  background-color: #ccf;
+  border-radius: 1em;
+  font-size: .3em;
+}
+
+input {
+  color: #909;
+  border-radius: .3em;
+  border: thin;
+}
+
+input:focus {
+  outline-style: none;
+}
+/*
+input[type="submit"] {
+  background-color: #ccf;
+}*/
