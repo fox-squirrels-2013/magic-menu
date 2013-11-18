@@ -1,0 +1,6 @@
+<h2>Your Menus:</h2>
+<ul>
+<% Menu.all.each do |menu| %>
+<li><a href="/menus/<%= menu.id %>"><%= menu.name %></a></li>
+<% end %>
+</ul>

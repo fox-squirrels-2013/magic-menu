@@ -1,0 +1,6 @@
+<h2>Items:</h2>
+<ul>
+<% ItemMenu.where(menu_id: params[:menu_id]).each do |item| %>
+<li><a href="#" itemid="<%= item.item_id %>" menuid="<%= item.menu_id %>">x</a> <%= "#{Item.find(item.item_id).name} - $#{Item.find(item.item_id).price}" %></li>
+<% end %>
+</ul>

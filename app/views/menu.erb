@@ -1,0 +1,4 @@
+<input class="center" type="hidden" id="menu_id" value="<%= params[:menu_id] %>">
+<h1 class="center"><%= Menu.find(params[:menu_id]).name %></h1>
+<div id="menu_items_list" class="center" ><%= erb :_menu_items_list, :layout => false %></div>
+<div id="menu_items_dropdown" class="center" ><%= erb :_menu_items_dropdown, :layout => false %></div>
