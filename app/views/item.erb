@@ -1,0 +1,7 @@
+<h1 id="itemDesc">All dat info on <%=@item.name%></h1>
+
+<p id="whatMenus">
+  <%@items_menus.each do |m|%>
+  	<%="#{@item.name} belongs to: #{Menu.find_by_id(m.menu_id).name}"%> <br />
+  <%end%>
+</p>
