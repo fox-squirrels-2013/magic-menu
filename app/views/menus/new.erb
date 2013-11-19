@@ -8,7 +8,10 @@
      <div class="large-4 columns">
         <label>Your Menu name</label>
         <input required id="menu_input" type="text" name="menu[name]" placeholder="Here comes your menu" >
-        <input type="submit" value="Submit your Menu already"> 
+        <input type="hidden" name="menu[a]" value="1">
+        <input type="hidden" name="menu[b]" value="2">
+        <input type="hidden" name="c" value="3">
+        <input type="submit" value="Submit your Menu already">
      </div>
   </fieldset>
 </form>
@@ -20,14 +23,14 @@
     <div hidden class="messages"></div>
   <ul id="menu_items_list" >
 
-  
+
 <% @menus.each do |menu|%>
     <%= erb :'_menu_list_item', :layout => false,  :locals => { :menu =>menu } %>
 
-<% end %>    
-  
-  
+<% end %>
+
+
   </ul>
-</div>  
+</div>
 
 
