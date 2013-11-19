@@ -1,3 +1,11 @@
+# {"name"=>"1", "splat"=>[], "captures"=>["12", "13", "14"], "a"=>"12", "b"=>"13", "c"=>"14"}
+# {"name"=>"1", "splat"=>["14"], "captures"=>["12", "13"], "a"=>"12", "b"=>"13"}
+post '/jeffreyfuntimes/:a/:b/*' do
+  params.to_s
+end
+
+
+
 get '/' do
   @menus = Menu.all
   erb :index
@@ -15,13 +23,13 @@ post '/' do
 end
 
 # MENU UPDATE ///////////////////////////////////
-get '/menus/update/:id' do 
+get '/menus/update/:id' do
   @menu = Menu.find(params[:id])
   @items = Menu.find(params[:id]).items
   erb :update
 end
 
-post '/menus/update/:id' do 
+post '/menus/update/:id' do
   @menu = Menu.find(params[:id])
   @item = Item.create(params[:item])
   Menuitem.create(menu_id: @menu.id, item_id: @item.id)
@@ -56,7 +64,7 @@ delete '/menus/delete/:id' do
 end
 
 # ITEMS DELETE ///////////////////////////////////
-get '/menuitem/delete/:item_id' do 
+get '/menuitem/delete/:item_id' do
   @item = Item.find(params[:item_id])
   @items = Menu.find(params[:id]).items
   @menu = Menu.find(params[:menu][:id])

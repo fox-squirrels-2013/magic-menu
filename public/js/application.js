@@ -8,25 +8,25 @@ $(document).ready(function(){
     return '<form action="/menus/delete/' + id + '" method="post"><input type="hidden" name="_method" value="delete"><input type="submit" class="button-d" value="X"><a href="/menus/update/' + id + '" class="menu-link">' + name + '</a></form>'
   }
 
-  $('#add_menu_button').on('click', function(e){
-      console.log('wtf')
-    e.preventDefault()
-    var menuName = $('#menuname').val()
-    $.ajax({
-      type: "post",
-      url: "/",
-      data: {name: menuName},
-      success: function(data) {
-          console.log(data.name)
-        $('#menu_list').append(newMenuHTML(data.id, data.name))
-        $('#menuname').val('')
-      }
-    })
-  })
+  // $('#add_menu_button').on('click', function(e){
+  //     console.log('wtf')
+  //   e.preventDefault()
+  //   var menuName = $('#menuname').val()
+  //   $.ajax({
+  //     type: "post",
+  //     url: "/",
+  //     data: {name: menuName},
+  //     success: function(data) {
+  //         console.log(data.name)
+  //       $('#menu_list').append(newMenuHTML(data.id, data.name))
+  //       $('#menuname').val('')
+  //     }
+  //   })
+  // })
 
-  
+
 // ADD ITEMS ////////////////////////////////////
-  
+
   var newItemHTML = function(menu_id, item_id, item_name, item_price){
     return '<form class="new-item" action="/menuitem/delete/' + item_id + '" method="post"><input type="hidden" name="menu[id]" value="' + menu_id + '"><input type="hidden" name="_method" value="delete"><input type="submit" class="button-d" value="X">' + item_name + ' - ' + item_price + '</form>'
   }
