@@ -1,0 +1,42 @@
+<h1 id="menu-name" data-id="<%= @menu.id %>" ><%= @menu.name %> Menu</h1>
+<h2>Items in that menu</h2>
+
+
+<table id="all_items_list" >
+
+<% if @menu_items.empty? %>
+ <p>No item currently available</p>
+<% else %>  
+<% @menu_items.each do |item|%>
+    <%= erb :'_list_item', :layout => false,  :locals => { :item =>item } %>
+
+<% end %> 
+<% end %>   
+  
+  
+  </table>
+
+
+
+
+<div class="row">
+
+  <select id="selectionField">
+      <option value="" disabled="disabled" selected="selected">Please select your item</option>
+
+      <% @items.each do |item| %>
+
+      <option value='<%= item.id %>'><%= item.name %></option>
+      <% end %>
+
+  </select>
+
+
+</div> 
+
+
+
+
+
+
+
