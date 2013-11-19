@@ -1,0 +1,10 @@
+<div class = "login">
+  <form action = "/user/new" method = "POST" >
+    <input type = "text" name = "user[name]" placeholder = "Enter Username">
+    <br>
+    <input type = "password"name = "user[password]" placeholder="Password">
+    <br>
+    <input type ="submit" value = "Create">
+  </form>
+  <%=flash[:user_errors]%>
+</div>

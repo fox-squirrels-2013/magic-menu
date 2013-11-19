@@ -1,0 +1,14 @@
+<h1><%=current_menu.name%></h1>
+<table id ="menu-items">
+  <%menu_items.each do |menuitem|%>
+    <tr id = "menuitem-<%=menuitem.id%>" ><td><a class = "menudelete" data-id ="<%=menuitem.id%>" href ="/#">X - </a><%=menuitem.item.name%> - $<%=menuitem.item.price%></td></tr>
+<%end%>
+</table>
+
+<br>
+<select id ="item-select"> 
+    <option value="" disabled="disabled" selected="selected">Select Items for this Menu</option>
+    <%global_items.each do |item|%>
+      <option class = "dropdown-item"  value ="<%=item.id%>"><%=item.name%> - $<%=item.price%></option>
+    <%end%>
+</select>

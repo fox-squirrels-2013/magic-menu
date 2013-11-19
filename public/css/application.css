@@ -1,3 +1,15 @@
+a {
+  text-decoration: none;
+  color: #22314D
+}
+
+body {
+  background-color:#CEECF5;
+}
+
+a:visited{
+  color: #22314D;
+}
 .container {
   margin: 20px auto;
   width: 600px;
@@ -7,4 +19,24 @@
 
 th {
   text-align: left;
+}
+
+.login {
+  margin: 20px auto;
+  width: 600px;
+  padding: 10px 20px 20px 20px;
+  border: 1px dotted black  ;
+}
+
+
+#item-dropdown-button{
+  cursor:pointer;
+}
+
+#item-form{
+  display: none;
+}
+
+#menu-form{
+  display: none;
 }
