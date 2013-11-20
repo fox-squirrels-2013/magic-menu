@@ -24,9 +24,9 @@ $(document).ready(function(){
     })
   })
 
-  
+
 // ADD ITEMS ////////////////////////////////////
-  
+
   var newItemHTML = function(menu_id, item_id, item_name, item_price){
     return '<form class="new-item" action="/menuitem/delete/' + item_id + '" method="post"><input type="hidden" name="menu[id]" value="' + menu_id + '"><input type="hidden" name="_method" value="delete"><input type="submit" class="button-d" value="X">' + item_name + ' - ' + item_price + '</form>'
   }
@@ -54,12 +54,12 @@ $(document).ready(function(){
 
 // DELETE MENUS //////////////////////////////////
 
-  $('#menu_list').on('click', '.button-d', function(e){
-      console.log($(this).parent())
+  $('#menu_list').on('submit', 'form', function(e){
+      console.log($(this))
     e.preventDefault()
-    var route = $(this).parent().attr('action')
+    var route = $(this).attr('action')
       console.log("route: ", route)
-    $(this).parent().remove()
+    $(this).remove()
     $.ajax({
       type: "delete",
       url: route,

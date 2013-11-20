@@ -15,13 +15,13 @@ post '/' do
 end
 
 # MENU UPDATE ///////////////////////////////////
-get '/menus/update/:id' do 
+get '/menus/update/:id' do
   @menu = Menu.find(params[:id])
   @items = Menu.find(params[:id]).items
   erb :update
 end
 
-post '/menus/update/:id' do 
+post '/menus/update/:id' do
   @menu = Menu.find(params[:id])
   @item = Item.create(params[:item])
   Menuitem.create(menu_id: @menu.id, item_id: @item.id)
@@ -56,7 +56,7 @@ delete '/menus/delete/:id' do
 end
 
 # ITEMS DELETE ///////////////////////////////////
-get '/menuitem/delete/:item_id' do 
+get '/menuitem/delete/:item_id' do
   @item = Item.find(params[:item_id])
   @items = Menu.find(params[:id]).items
   @menu = Menu.find(params[:menu][:id])
