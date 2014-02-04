@@ -1,0 +1,35 @@
+<div class="container">
+  <header>
+    <h1>Welcome to Awesome Menus</h1>
+    <ul>
+      <li><a href="#">Add Items</a></li>
+      <li><a href="/">Add Menus</a></li>
+    </ul>
+  </header>
+
+  <form id="add_item" action="/item/create/new" method="post">
+    <input type="text" placeholder="item name" name="item[name]">
+    <input type="text" placeholder="price" name="item[price]">
+    <input type="hidden" name="item[menu_id]" value="<%= @id %>">
+
+    <input type="submit" value="Add Item">
+  </form>
+
+  <h2>Your Items:</h2>
+
+  <% if @items %>
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>Price</td>
+      </tr>
+
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.name %></td>
+          <td>$<%= item.price %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>
